@@ -1,0 +1,41 @@
+# OBE DCCT Agent - Requirements
+# True Agentic Workflow với Key API
+
+# Core
+python-dotenv>=1.0.0
+pydantic>=2.7.0
+pydantic-settings>=2.0.0
+
+# LangChain & LangGraph
+langchain>=0.2.0
+langgraph>=0.1.0
+langchain-core>=0.2.0
+langchain-community>=0.2.0
+
+# LLM Providers
+google-generativeai>=0.5.0
+langchain-google-genai>=1.0.0
+anthropic>=0.25.0
+
+# RAG & Vector Database
+qdrant-client>=1.9.0
+langchain-qdrant>=0.1.0
+
+# Document Processing
+python-docx>=1.1.0
+PyPDF2>=3.0.0
+
+# Async & Utils
+aiohttp>=3.9.0
+
+# UI (sẽ dùng sau)
+streamlit>=1.38.0
+
+# Development & Testing
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+black>=24.0.0
+flake8>=7.0.0
+
+# Logging
+python-json-logger>=2.0.0
