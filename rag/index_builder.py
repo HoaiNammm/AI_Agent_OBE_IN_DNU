@@ -15,6 +15,9 @@ _vector_store = None
 _retriever = None
 
 
+EMBEDDING_DIMENSION = 768  # Gemini embedding-001 output dimension
+
+
 async def initialize_rag(force_rebuild: bool = False) -> bool:
     """
     Khởi tạo RAG system với dữ liệu OBE.
@@ -144,7 +147,7 @@ async def _create_vector_store(docs: list):
 
     client.create_collection(
         collection_name=collection_name,
-        vectors_config=VectorParams(size=768, distance=Distance.COSINE),
+        vectors_config=VectorParams(size=EMBEDDING_DIMENSION, distance=Distance.COSINE),
     )
 
     vector_store = QdrantVectorStore(

@@ -67,7 +67,7 @@ st.markdown("""
 # ============================================================
 
 with st.sidebar:
-    st.image("https://via.placeholder.com/200x60?text=DNU+CNTT", use_column_width=True)
+    st.markdown("### 🎓 DNU - Khoa CNTT")
     st.markdown("### ⚙️ Cài đặt Agent")
 
     st.markdown("**API Keys:**")

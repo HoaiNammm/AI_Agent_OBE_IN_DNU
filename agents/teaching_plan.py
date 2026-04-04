@@ -145,7 +145,8 @@ def _generate_fallback_plan(clo_list: List[Dict], session_info: Dict) -> List[Di
     lab = session_info.get("lab_periods", 15)
 
     clo_codes = [c["code"] for c in clo_list]
-    per_clo = max(1, theory // max(len(clo_codes), 1))
+    clo_count = max(len(clo_codes), 1)
+    per_clo = max(1, theory // clo_count)
 
     session_no = 1
     # Buổi đầu: Giới thiệu

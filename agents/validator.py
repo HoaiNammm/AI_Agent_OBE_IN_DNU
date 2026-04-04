@@ -10,6 +10,8 @@ from prompts.validator_prompt import VALIDATOR_SYSTEM_PROMPT, build_validator_us
 
 logger = get_logger("agents.validator")
 
+PENALTY_PER_BASIC_ISSUE = 5  # điểm trừ cho mỗi vấn đề cơ bản
+
 
 async def final_validator_node(state: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -78,7 +80,7 @@ async def final_validator_node(state: Dict[str, Any]) -> Dict[str, Any]:
 
         # Trừ điểm cho các vấn đề cơ bản
         if basic_issues:
-            confidence_score = max(0, confidence_score - len(basic_issues) * 5)
+            confidence_score = max(0, confidence_score - len(basic_issues) * PENALTY_PER_BASIC_ISSUE)
 
         # Xây dựng final_dcct_data
         final_dcct_data = _build_final_dcct(state, validation_results)
