@@ -1,0 +1,140 @@
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=understand, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=understand, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor → understand
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor → understand
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=mapping, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=mapping, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor → mapping
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor → mapping
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=understand, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=understand, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor → understand
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor → understand
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=mapping, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=mapping, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor → mapping
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor → mapping
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=teaching_plan, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=teaching_plan, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor → teaching_plan
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor → teaching_plan
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=assessment, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=assessment, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor → assessment
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor → assessment
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=final_validator, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=final_validator, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor → final_validator
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor → final_validator
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: understand ✓ → mapping
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: understand ✓ → mapping
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=mapping_done, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=mapping_done, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: mapping ✓ → teaching_plan
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: mapping ✓ → teaching_plan
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=teaching_plan_done, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=teaching_plan_done, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: teaching_plan ✓ → assessment
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: teaching_plan ✓ → assessment
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=assessment_done, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=assessment_done, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: assessment ✓ → final_validator
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: assessment ✓ → final_validator
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={}
+2026-04-04 17:21:31 | WARNING  | agents.supervisor | Supervisor: Critic FAIL cho 'understand', retry lần 1/2
+2026-04-04 17:21:31 | WARNING  | agents.supervisor | Supervisor: Critic FAIL cho 'understand', retry lần 1/2
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={'understand': 1}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={'understand': 1}
+2026-04-04 17:21:31 | WARNING  | agents.supervisor | Supervisor: Critic FAIL cho 'understand', retry lần 2/2
+2026-04-04 17:21:31 | WARNING  | agents.supervisor | Supervisor: Critic FAIL cho 'understand', retry lần 2/2
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={'understand': 2}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={'understand': 2}
+2026-04-04 17:21:31 | WARNING  | agents.supervisor | Supervisor: Đã retry 'understand' 2 lần, tiến tới bước tiếp theo dù chưa đạt
+2026-04-04 17:21:31 | WARNING  | agents.supervisor | Supervisor: Đã retry 'understand' 2 lần, tiến tới bước tiếp theo dù chưa đạt
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: understand ✓ → mapping
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: understand ✓ → mapping
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: understand ✓ → mapping
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: understand ✓ → mapping
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=invalid_step_xyz, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=invalid_step_xyz, retries={}
+2026-04-04 17:21:31 | WARNING  | agents.supervisor | Supervisor: Trạng thái không xác định 'invalid_step_xyz', reset về understand
+2026-04-04 17:21:31 | WARNING  | agents.supervisor | Supervisor: Trạng thái không xác định 'invalid_step_xyz', reset về understand
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=assessment_done, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: current_step=assessment_done, retries={}
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: assessment ✓ → final_validator
+2026-04-04 17:21:31 | INFO     | agents.supervisor | Supervisor: assessment ✓ → final_validator
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=understand, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=understand, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor → understand
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor → understand
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=mapping, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=mapping, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor → mapping
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor → mapping
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=understand, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=understand, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor → understand
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor → understand
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=mapping, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=mapping, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor → mapping
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor → mapping
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=teaching_plan, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=teaching_plan, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor → teaching_plan
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor → teaching_plan
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=assessment, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=assessment, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor → assessment
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor → assessment
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=final_validator, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=final_validator, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor → final_validator
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor → final_validator
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: understand ✓ → mapping
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: understand ✓ → mapping
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=mapping_done, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=mapping_done, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: mapping ✓ → teaching_plan
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: mapping ✓ → teaching_plan
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=teaching_plan_done, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=teaching_plan_done, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: teaching_plan ✓ → assessment
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: teaching_plan ✓ → assessment
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=assessment_done, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=assessment_done, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: assessment ✓ → final_validator
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: assessment ✓ → final_validator
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={}
+2026-04-04 17:23:29 | WARNING  | agents.supervisor | Supervisor: Critic FAIL cho 'understand', retry lần 1/2
+2026-04-04 17:23:29 | WARNING  | agents.supervisor | Supervisor: Critic FAIL cho 'understand', retry lần 1/2
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={'understand': 1}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={'understand': 1}
+2026-04-04 17:23:29 | WARNING  | agents.supervisor | Supervisor: Critic FAIL cho 'understand', retry lần 2/2
+2026-04-04 17:23:29 | WARNING  | agents.supervisor | Supervisor: Critic FAIL cho 'understand', retry lần 2/2
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={'understand': 2}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={'understand': 2}
+2026-04-04 17:23:29 | WARNING  | agents.supervisor | Supervisor: Đã retry 'understand' 2 lần, tiến tới bước tiếp theo dù chưa đạt
+2026-04-04 17:23:29 | WARNING  | agents.supervisor | Supervisor: Đã retry 'understand' 2 lần, tiến tới bước tiếp theo dù chưa đạt
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: understand ✓ → mapping
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: understand ✓ → mapping
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=understand_done, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: understand ✓ → mapping
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: understand ✓ → mapping
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=invalid_step_xyz, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=invalid_step_xyz, retries={}
+2026-04-04 17:23:29 | WARNING  | agents.supervisor | Supervisor: Trạng thái không xác định 'invalid_step_xyz', reset về understand
+2026-04-04 17:23:29 | WARNING  | agents.supervisor | Supervisor: Trạng thái không xác định 'invalid_step_xyz', reset về understand
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=assessment_done, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: current_step=assessment_done, retries={}
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: assessment ✓ → final_validator
+2026-04-04 17:23:29 | INFO     | agents.supervisor | Supervisor: assessment ✓ → final_validator
