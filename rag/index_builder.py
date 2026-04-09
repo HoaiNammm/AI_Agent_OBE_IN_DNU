@@ -128,12 +128,12 @@ async def _create_vector_store(docs: list):
     from qdrant_client import QdrantClient
     from qdrant_client.models import Distance, VectorParams
 
-    from config import GOOGLE_API_KEY
+    from config import GOOGLE_API_KEY, GEMINI_EMBEDDING_MODEL
 
     try:
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
         embeddings = GoogleGenerativeAIEmbeddings(
-            model="models/embedding-001",
+            model=GEMINI_EMBEDDING_MODEL,
             google_api_key=GOOGLE_API_KEY,
         )
     except Exception:
