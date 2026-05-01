@@ -1,18 +1,21 @@
 """
-RAG Index Builder - Khởi tạo vector store với kiến thức OBE
-Sử dụng Qdrant in-memory để dễ triển khai, không cần server riêng
+RAG Index Builder — Lớp RAG (Layer 2)
+
+CHỈ index nội dung prose/examples vào Qdrant.
+KHÔNG index PLO/PI rules, IRMA rules, Bloom taxonomy, assessment rules.
+
+Lý do tách 2 lớp:
+  • Layer 1 (Hardcode) — utils/kb.py: PLO/PI data, IRMA, assessment, forbidden verbs.
+    Agent gọi trực tiếp bằng function call. Đảm bảo determinism tuyệt đối.
+  • Layer 2 (RAG) — rag/: DCCT examples, TailieuMD prose, domain context.
+    Qdrant retriever chỉ gọi khi agent cần ngữ cảnh bổ sung, không dùng để tra rule.
+
+Nếu PI rules ở RAG: cosine similarity có thể miss rule cần thiết
+→ agent mapping ra PI sai mà không có gì catch lại.
 """
 
 import os
-import json
-from typing import Optional
 from utils.logger import get_logger
-from utils.obe_utils import (
-    PLO_DATA, PI_DATA, BLOOM_LEVELS, IRMA_LEVELS,
-    HTTT_PLO_DATA, HTTT_PI_DATA, HTTT_PO_DATA,
-    KHMT_PLO_DATA, KHMT_PI_DATA,
-    PROGRAM_DATA,
-)
 
 logger = get_logger("rag.index_builder")
 
@@ -61,127 +64,21 @@ async def initialize_rag(force_rebuild: bool = False) -> bool:
 
 
 def _build_obe_documents() -> list:
-    """Xây dựng danh sách Document từ dữ liệu OBE."""
-    from langchain_core.documents import Document
+    """
+    Xây dựng danh sách Document CHỈ gồm nội dung prose/examples.
 
+    KHÔNG bao gồm:
+      - PLO/PI data       → dùng utils/kb.get_pi_list_for_prompt()
+      - IRMA rules        → dùng utils/kb.get_irma_for_prompt()
+      - Bloom taxonomy    → dùng utils/obe_utils.BLOOM_VERBS
+      - Assessment rules  → dùng utils/kb.get_assessment_for_prompt()
+
+    Chỉ bao gồm:
+      - TailieuMD Markdown (prose mô tả ngành KHMT/HTTT)
+      - (Tương lai) DCCT examples đã được chuyên gia review
+    """
     docs = []
-
-    # PLO documents
-    for plo_code, plo_desc in PLO_DATA.items():
-        docs.append(
-            Document(
-                page_content=f"{plo_code}: {plo_desc}",
-                metadata={"type": "plo", "code": plo_code},
-            )
-        )
-
-    # PI documents (kèm PLO cha)
-    for plo_code, pis in PI_DATA.items():
-        for pi_code, pi_desc in pis.items():
-            docs.append(
-                Document(
-                    page_content=f"{pi_code} (thuộc {plo_code}): {pi_desc}",
-                    metadata={
-                        "type": "pi",
-                        "code": pi_code,
-                        "parent_plo": plo_code,
-                    },
-                )
-            )
-
-    # Bloom taxonomy documents
-    bloom_text = "\n".join(
-        [f"Mức {lvl} - {name}: Các động từ hành động tiêu biểu"
-         for lvl, name in BLOOM_LEVELS.items()]
-    )
-    docs.append(
-        Document(
-            page_content=f"Bloom Taxonomy - Thang đánh giá nhận thức:\n{bloom_text}",
-            metadata={"type": "bloom"},
-        )
-    )
-
-    # IRMA levels document
-    irma_text = "\n".join(
-        [f"{level}: {desc}" for level, desc in IRMA_LEVELS.items()]
-    )
-    docs.append(
-        Document(
-            page_content=f"Mức độ IRMA trong OBE:\n{irma_text}",
-            metadata={"type": "irma"},
-        )
-    )
-
-    # OBE principles document
-    docs.append(
-        Document(
-            page_content="""Nguyên tắc OBE (Outcome-Based Education):
-1. CLO phải SMART: Specific, Measurable, Achievable, Relevant, Time-bound
-2. Constructive Alignment: CLO → Teaching Activities → Assessment phải nhất quán
-3. Assessment as Learning: đánh giá là công cụ học tập, không chỉ kiểm tra
-4. Continuous Improvement: DCCT được cải tiến liên tục qua phản hồi
-5. Student-Centered: thiết kế từ chuẩn đầu ra của sinh viên""",
-            metadata={"type": "obe_principles"},
-        )
-    )
-
-    # ---- Dữ liệu chương trình thực tế: HTTT & KHMT ----
-    docs.extend(_build_program_documents("HTTT", HTTT_PLO_DATA, HTTT_PI_DATA, HTTT_PO_DATA))
-    docs.extend(_build_program_documents("KHMT", KHMT_PLO_DATA, KHMT_PI_DATA, {}))
-
-    # ---- Nạp tài liệu Markdown từ TailieuMD ----
     docs.extend(_load_tailieu_md_documents())
-
-    return docs
-
-
-def _build_program_documents(
-    program_code: str,
-    plo_data: dict,
-    pi_data: dict,
-    po_data: dict,
-) -> list:
-    """Xây dựng documents cho một chương trình đào tạo cụ thể."""
-    from langchain_core.documents import Document
-
-    docs = []
-    program_info = PROGRAM_DATA.get(program_code, {})
-    program_name = program_info.get("name", program_code)
-
-    # PLO documents
-    for plo_code, plo_desc in plo_data.items():
-        docs.append(
-            Document(
-                page_content=f"[{program_code}] {plo_code}: {plo_desc}",
-                metadata={"type": "plo", "code": plo_code, "program": program_code},
-            )
-        )
-
-    # PI documents
-    for plo_code, pis in pi_data.items():
-        plo_desc = plo_data.get(plo_code, "")
-        for pi_code, pi_desc in pis.items():
-            docs.append(
-                Document(
-                    page_content=f"[{program_code}] {pi_code} (thuộc {plo_code}): {pi_desc}",
-                    metadata={
-                        "type": "pi",
-                        "code": pi_code,
-                        "parent_plo": plo_code,
-                        "program": program_code,
-                    },
-                )
-            )
-
-    # PO documents
-    for po_code, po_desc in po_data.items():
-        docs.append(
-            Document(
-                page_content=f"[{program_code}] {po_code} - {program_name}: {po_desc}",
-                metadata={"type": "po", "code": po_code, "program": program_code},
-            )
-        )
-
     return docs
 
 

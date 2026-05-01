@@ -36,8 +36,10 @@ async def understand_node(state: Dict[str, Any]) -> Dict[str, Any]:
     credits        = state.get("credits", "3")
     summary        = state.get("summary", "")
     outline_raw    = state.get("outline") or ""
-    program        = state.get("program")
     human_feedback = state.get("human_feedback")
+
+    # ── Detect & lock program từ course_code ──────────────────────────────────
+    program = _detect_program(course_code, state.get("program"))
 
     # ── Xác định luồng (REVERSE hay FORWARD) ──────────────────────────────────
     outline_provided = bool(outline_raw and outline_raw.strip())
@@ -90,6 +92,45 @@ async def understand_node(state: Dict[str, Any]) -> Dict[str, Any]:
         result   = json.loads(json_str)
 
         extracted_info = result.get("extracted_info", {})
+
+        # ── PIN: không cho LLM ghi đè dữ liệu user đã cung cấp ────────────────
+        if credits:
+            extracted_info["credits"] = credits
+        if course_code:
+            extracted_info["course_code"] = course_code
+        if course_name:
+            extracted_info["course_name"] = course_name
+        # prerequisites: chỉ lấy của LLM nếu user không cung cấp
+        _user_prereqs = state.get("prerequisites") or state.get("extracted_info", {}).get("prerequisites")
+        if _user_prereqs:
+            extracted_info["prerequisites"] = _user_prereqs
+
+        # ── Fix theory/lab periods nếu không hợp lệ ─────────────────────────
+        # Với học phần lý thuyết+thực hành: chuẩn = 1TC LT + còn lại TH
+        try:
+            _credits_int = int(credits) if credits else 3
+            _total_expected = _credits_int * 15
+            _theory_p = int(extracted_info.get("theory_periods", 0) or 0)
+            _lab_p = int(extracted_info.get("lab_periods", 0) or 0)
+            _course_type = extracted_info.get("course_type", "")
+            if _theory_p + _lab_p != _total_expected:
+                # Tổng không khớp → recalculate
+                if "thực hành" in _course_type.lower() and "lý thuyết" in _course_type.lower():
+                    # Mixed: 1TC LT + còn lại TH
+                    _theory_tc = max(1, _credits_int // 3)
+                    extracted_info["theory_periods"] = _theory_tc * 15
+                    extracted_info["lab_periods"] = (_credits_int - _theory_tc) * 15
+                elif "thực hành" in _course_type.lower():
+                    # Thuần TH
+                    extracted_info["theory_periods"] = 0
+                    extracted_info["lab_periods"] = _total_expected
+                else:
+                    # Thuần LT hoặc không rõ
+                    extracted_info["theory_periods"] = _total_expected
+                    extracted_info["lab_periods"] = 0
+        except (ValueError, TypeError):
+            pass
+
         clo_raw_list   = result.get("clo_list", [])
 
         # Nếu REVERSE: LLM trả về outline_sessions mới (có thể giàu hơn parsed)
@@ -128,6 +169,7 @@ async def understand_node(state: Dict[str, Any]) -> Dict[str, Any]:
             "outline_provided":  outline_provided,
             "outline_sessions":  final_outline_sessions,
             "session_clo_map":   session_clo_map,
+            "program":           program,          # locked program
             "current_step":      "understand_done",
             "warnings":          warnings_out,
             "errors":            [],
@@ -184,4 +226,19 @@ def _normalize_clo_list(clo_raw_list: List[Dict]) -> List[Dict]:
         })
 
     return normalized
+
+
+def _detect_program(course_code: str, existing_program: str = None) -> str:
+    """
+    Xác định chương trình đào tạo từ mã học phần.
+    Ưu tiên giá trị đã có nếu không phải GENERIC.
+    """
+    if existing_program and existing_program not in ("GENERIC", "", None):
+        return existing_program
+    code_upper = (course_code or "").upper()
+    if code_upper.startswith("CSC") or code_upper.startswith("CS"):
+        return "KHMT"
+    if code_upper.startswith("ISE") or code_upper.startswith("IS"):
+        return "HTTT"
+    return "GENERIC"
 

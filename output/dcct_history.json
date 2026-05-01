@@ -1,0 +1,2616 @@
+[
+  {
+    "timestamp": "2026-04-29 21:47",
+    "course_code": "FIT4116",
+    "course_name": "Thị giác máy tính",
+    "credits": "2",
+    "result": {
+      "user_input": "FIT4116 - Thị giác máy tính\nHọc phần Thị giác máy tính cung cấp kiến thức nền tảng và kỹ thuật cơ bản trong việc xây dựng các hệ thống xử lý ảnh và video bằng máy tính. Nội dung học phần bao gồm:\n\t- Các khái niệm, kỹ thuật tiền xử lý ảnh, trích xuất đặc trưng và phát hiện đối tượng trong ảnh và video.\n\t- Ứng dụng thuật toán học máy và học sâu trong thị giác máy tính, như phân loại hình ảnh, nhận dạng khuôn mặt, phát hiện vật thể.\n\t- Giới thiệu về các thư viện và nền tảng lập trình phổ biến trong thị giác máy tính như OpenCV, TensorFlow, PyTorch, YOLO\nVề mục tiêu học phần\nCung cấp cho sinh viên các kiến thức cơ bản về:\n\t- Nguyên lý và kỹ thuật xử lý ảnh số trong thị giác máy tính.\n\t- Phương pháp trích xuất và nhận diện thông tin từ hình ảnh và video.\n\t- Kỹ năng lập trình và sử dụng thư viện để xây dựng các ứng dụng thị giác máy tính.\n\t- Ứng dụng các thuật toán học máy và học sâu để giải quyết bài toán trong thị giác máy tính.\n",
+      "course_code": "FIT4116",
+      "course_name": "Thị giác máy tính",
+      "credits": "2",
+      "summary": "Học phần Thị giác máy tính cung cấp kiến thức nền tảng và kỹ thuật cơ bản trong việc xây dựng các hệ thống xử lý ảnh và video bằng máy tính. Nội dung học phần bao gồm:\n\t- Các khái niệm, kỹ thuật tiền xử lý ảnh, trích xuất đặc trưng và phát hiện đối tượng trong ảnh và video.\n\t- Ứng dụng thuật toán học máy và học sâu trong thị giác máy tính, như phân loại hình ảnh, nhận dạng khuôn mặt, phát hiện vật thể.\n\t- Giới thiệu về các thư viện và nền tảng lập trình phổ biến trong thị giác máy tính như OpenCV, TensorFlow, PyTorch, YOLO\nVề mục tiêu học phần\nCung cấp cho sinh viên các kiến thức cơ bản về:\n\t- Nguyên lý và kỹ thuật xử lý ảnh số trong thị giác máy tính.\n\t- Phương pháp trích xuất và nhận diện thông tin từ hình ảnh và video.\n\t- Kỹ năng lập trình và sử dụng thư viện để xây dựng các ứng dụng thị giác máy tính.\n\t- Ứng dụng các thuật toán học máy và học sâu để giải quyết bài toán trong thị giác máy tính.\n",
+      "program": "KHMT",
+      "outline": "Chương 1. Khái quát về thị giác máy tính\nChương 2. Xử lý ảnh bằng OpenCV\nChương 3. Nhận dạng ảnh\nChương 4. Thị giác máy tính",
+      "irma_matrix": null,
+      "outline_provided": true,
+      "outline_sessions": [
+        {
+          "no": 1,
+          "topic": "Khái quát về thị giác máy tính",
+          "subtopics": [],
+          "estimated_periods": 1,
+          "session_type": "LT"
+        },
+        {
+          "no": 2,
+          "topic": "Xử lý ảnh bằng OpenCV",
+          "subtopics": [],
+          "estimated_periods": 1,
+          "session_type": "LT"
+        },
+        {
+          "no": 3,
+          "topic": "Nhận dạng ảnh",
+          "subtopics": [],
+          "estimated_periods": 1,
+          "session_type": "LT"
+        },
+        {
+          "no": 4,
+          "topic": "Thị giác máy tính",
+          "subtopics": [],
+          "estimated_periods": 1,
+          "session_type": "LT"
+        }
+      ],
+      "session_clo_map": {
+        "1": [
+          "CLO1"
+        ],
+        "2": [
+          "CLO2"
+        ],
+        "3": [
+          "CLO3"
+        ],
+        "4": [
+          "CLO4"
+        ]
+      },
+      "extracted_info": {
+        "course_code": "FIT4116",
+        "course_name": "Thị giác máy tính",
+        "credits": "2",
+        "theory_periods": 30,
+        "lab_periods": 0,
+        "prerequisites": [],
+        "target_students": "Sinh viên ngành KHMT",
+        "course_type": "lý thuyết",
+        "knowledge_areas": [
+          "Thị giác máy tính",
+          "Xử lý ảnh"
+        ],
+        "outline_parse_note": "Sườn nội dung đơn giản, tập trung vào lý thuyết cơ bản"
+      },
+      "clo_list": [
+        {
+          "code": "CLO1",
+          "description": "Phân tích được các khái niệm cơ bản về thị giác máy tính",
+          "bloom_verb": "Phân tích",
+          "bloom_level": 4,
+          "bloom_level_name": "Phân tích",
+          "source_sessions": [
+            1
+          ],
+          "pi_codes": [
+            "PI-CS01.1",
+            "PI-CS02.1"
+          ],
+          "mapping_level": "R"
+        },
+        {
+          "code": "CLO2",
+          "description": "Áp dụng được kỹ thuật xử lý ảnh bằng OpenCV",
+          "bloom_verb": "Áp dụng",
+          "bloom_level": 3,
+          "bloom_level_name": "Áp dụng",
+          "source_sessions": [
+            2
+          ],
+          "pi_codes": [
+            "PI-CS04.1",
+            "PI-CS05.1"
+          ],
+          "mapping_level": "R"
+        },
+        {
+          "code": "CLO3",
+          "description": "Triển khai được nhận dạng ảnh bằng các thuật toán cơ bản",
+          "bloom_verb": "Triển khai",
+          "bloom_level": 3,
+          "bloom_level_name": "Áp dụng",
+          "source_sessions": [
+            3
+          ],
+          "pi_codes": [
+            "PI-CS04.2",
+            "PI-CS05.2"
+          ],
+          "mapping_level": "M"
+        },
+        {
+          "code": "CLO4",
+          "description": "Đánh giá được các ứng dụng của thị giác máy tính trong thực tế",
+          "bloom_verb": "Đánh giá",
+          "bloom_level": 5,
+          "bloom_level_name": "Đánh giá",
+          "source_sessions": [
+            4
+          ],
+          "pi_codes": [
+            "PI-CS06.1",
+            "PI-CS07.1"
+          ],
+          "mapping_level": "M"
+        }
+      ],
+      "mapping_matrix": [
+        {
+          "clo_code": "CLO1",
+          "plo_code": "PLO-CS02",
+          "pi_code": "PI-CS01.1",
+          "irma_level": "R",
+          "bloom_level": 4
+        },
+        {
+          "clo_code": "CLO1",
+          "plo_code": "PLO-CS02",
+          "pi_code": "PI-CS02.1",
+          "irma_level": "M",
+          "bloom_level": 4
+        },
+        {
+          "clo_code": "CLO2",
+          "plo_code": "PLO-CS04",
+          "pi_code": "PI-CS04.1",
+          "irma_level": "R",
+          "bloom_level": 3
+        },
+        {
+          "clo_code": "CLO2",
+          "plo_code": "PLO-CS05",
+          "pi_code": "PI-CS05.1",
+          "irma_level": "M",
+          "bloom_level": 3
+        },
+        {
+          "clo_code": "CLO3",
+          "plo_code": "PLO-CS04",
+          "pi_code": "PI-CS04.2",
+          "irma_level": "M",
+          "bloom_level": 3
+        },
+        {
+          "clo_code": "CLO3",
+          "plo_code": "PLO-CS05",
+          "pi_code": "PI-CS05.2",
+          "irma_level": "M",
+          "bloom_level": 3
+        },
+        {
+          "clo_code": "CLO4",
+          "plo_code": "PLO-CS06",
+          "pi_code": "PI-CS06.1",
+          "irma_level": "M",
+          "bloom_level": 5
+        },
+        {
+          "clo_code": "CLO4",
+          "plo_code": "PLO-CS07",
+          "pi_code": "PI-CS07.1",
+          "irma_level": "A",
+          "bloom_level": 5
+        }
+      ],
+      "teaching_plan": [
+        {
+          "no": 1,
+          "week": 1,
+          "type": "LT",
+          "content": "Khái quát về thị giác máy tính",
+          "details": "",
+          "clo_codes": [
+            "CLO1"
+          ],
+          "irma_level": "",
+          "activities": "Thực hành có hướng dẫn",
+          "assessment": "",
+          "duration_periods": 1
+        },
+        {
+          "no": 2,
+          "week": 1,
+          "type": "LT",
+          "content": "Xử lý ảnh bằng OpenCV",
+          "details": "",
+          "clo_codes": [
+            "CLO2"
+          ],
+          "irma_level": "",
+          "activities": "Thực hành có hướng dẫn",
+          "assessment": "",
+          "duration_periods": 1
+        },
+        {
+          "no": 3,
+          "week": 1,
+          "type": "LT",
+          "content": "Nhận dạng ảnh",
+          "details": "",
+          "clo_codes": [
+            "CLO3"
+          ],
+          "irma_level": "",
+          "activities": "Thực hành có hướng dẫn",
+          "assessment": "",
+          "duration_periods": 1
+        },
+        {
+          "no": 4,
+          "week": 1,
+          "type": "LT",
+          "content": "Thị giác máy tính",
+          "details": "",
+          "clo_codes": [
+            "CLO4"
+          ],
+          "irma_level": "",
+          "activities": "Thực hành có hướng dẫn",
+          "assessment": "",
+          "duration_periods": 1
+        }
+      ],
+      "assessment_plan": [
+        {
+          "name": "Đánh giá chuyên cần",
+          "description": "Điểm danh, theo dõi tham gia và chuẩn bị bài",
+          "format": "Điểm danh, theo dõi tham gia và chuẩn bị bài",
+          "criteria_summary": "Mức độ tham dự, chuẩn bị, tham gia và tuân thủ quy định lớp học",
+          "weight": 0.1,
+          "code": "A1",
+          "timing": "Mỗi buổi học",
+          "clo_mapping": [],
+          "pi_codes": [],
+          "plo_codes": [],
+          "truy_vet_note": "Dùng cho điểm quá trình; không dùng đơn lẻ để kết luận CLO/PLO.",
+          "bloom_levels_assessed": [],
+          "duration_minutes": null
+        },
+        {
+          "name": "Đánh giá giữa kỳ 1",
+          "description": "Bài thực hành hoặc báo cáo ngắn",
+          "format": "Bài thực hành hoặc báo cáo ngắn",
+          "criteria_summary": "Đánh giá CLO giai đoạn đầu học phần theo nội dung và metric phù hợp",
+          "weight": 0.15,
+          "code": "A2.1",
+          "timing": "Sau chủ đề 1–3",
+          "clo_mapping": [
+            "CLO1",
+            "CLO2"
+          ],
+          "pi_codes": [],
+          "plo_codes": [],
+          "truy_vet_note": "[CÓ CĂN CỨ] Đo lường CLO giai đoạn đầu học phần.",
+          "bloom_levels_assessed": [
+            1,
+            2,
+            3
+          ],
+          "duration_minutes": null
+        },
+        {
+          "name": "Đánh giá giữa kỳ 2",
+          "description": "Bài thực hành hoặc báo cáo ngắn",
+          "format": "Bài thực hành hoặc báo cáo ngắn",
+          "criteria_summary": "Đánh giá CLO giai đoạn giữa-cuối học phần; so sánh và biện minh lựa chọn",
+          "weight": 0.15,
+          "code": "A2.2",
+          "timing": "Sau chủ đề 4–7",
+          "clo_mapping": [
+            "CLO3",
+            "CLO4"
+          ],
+          "pi_codes": [],
+          "plo_codes": [],
+          "truy_vet_note": "[CÓ CĂN CỨ] Đo lường CLO giai đoạn giữa-cuối học phần.",
+          "bloom_levels_assessed": [
+            3,
+            4,
+            5
+          ],
+          "duration_minutes": null
+        },
+        {
+          "name": "Đánh giá cuối kỳ",
+          "description": "Bài tập lớn/dự án có demo",
+          "format": "Bài tập lớn/dự án có demo",
+          "criteria_summary": "Giải pháp hoạt động; chất lượng đầu ra; diễn giải kết quả; bộ minh chứng đầy đủ",
+          "weight": 0.6,
+          "code": "A3",
+          "timing": "Theo lịch nhà trường",
+          "clo_mapping": [
+            "CLO1",
+            "CLO2",
+            "CLO3",
+            "CLO4"
+          ],
+          "pi_codes": [],
+          "plo_codes": [],
+          "truy_vet_note": "[CÓ CĂN CỨ] Bằng chứng tổng hợp, đo lường toàn bộ CLO.",
+          "bloom_levels_assessed": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "duration_minutes": null
+        }
+      ],
+      "rubrics": {
+        "A1": {
+          "criteria": [
+            {
+              "criterion": "Tham dự và tham gia lớp học",
+              "clo_measured": "Không dùng để kết luận CLO",
+              "weight_in_component": 0.3,
+              "levels": {
+                "M1": "Vắng nhiều buổi hoặc thường xuyên đi muộn",
+                "M2": "Tham dự không ổn định; còn đi muộn hoặc bỏ tiết",
+                "M3": "Tham dự đạt mức tối thiểu theo quy định",
+                "M4": "Tham dự đầy đủ, đúng giờ trong hầu hết các buổi",
+                "M5": "Tham dự đầy đủ, đúng giờ, chủ động hỗ trợ hoạt động lớp"
+              }
+            },
+            {
+              "criterion": "Chuẩn bị trước giờ học",
+              "clo_measured": "Không dùng để kết luận CLO",
+              "weight_in_component": 0.2,
+              "levels": {
+                "M1": "Không chuẩn bị học liệu hoặc yêu cầu trước giờ học",
+                "M2": "Có chuẩn bị nhưng rời rạc, chưa đáp ứng yêu cầu chính",
+                "M3": "Chuẩn bị được học liệu và yêu cầu tối thiểu",
+                "M4": "Chuẩn bị tương đối đầy đủ, bám yêu cầu buổi học",
+                "M5": "Chuẩn bị đầy đủ, có ghi chú hoặc câu hỏi kỹ thuật phù hợp"
+              }
+            },
+            {
+              "criterion": "Tham gia thảo luận và thực hành",
+              "clo_measured": "Không dùng để kết luận CLO",
+              "weight_in_component": 0.3,
+              "levels": {
+                "M1": "Không tham gia hoặc từ chối thực hành/thảo luận",
+                "M2": "Tham gia hạn chế, chủ yếu làm theo mà không có đóng góp",
+                "M3": "Tham gia ở mức tối thiểu, hoàn thành yêu cầu cơ bản",
+                "M4": "Tham gia chủ động, thực hiện tốt hoạt động thảo luận/thực hành",
+                "M5": "Tham gia tích cực, có trao đổi học thuật hoặc hỗ trợ nhóm/lớp hiệu quả"
+              }
+            },
+            {
+              "criterion": "Tuân thủ quy định và thái độ học tập",
+              "clo_measured": "Không dùng để kết luận CLO",
+              "weight_in_component": 0.2,
+              "levels": {
+                "M1": "Vi phạm quy định lớp học hoặc thể hiện thái độ thiếu hợp tác",
+                "M2": "Còn nhắc nhở về tác phong hoặc nộp/báo cáo nhiệm vụ chậm",
+                "M3": "Tuân thủ quy định cơ bản, thái độ học tập phù hợp",
+                "M4": "Tuân thủ tốt, hợp tác tốt với giảng viên và bạn học",
+                "M5": "Tác phong chuyên nghiệp, hợp tác tốt, góp phần duy trì môi trường học tập tích cực"
+              }
+            }
+          ]
+        },
+        "A2.1": {
+          "criteria": [
+            {
+              "criterion": "Phân tích được các khái niệm cơ bản về thị giác máy tính",
+              "clo_measured": "CLO1",
+              "weight_in_component": 0.4,
+              "levels": {
+                "M1": "Không thực hiện được: Phân tích được các khái niệm cơ bản về thị giác má",
+                "M2": "Thực hiện được một phần yêu cầu CLO1, còn nhiều hạn chế",
+                "M3": "Đáp ứng yêu cầu tối thiểu của CLO1",
+                "M4": "Đáp ứng tốt yêu cầu CLO1, có căn cứ rõ ràng",
+                "M5": "Vượt yêu cầu CLO1, thể hiện năng lực vững chắc và độc lập"
+              }
+            },
+            {
+              "criterion": "Áp dụng được kỹ thuật xử lý ảnh bằng OpenCV",
+              "clo_measured": "CLO2",
+              "weight_in_component": 0.4,
+              "levels": {
+                "M1": "Không thực hiện được: Áp dụng được kỹ thuật xử lý ảnh bằng OpenCV",
+                "M2": "Thực hiện được một phần yêu cầu CLO2, còn nhiều hạn chế",
+                "M3": "Đáp ứng yêu cầu tối thiểu của CLO2",
+                "M4": "Đáp ứng tốt yêu cầu CLO2, có căn cứ rõ ràng",
+                "M5": "Vượt yêu cầu CLO2, thể hiện năng lực vững chắc và độc lập"
+              }
+            },
+            {
+              "criterion": "Báo cáo và bộ minh chứng",
+              "clo_measured": "Hỗ trợ evidence",
+              "weight_in_component": 0.2,
+              "levels": {
+                "M1": "Thiếu phần lớn minh chứng; báo cáo không đủ để đối chiếu kết quả",
+                "M2": "Có minh chứng tối thiểu nhưng rời rạc, khó tái kiểm tra",
+                "M3": "Có báo cáo và code/log cơ bản; đối chiếu được các bước chính",
+                "M4": "Báo cáo rõ, minh chứng tương đối đủ, trả lời được phản biện cơ bản",
+                "M5": "Bộ minh chứng đầy đủ, nhất quán, tái kiểm tra được; báo cáo thuyết phục"
+              }
+            }
+          ]
+        },
+        "A2.2": {
+          "criteria": [
+            {
+              "criterion": "Triển khai được nhận dạng ảnh bằng các thuật toán cơ bản",
+              "clo_measured": "CLO3",
+              "weight_in_component": 0.4,
+              "levels": {
+                "M1": "Không thực hiện được: Triển khai được nhận dạng ảnh bằng các thuật toán ",
+                "M2": "Thực hiện được một phần yêu cầu CLO3, còn nhiều hạn chế",
+                "M3": "Đáp ứng yêu cầu tối thiểu của CLO3",
+                "M4": "Đáp ứng tốt yêu cầu CLO3, có căn cứ rõ ràng",
+                "M5": "Vượt yêu cầu CLO3, thể hiện năng lực vững chắc và độc lập"
+              }
+            },
+            {
+              "criterion": "Đánh giá được các ứng dụng của thị giác máy tính trong thực tế",
+              "clo_measured": "CLO4",
+              "weight_in_component": 0.4,
+              "levels": {
+                "M1": "Không thực hiện được: Đánh giá được các ứng dụng của thị giác máy tính t",
+                "M2": "Thực hiện được một phần yêu cầu CLO4, còn nhiều hạn chế",
+                "M3": "Đáp ứng yêu cầu tối thiểu của CLO4",
+                "M4": "Đáp ứng tốt yêu cầu CLO4, có căn cứ rõ ràng",
+                "M5": "Vượt yêu cầu CLO4, thể hiện năng lực vững chắc và độc lập"
+              }
+            },
+            {
+              "criterion": "Báo cáo và bộ minh chứng",
+              "clo_measured": "Hỗ trợ evidence",
+              "weight_in_component": 0.2,
+              "levels": {
+                "M1": "Thiếu phần lớn minh chứng; báo cáo không đủ để đối chiếu kết quả",
+                "M2": "Có minh chứng tối thiểu nhưng rời rạc, khó tái kiểm tra",
+                "M3": "Có báo cáo và code/log cơ bản; đối chiếu được các bước chính",
+                "M4": "Báo cáo rõ, minh chứng tương đối đủ, trả lời được phản biện cơ bản",
+                "M5": "Bộ minh chứng đầy đủ, nhất quán, tái kiểm tra được; báo cáo thuyết phục"
+              }
+            }
+          ]
+        },
+        "A3": {
+          "criteria": [
+            {
+              "criterion": "Phân tích được các khái niệm cơ bản về thị giác máy tính",
+              "clo_measured": "CLO1",
+              "weight_in_component": 0.2,
+              "levels": {
+                "M1": "Không thực hiện được: Phân tích được các khái niệm cơ bản về thị giác má",
+                "M2": "Thực hiện được một phần yêu cầu CLO1, còn nhiều hạn chế",
+                "M3": "Đáp ứng yêu cầu tối thiểu của CLO1",
+                "M4": "Đáp ứng tốt yêu cầu CLO1, có căn cứ rõ ràng",
+                "M5": "Vượt yêu cầu CLO1, thể hiện năng lực vững chắc và độc lập"
+              }
+            },
+            {
+              "criterion": "Áp dụng được kỹ thuật xử lý ảnh bằng OpenCV",
+              "clo_measured": "CLO2",
+              "weight_in_component": 0.2,
+              "levels": {
+                "M1": "Không thực hiện được: Áp dụng được kỹ thuật xử lý ảnh bằng OpenCV",
+                "M2": "Thực hiện được một phần yêu cầu CLO2, còn nhiều hạn chế",
+                "M3": "Đáp ứng yêu cầu tối thiểu của CLO2",
+                "M4": "Đáp ứng tốt yêu cầu CLO2, có căn cứ rõ ràng",
+                "M5": "Vượt yêu cầu CLO2, thể hiện năng lực vững chắc và độc lập"
+              }
+            },
+            {
+              "criterion": "Triển khai được nhận dạng ảnh bằng các thuật toán cơ bản",
+              "clo_measured": "CLO3",
+              "weight_in_component": 0.2,
+              "levels": {
+                "M1": "Không thực hiện được: Triển khai được nhận dạng ảnh bằng các thuật toán ",
+                "M2": "Thực hiện được một phần yêu cầu CLO3, còn nhiều hạn chế",
+                "M3": "Đáp ứng yêu cầu tối thiểu của CLO3",
+                "M4": "Đáp ứng tốt yêu cầu CLO3, có căn cứ rõ ràng",
+                "M5": "Vượt yêu cầu CLO3, thể hiện năng lực vững chắc và độc lập"
+              }
+            },
+            {
+              "criterion": "Đánh giá được các ứng dụng của thị giác máy tính trong thực tế",
+              "clo_measured": "CLO4",
+              "weight_in_component": 0.2,
+              "levels": {
+                "M1": "Không thực hiện được: Đánh giá được các ứng dụng của thị giác máy tính t",
+                "M2": "Thực hiện được một phần yêu cầu CLO4, còn nhiều hạn chế",
+                "M3": "Đáp ứng yêu cầu tối thiểu của CLO4",
+                "M4": "Đáp ứng tốt yêu cầu CLO4, có căn cứ rõ ràng",
+                "M5": "Vượt yêu cầu CLO4, thể hiện năng lực vững chắc và độc lập"
+              }
+            },
+            {
+              "criterion": "Báo cáo và bộ minh chứng",
+              "clo_measured": "Hỗ trợ evidence",
+              "weight_in_component": 0.2,
+              "levels": {
+                "M1": "Thiếu phần lớn minh chứng; báo cáo không đủ để đối chiếu kết quả",
+                "M2": "Có minh chứng tối thiểu nhưng rời rạc, khó tái kiểm tra",
+                "M3": "Có báo cáo và code/log cơ bản; đối chiếu được các bước chính",
+                "M4": "Báo cáo rõ, minh chứng tương đối đủ, trả lời được phản biện cơ bản",
+                "M5": "Bộ minh chứng đầy đủ, nhất quán, tái kiểm tra được; báo cáo thuyết phục"
+              }
+            }
+          ]
+        }
+      },
+      "messages": [],
+      "current_step": "preview_done",
+      "confidence_score": 80.0,
+      "critic_feedback": [
+        {
+          "step": "understand",
+          "passed": true,
+          "score": 90,
+          "critical_issues": [],
+          "minor_issues": [
+            "CLO không nêu đối tượng cụ thể, chỉ nói chung chung",
+            "Thiếu PI_codes cho từng CLO"
+          ],
+          "suggestions": [
+            "Nên cụ thể hóa đối tượng cho từng CLO, ví dụ: 'Phân tích được các khái niệm cơ bản về thị giác máy tính trong lĩnh vực nhận dạng ảnh'",
+            "Nên thêm PI_codes cho từng CLO để đảm bảo tính đầy đủ và chính xác",
+            "Nên xem xét lại Bloom level cho từng CLO để đảm bảo tính nhất quán và chính xác"
+          ],
+          "summary": "Kết quả bước understand nhìn chung tốt, tuy nhiên cần cải thiện về tính cụ thể và đầy đủ của CLO và PI_codes"
+        },
+        {
+          "step": "mapping",
+          "passed": true,
+          "score": 90,
+          "critical_issues": [],
+          "minor_issues": [
+            "Cần cung cấp thêm thông tin chi tiết về nội dung CLO để đánh giá chính xác hơn"
+          ],
+          "suggestions": [
+            "Cân nhắc việc đa dạng hóa mức IRMA và Bloom level cho từng CLO để đảm bảo sự toàn diện trong đánh giá"
+          ],
+          "summary": "Kết quả bước mapping dường như đáp ứng các tiêu chí đánh giá, nhưng cần thêm thông tin chi tiết để đánh giá chính xác hơn."
+        },
+        {
+          "step": "teaching_plan",
+          "passed": true,
+          "score": 80,
+          "critical_issues": [],
+          "minor_issues": [
+            "Nội dung buổi học thứ 4 có thể được xem là lặp lại với buổi học thứ 1 vì cả hai đều liên quan đến 'Thị giác máy tính'",
+            "Không có thông tin cụ thể về Bloom level tăng dần trong các buổi học",
+            "Không có thông tin về việc có demo/tổng hợp/báo cáo trong buổi học cuối"
+          ],
+          "suggestions": [
+            "Cần thêm thông tin chi tiết về Bloom level cho từng buổi học để đảm bảo sự tiến triển",
+            "Cần xem xét lại nội dung buổi học thứ 4 để tránh lặp lại và tăng cường sự tiến triển",
+            "Nên thêm thông tin về việc có demo/tổng hợp/báo cáo trong buổi học cuối để tăng cường tính thực tiễn"
+          ],
+          "summary": "Kế hoạch giảng dạy đã đáp ứng được yêu cầu về số buổi học và chủ đề, nhưng cần cải thiện về sự tiến triển của nội dung và tính thực tiễn"
+        },
+        {
+          "step": "assessment",
+          "passed": true,
+          "score": 80,
+          "critical_issues": [],
+          "minor_issues": [
+            "Một số Bloom level trong các đánh giá giữa kỳ và cuối kỳ có thể được cụ thể hóa hơn để đảm bảo tính chính xác và nhất quán",
+            "Thiếu thông tin chi tiết về PI và PLO trong các đánh giá"
+          ],
+          "suggestions": [
+            "Cân nhắc thêm thông tin chi tiết về PI và PLO vào các đánh giá để tăng tính liên kết",
+            "Đảm bảo rằng mỗi CLO được đo lường bằng một bài kiểm tra/assignment cụ thể và rõ ràng"
+          ],
+          "summary": "Kế hoạch đánh giá tổng thể tốt, nhưng cần cải thiện về tính cụ thể và liên kết với PI và PLO"
+        }
+      ],
+      "retry_counts": {},
+      "preview_data": {
+        "course_summary": {
+          "code": "FIT4116",
+          "name": "Thị giác máy tính",
+          "credits": "2",
+          "type": "lý thuyết"
+        },
+        "clo_preview": [
+          {
+            "code": "CLO1",
+            "description": "Phân tích được các khái niệm cơ bản về thị giác máy tính",
+            "bloom": "Phân tích",
+            "pi_codes": [
+              "PI-CS01.1",
+              "PI-CS02.1"
+            ],
+            "irma": "R"
+          },
+          {
+            "code": "CLO2",
+            "description": "Áp dụng được kỹ thuật xử lý ảnh bằng OpenCV",
+            "bloom": "Áp dụng",
+            "pi_codes": [
+              "PI-CS04.1",
+              "PI-CS05.1"
+            ],
+            "irma": "R"
+          },
+          {
+            "code": "CLO3",
+            "description": "Triển khai được nhận dạng ảnh bằng các thuật toán cơ bản",
+            "bloom": "Áp dụng",
+            "pi_codes": [
+              "PI-CS04.2",
+              "PI-CS05.2"
+            ],
+            "irma": "M"
+          },
+          {
+            "code": "CLO4",
+            "description": "Đánh giá được các ứng dụng của thị giác máy tính trong thực tế",
+            "bloom": "Đánh giá",
+            "pi_codes": [
+              "PI-CS06.1",
+              "PI-CS07.1"
+            ],
+            "irma": "M"
+          }
+        ],
+        "teaching_plan_summary": {
+          "total_sessions": 4,
+          "theory_sessions": 4,
+          "lab_sessions": 0
+        },
+        "assessment_summary": [
+          {
+            "code": "A1",
+            "name": "Đánh giá chuyên cần",
+            "weight_percent": "10%",
+            "clo_count": 0
+          },
+          {
+            "code": "A2.1",
+            "name": "Đánh giá giữa kỳ 1",
+            "weight_percent": "15%",
+            "clo_count": 2
+          },
+          {
+            "code": "A2.2",
+            "name": "Đánh giá giữa kỳ 2",
+            "weight_percent": "15%",
+            "clo_count": 2
+          },
+          {
+            "code": "A3",
+            "name": "Đánh giá cuối kỳ",
+            "weight_percent": "60%",
+            "clo_count": 4
+          }
+        ],
+        "plo_coverage": {
+          "PLO-CS02": 2,
+          "PLO-CS04": 2,
+          "PLO-CS05": 2,
+          "PLO-CS06": 1,
+          "PLO-CS07": 1
+        },
+        "bloom_distribution": {
+          "Phân tích": 1,
+          "Áp dụng": 2,
+          "Đánh giá": 1
+        },
+        "confidence_score": 60.0,
+        "total_assessment_weight": 100,
+        "issues": [
+          "Assessment: Lỗi parse JSON - Expecting ',' delimiter: line 257 column 3 (char 10843)",
+          "CLO2 và CLO3 cần nâng cao động từ Bloom",
+          "CLO2 và CLO3 cần ánh xạ thêm PI-CS02.x hoặc PI-CS03.x",
+          "Tổng số tiết không được cung cấp",
+          "Trọng số A1+A2.1+A2.2+A3 không bằng 1",
+          "CLO2 và CLO3 cần nâng cao động từ Bloom",
+          "CLO2 và CLO3 cần ánh xạ thêm PI-CS02.x hoặc PI-CS03.x",
+          "Tổng số tiết không được cung cấp",
+          "Trọng số A1+A2.1+A2.2+A3 không bằng 1",
+          "Cần điều chỉnh trọng số đánh giá để tổng trọng số bằng 1"
+        ]
+      },
+      "needs_human_input": true,
+      "human_feedback": null,
+      "final_dcct_data": {
+        "course_info": {
+          "code": "FIT4116",
+          "name": "Thị giác máy tính",
+          "credits": "2",
+          "course_code": "FIT4116",
+          "course_name": "Thị giác máy tính",
+          "theory_periods": 30,
+          "lab_periods": 0,
+          "prerequisites": [],
+          "target_students": "Sinh viên ngành KHMT",
+          "course_type": "lý thuyết",
+          "knowledge_areas": [
+            "Thị giác máy tính",
+            "Xử lý ảnh"
+          ],
+          "outline_parse_note": "Sườn nội dung đơn giản, tập trung vào lý thuyết cơ bản"
+        },
+        "clo_list": [
+          {
+            "code": "CLO1",
+            "description": "Phân tích được các khái niệm cơ bản về thị giác máy tính",
+            "bloom_verb": "Phân tích",
+            "bloom_level": 4,
+            "bloom_level_name": "Phân tích",
+            "source_sessions": [
+              1
+            ],
+            "pi_codes": [
+              "PI-CS01.1",
+              "PI-CS02.1"
+            ],
+            "mapping_level": "R"
+          },
+          {
+            "code": "CLO2",
+            "description": "Áp dụng được kỹ thuật xử lý ảnh bằng OpenCV",
+            "bloom_verb": "Áp dụng",
+            "bloom_level": 3,
+            "bloom_level_name": "Áp dụng",
+            "source_sessions": [
+              2
+            ],
+            "pi_codes": [
+              "PI-CS04.1",
+              "PI-CS05.1"
+            ],
+            "mapping_level": "R"
+          },
+          {
+            "code": "CLO3",
+            "description": "Triển khai được nhận dạng ảnh bằng các thuật toán cơ bản",
+            "bloom_verb": "Triển khai",
+            "bloom_level": 3,
+            "bloom_level_name": "Áp dụng",
+            "source_sessions": [
+              3
+            ],
+            "pi_codes": [
+              "PI-CS04.2",
+              "PI-CS05.2"
+            ],
+            "mapping_level": "M"
+          },
+          {
+            "code": "CLO4",
+            "description": "Đánh giá được các ứng dụng của thị giác máy tính trong thực tế",
+            "bloom_verb": "Đánh giá",
+            "bloom_level": 5,
+            "bloom_level_name": "Đánh giá",
+            "source_sessions": [
+              4
+            ],
+            "pi_codes": [
+              "PI-CS06.1",
+              "PI-CS07.1"
+            ],
+            "mapping_level": "M"
+          }
+        ],
+        "mapping_matrix": [
+          {
+            "clo_code": "CLO1",
+            "plo_code": "PLO-CS02",
+            "pi_code": "PI-CS01.1",
+            "irma_level": "R",
+            "bloom_level": 4
+          },
+          {
+            "clo_code": "CLO1",
+            "plo_code": "PLO-CS02",
+            "pi_code": "PI-CS02.1",
+            "irma_level": "M",
+            "bloom_level": 4
+          },
+          {
+            "clo_code": "CLO2",
+            "plo_code": "PLO-CS04",
+            "pi_code": "PI-CS04.1",
+            "irma_level": "R",
+            "bloom_level": 3
+          },
+          {
+            "clo_code": "CLO2",
+            "plo_code": "PLO-CS05",
+            "pi_code": "PI-CS05.1",
+            "irma_level": "M",
+            "bloom_level": 3
+          },
+          {
+            "clo_code": "CLO3",
+            "plo_code": "PLO-CS04",
+            "pi_code": "PI-CS04.2",
+            "irma_level": "M",
+            "bloom_level": 3
+          },
+          {
+            "clo_code": "CLO3",
+            "plo_code": "PLO-CS05",
+            "pi_code": "PI-CS05.2",
+            "irma_level": "M",
+            "bloom_level": 3
+          },
+          {
+            "clo_code": "CLO4",
+            "plo_code": "PLO-CS06",
+            "pi_code": "PI-CS06.1",
+            "irma_level": "M",
+            "bloom_level": 5
+          },
+          {
+            "clo_code": "CLO4",
+            "plo_code": "PLO-CS07",
+            "pi_code": "PI-CS07.1",
+            "irma_level": "A",
+            "bloom_level": 5
+          }
+        ],
+        "teaching_plan": [
+          {
+            "no": 1,
+            "week": 1,
+            "type": "LT",
+            "content": "Khái quát về thị giác máy tính",
+            "details": "",
+            "clo_codes": [
+              "CLO1"
+            ],
+            "irma_level": "",
+            "activities": "Thực hành có hướng dẫn",
+            "assessment": "",
+            "duration_periods": 1
+          },
+          {
+            "no": 2,
+            "week": 1,
+            "type": "LT",
+            "content": "Xử lý ảnh bằng OpenCV",
+            "details": "",
+            "clo_codes": [
+              "CLO2"
+            ],
+            "irma_level": "",
+            "activities": "Thực hành có hướng dẫn",
+            "assessment": "",
+            "duration_periods": 1
+          },
+          {
+            "no": 3,
+            "week": 1,
+            "type": "LT",
+            "content": "Nhận dạng ảnh",
+            "details": "",
+            "clo_codes": [
+              "CLO3"
+            ],
+            "irma_level": "",
+            "activities": "Thực hành có hướng dẫn",
+            "assessment": "",
+            "duration_periods": 1
+          },
+          {
+            "no": 4,
+            "week": 1,
+            "type": "LT",
+            "content": "Thị giác máy tính",
+            "details": "",
+            "clo_codes": [
+              "CLO4"
+            ],
+            "irma_level": "",
+            "activities": "Thực hành có hướng dẫn",
+            "assessment": "",
+            "duration_periods": 1
+          }
+        ],
+        "assessment_plan": [
+          {
+            "name": "Đánh giá chuyên cần",
+            "description": "Điểm danh, theo dõi tham gia và chuẩn bị bài",
+            "format": "Điểm danh, theo dõi tham gia và chuẩn bị bài",
+            "criteria_summary": "Mức độ tham dự, chuẩn bị, tham gia và tuân thủ quy định lớp học",
+            "weight": 0.1,
+            "code": "A1",
+            "timing": "Mỗi buổi học",
+            "clo_mapping": [],
+            "pi_codes": [],
+            "plo_codes": [],
+            "truy_vet_note": "Dùng cho điểm quá trình; không dùng đơn lẻ để kết luận CLO/PLO.",
+            "bloom_levels_assessed": [],
+            "duration_minutes": null
+          },
+          {
+            "name": "Đánh giá giữa kỳ 1",
+            "description": "Bài thực hành hoặc báo cáo ngắn",
+            "format": "Bài thực hành hoặc báo cáo ngắn",
+            "criteria_summary": "Đánh giá CLO giai đoạn đầu học phần theo nội dung và metric phù hợp",
+            "weight": 0.15,
+            "code": "A2.1",
+            "timing": "Sau chủ đề 1–3",
+            "clo_mapping": [
+              "CLO1",
+              "CLO2"
+            ],
+            "pi_codes": [],
+            "plo_codes": [],
+            "truy_vet_note": "[CÓ CĂN CỨ] Đo lường CLO giai đoạn đầu học phần.",
+            "bloom_levels_assessed": [
+              1,
+              2,
+              3
+            ],
+            "duration_minutes": null
+          },
+          {
+            "name": "Đánh giá giữa kỳ 2",
+            "description": "Bài thực hành hoặc báo cáo ngắn",
+            "format": "Bài thực hành hoặc báo cáo ngắn",
+            "criteria_summary": "Đánh giá CLO giai đoạn giữa-cuối học phần; so sánh và biện minh lựa chọn",
+            "weight": 0.15,
+            "code": "A2.2",
+            "timing": "Sau chủ đề 4–7",
+            "clo_mapping": [
+              "CLO3",
+              "CLO4"
+            ],
+            "pi_codes": [],
+            "plo_codes": [],
+            "truy_vet_note": "[CÓ CĂN CỨ] Đo lường CLO giai đoạn giữa-cuối học phần.",
+            "bloom_levels_assessed": [
+              3,
+              4,
+              5
+            ],
+            "duration_minutes": null
+          },
+          {
+            "name": "Đánh giá cuối kỳ",
+            "description": "Bài tập lớn/dự án có demo",
+            "format": "Bài tập lớn/dự án có demo",
+            "criteria_summary": "Giải pháp hoạt động; chất lượng đầu ra; diễn giải kết quả; bộ minh chứng đầy đủ",
+            "weight": 0.6,
+            "code": "A3",
+            "timing": "Theo lịch nhà trường",
+            "clo_mapping": [
+              "CLO1",
+              "CLO2",
+              "CLO3",
+              "CLO4"
+            ],
+            "pi_codes": [],
+            "plo_codes": [],
+            "truy_vet_note": "[CÓ CĂN CỨ] Bằng chứng tổng hợp, đo lường toàn bộ CLO.",
+            "bloom_levels_assessed": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "duration_minutes": null
+          }
+        ],
+        "rubrics": {
+          "A1": {
+            "criteria": [
+              {
+                "criterion": "Tham dự và tham gia lớp học",
+                "clo_measured": "Không dùng để kết luận CLO",
+                "weight_in_component": 0.3,
+                "levels": {
+                  "M1": "Vắng nhiều buổi hoặc thường xuyên đi muộn",
+                  "M2": "Tham dự không ổn định; còn đi muộn hoặc bỏ tiết",
+                  "M3": "Tham dự đạt mức tối thiểu theo quy định",
+                  "M4": "Tham dự đầy đủ, đúng giờ trong hầu hết các buổi",
+                  "M5": "Tham dự đầy đủ, đúng giờ, chủ động hỗ trợ hoạt động lớp"
+                }
+              },
+              {
+                "criterion": "Chuẩn bị trước giờ học",
+                "clo_measured": "Không dùng để kết luận CLO",
+                "weight_in_component": 0.2,
+                "levels": {
+                  "M1": "Không chuẩn bị học liệu hoặc yêu cầu trước giờ học",
+                  "M2": "Có chuẩn bị nhưng rời rạc, chưa đáp ứng yêu cầu chính",
+                  "M3": "Chuẩn bị được học liệu và yêu cầu tối thiểu",
+                  "M4": "Chuẩn bị tương đối đầy đủ, bám yêu cầu buổi học",
+                  "M5": "Chuẩn bị đầy đủ, có ghi chú hoặc câu hỏi kỹ thuật phù hợp"
+                }
+              },
+              {
+                "criterion": "Tham gia thảo luận và thực hành",
+                "clo_measured": "Không dùng để kết luận CLO",
+                "weight_in_component": 0.3,
+                "levels": {
+                  "M1": "Không tham gia hoặc từ chối thực hành/thảo luận",
+                  "M2": "Tham gia hạn chế, chủ yếu làm theo mà không có đóng góp",
+                  "M3": "Tham gia ở mức tối thiểu, hoàn thành yêu cầu cơ bản",
+                  "M4": "Tham gia chủ động, thực hiện tốt hoạt động thảo luận/thực hành",
+                  "M5": "Tham gia tích cực, có trao đổi học thuật hoặc hỗ trợ nhóm/lớp hiệu quả"
+                }
+              },
+              {
+                "criterion": "Tuân thủ quy định và thái độ học tập",
+                "clo_measured": "Không dùng để kết luận CLO",
+                "weight_in_component": 0.2,
+                "levels": {
+                  "M1": "Vi phạm quy định lớp học hoặc thể hiện thái độ thiếu hợp tác",
+                  "M2": "Còn nhắc nhở về tác phong hoặc nộp/báo cáo nhiệm vụ chậm",
+                  "M3": "Tuân thủ quy định cơ bản, thái độ học tập phù hợp",
+                  "M4": "Tuân thủ tốt, hợp tác tốt với giảng viên và bạn học",
+                  "M5": "Tác phong chuyên nghiệp, hợp tác tốt, góp phần duy trì môi trường học tập tích cực"
+                }
+              }
+            ]
+          },
+          "A2.1": {
+            "criteria": [
+              {
+                "criterion": "Phân tích được các khái niệm cơ bản về thị giác máy tính",
+                "clo_measured": "CLO1",
+                "weight_in_component": 0.4,
+                "levels": {
+                  "M1": "Không thực hiện được: Phân tích được các khái niệm cơ bản về thị giác má",
+                  "M2": "Thực hiện được một phần yêu cầu CLO1, còn nhiều hạn chế",
+                  "M3": "Đáp ứng yêu cầu tối thiểu của CLO1",
+                  "M4": "Đáp ứng tốt yêu cầu CLO1, có căn cứ rõ ràng",
+                  "M5": "Vượt yêu cầu CLO1, thể hiện năng lực vững chắc và độc lập"
+                }
+              },
+              {
+                "criterion": "Áp dụng được kỹ thuật xử lý ảnh bằng OpenCV",
+                "clo_measured": "CLO2",
+                "weight_in_component": 0.4,
+                "levels": {
+                  "M1": "Không thực hiện được: Áp dụng được kỹ thuật xử lý ảnh bằng OpenCV",
+                  "M2": "Thực hiện được một phần yêu cầu CLO2, còn nhiều hạn chế",
+                  "M3": "Đáp ứng yêu cầu tối thiểu của CLO2",
+                  "M4": "Đáp ứng tốt yêu cầu CLO2, có căn cứ rõ ràng",
+                  "M5": "Vượt yêu cầu CLO2, thể hiện năng lực vững chắc và độc lập"
+                }
+              },
+              {
+                "criterion": "Báo cáo và bộ minh chứng",
+                "clo_measured": "Hỗ trợ evidence",
+                "weight_in_component": 0.2,
+                "levels": {
+                  "M1": "Thiếu phần lớn minh chứng; báo cáo không đủ để đối chiếu kết quả",
+                  "M2": "Có minh chứng tối thiểu nhưng rời rạc, khó tái kiểm tra",
+                  "M3": "Có báo cáo và code/log cơ bản; đối chiếu được các bước chính",
+                  "M4": "Báo cáo rõ, minh chứng tương đối đủ, trả lời được phản biện cơ bản",
+                  "M5": "Bộ minh chứng đầy đủ, nhất quán, tái kiểm tra được; báo cáo thuyết phục"
+                }
+              }
+            ]
+          },
+          "A2.2": {
+            "criteria": [
+              {
+                "criterion": "Triển khai được nhận dạng ảnh bằng các thuật toán cơ bản",
+                "clo_measured": "CLO3",
+                "weight_in_component": 0.4,
+                "levels": {
+                  "M1": "Không thực hiện được: Triển khai được nhận dạng ảnh bằng các thuật toán ",
+                  "M2": "Thực hiện được một phần yêu cầu CLO3, còn nhiều hạn chế",
+                  "M3": "Đáp ứng yêu cầu tối thiểu của CLO3",
+                  "M4": "Đáp ứng tốt yêu cầu CLO3, có căn cứ rõ ràng",
+                  "M5": "Vượt yêu cầu CLO3, thể hiện năng lực vững chắc và độc lập"
+                }
+              },
+              {
+                "criterion": "Đánh giá được các ứng dụng của thị giác máy tính trong thực tế",
+                "clo_measured": "CLO4",
+                "weight_in_component": 0.4,
+                "levels": {
+                  "M1": "Không thực hiện được: Đánh giá được các ứng dụng của thị giác máy tính t",
+                  "M2": "Thực hiện được một phần yêu cầu CLO4, còn nhiều hạn chế",
+                  "M3": "Đáp ứng yêu cầu tối thiểu của CLO4",
+                  "M4": "Đáp ứng tốt yêu cầu CLO4, có căn cứ rõ ràng",
+                  "M5": "Vượt yêu cầu CLO4, thể hiện năng lực vững chắc và độc lập"
+                }
+              },
+              {
+                "criterion": "Báo cáo và bộ minh chứng",
+                "clo_measured": "Hỗ trợ evidence",
+                "weight_in_component": 0.2,
+                "levels": {
+                  "M1": "Thiếu phần lớn minh chứng; báo cáo không đủ để đối chiếu kết quả",
+                  "M2": "Có minh chứng tối thiểu nhưng rời rạc, khó tái kiểm tra",
+                  "M3": "Có báo cáo và code/log cơ bản; đối chiếu được các bước chính",
+                  "M4": "Báo cáo rõ, minh chứng tương đối đủ, trả lời được phản biện cơ bản",
+                  "M5": "Bộ minh chứng đầy đủ, nhất quán, tái kiểm tra được; báo cáo thuyết phục"
+                }
+              }
+            ]
+          },
+          "A3": {
+            "criteria": [
+              {
+                "criterion": "Phân tích được các khái niệm cơ bản về thị giác máy tính",
+                "clo_measured": "CLO1",
+                "weight_in_component": 0.2,
+                "levels": {
+                  "M1": "Không thực hiện được: Phân tích được các khái niệm cơ bản về thị giác má",
+                  "M2": "Thực hiện được một phần yêu cầu CLO1, còn nhiều hạn chế",
+                  "M3": "Đáp ứng yêu cầu tối thiểu của CLO1",
+                  "M4": "Đáp ứng tốt yêu cầu CLO1, có căn cứ rõ ràng",
+                  "M5": "Vượt yêu cầu CLO1, thể hiện năng lực vững chắc và độc lập"
+                }
+              },
+              {
+                "criterion": "Áp dụng được kỹ thuật xử lý ảnh bằng OpenCV",
+                "clo_measured": "CLO2",
+                "weight_in_component": 0.2,
+                "levels": {
+                  "M1": "Không thực hiện được: Áp dụng được kỹ thuật xử lý ảnh bằng OpenCV",
+                  "M2": "Thực hiện được một phần yêu cầu CLO2, còn nhiều hạn chế",
+                  "M3": "Đáp ứng yêu cầu tối thiểu của CLO2",
+                  "M4": "Đáp ứng tốt yêu cầu CLO2, có căn cứ rõ ràng",
+                  "M5": "Vượt yêu cầu CLO2, thể hiện năng lực vững chắc và độc lập"
+                }
+              },
+              {
+                "criterion": "Triển khai được nhận dạng ảnh bằng các thuật toán cơ bản",
+                "clo_measured": "CLO3",
+                "weight_in_component": 0.2,
+                "levels": {
+                  "M1": "Không thực hiện được: Triển khai được nhận dạng ảnh bằng các thuật toán ",
+                  "M2": "Thực hiện được một phần yêu cầu CLO3, còn nhiều hạn chế",
+                  "M3": "Đáp ứng yêu cầu tối thiểu của CLO3",
+                  "M4": "Đáp ứng tốt yêu cầu CLO3, có căn cứ rõ ràng",
+                  "M5": "Vượt yêu cầu CLO3, thể hiện năng lực vững chắc và độc lập"
+                }
+              },
+              {
+                "criterion": "Đánh giá được các ứng dụng của thị giác máy tính trong thực tế",
+                "clo_measured": "CLO4",
+                "weight_in_component": 0.2,
+                "levels": {
+                  "M1": "Không thực hiện được: Đánh giá được các ứng dụng của thị giác máy tính t",
+                  "M2": "Thực hiện được một phần yêu cầu CLO4, còn nhiều hạn chế",
+                  "M3": "Đáp ứng yêu cầu tối thiểu của CLO4",
+                  "M4": "Đáp ứng tốt yêu cầu CLO4, có căn cứ rõ ràng",
+                  "M5": "Vượt yêu cầu CLO4, thể hiện năng lực vững chắc và độc lập"
+                }
+              },
+              {
+                "criterion": "Báo cáo và bộ minh chứng",
+                "clo_measured": "Hỗ trợ evidence",
+                "weight_in_component": 0.2,
+                "levels": {
+                  "M1": "Thiếu phần lớn minh chứng; báo cáo không đủ để đối chiếu kết quả",
+                  "M2": "Có minh chứng tối thiểu nhưng rời rạc, khó tái kiểm tra",
+                  "M3": "Có báo cáo và code/log cơ bản; đối chiếu được các bước chính",
+                  "M4": "Báo cáo rõ, minh chứng tương đối đủ, trả lời được phản biện cơ bản",
+                  "M5": "Bộ minh chứng đầy đủ, nhất quán, tái kiểm tra được; báo cáo thuyết phục"
+                }
+              }
+            ]
+          }
+        },
+        "validation": {
+          "clo_quality": {
+            "score": 20,
+            "issues": [
+              "CLO1 dùng động từ 'Phân tích được' — động từ Bloom 4, nhưng có thể cụ thể hóa hơn",
+              "CLO2 dùng động từ 'Áp dụng được' — động từ Bloom 3, có thể nâng cao lên Bloom 4 hoặc 5",
+              "CLO3 dùng động từ 'Triển khai được' — động từ Bloom 3, có thể nâng cao lên Bloom 4 hoặc 5",
+              "CLO4 dùng động từ 'Đánh giá được' — động từ Bloom 5, tốt"
+            ],
+            "suggestions": [
+              "Đổi 'Phân tích được các khái niệm cơ bản về thị giác máy tính' → 'Phân tích và so sánh được các khái niệm cơ bản về thị giác máy tính'",
+              "Đổi 'Áp dụng được kỹ thuật xử lý ảnh bằng OpenCV' → 'Thiết kế và triển khai được các kỹ thuật xử lý ảnh bằng OpenCV'",
+              "Đổi 'Triển khai được nhận dạng ảnh bằng các thuật toán cơ bản' → 'Phát triển và đánh giá được các hệ thống nhận dạng ảnh bằng các thuật toán cơ bản'",
+              "Giữ nguyên CLO4"
+            ]
+          },
+          "mapping_alignment": {
+            "score": 20,
+            "issues": [
+              "CLO1 ánh xạ PI-CS01.1 và PI-CS02.1 — đúng domain",
+              "CLO2 ánh xạ PI-CS04.1 và PI-CS05.1 — đúng domain",
+              "CLO3 ánh xạ PI-CS04.2 và PI-CS05.2 — đúng domain",
+              "CLO4 ánh xạ PI-CS06.1 và PI-CS07.1 — đúng domain"
+            ],
+            "suggestions": [
+              "Giữ nguyên mapping cho tất cả CLO"
+            ]
+          },
+          "teaching_plan_coherence": {
+            "score": 20,
+            "issues": [
+              "Tổng số tiết giảng dạy phù hợp với số tín chỉ",
+              "Mỗi CLO được dạy trong một buổi riêng biệt"
+            ],
+            "suggestions": [
+              "Giữ nguyên kế hoạch giảng dạy"
+            ]
+          },
+          "assessment_validity": {
+            "score": 20,
+            "issues": [
+              "Trọng số A1+A2.1+A2.2+A3 = 0.1+0.15+0.15+0.6 = 0.9 — không bằng 1",
+              "CLO1, CLO2, CLO3, CLO4 đều được đánh giá bởi các cấu phần A2.1, A2.2, A3"
+            ],
+            "suggestions": [
+              "Điều chỉnh trọng số A1+A2.1+A2.2+A3 để bằng 1",
+              "Giữ nguyên cách đánh giá cho tất cả CLO"
+            ]
+          }
+        },
+        "confidence_score": 60.0,
+        "errors": [
+          "Assessment: Lỗi parse JSON - Expecting ',' delimiter: line 257 column 3 (char 10843)"
+        ],
+        "warnings": [
+          "CLO2 và CLO3 cần nâng cao động từ Bloom",
+          "CLO2 và CLO3 cần ánh xạ thêm PI-CS02.x hoặc PI-CS03.x",
+          "Tổng số tiết không được cung cấp",
+          "Trọng số A1+A2.1+A2.2+A3 không bằng 1",
+          "CLO2 và CLO3 cần nâng cao động từ Bloom",
+          "CLO2 và CLO3 cần ánh xạ thêm PI-CS02.x hoặc PI-CS03.x",
+          "Tổng số tiết không được cung cấp",
+          "Trọng số A1+A2.1+A2.2+A3 không bằng 1"
+        ]
+      },
+      "export_ready": true,
+      "export_path": "F:\\OBE_AGent_DCCT\\AI_Agent_OBE_IN_DNU\\output\\DCCT_FIT4116_20260429_214719.docx",
+      "errors": [
+        "Assessment: Lỗi parse JSON - Expecting ',' delimiter: line 257 column 3 (char 10843)"
+      ],
+      "warnings": [
+        "CLO2 và CLO3 cần nâng cao động từ Bloom",
+        "CLO2 và CLO3 cần ánh xạ thêm PI-CS02.x hoặc PI-CS03.x",
+        "Tổng số tiết không được cung cấp",
+        "Trọng số A1+A2.1+A2.2+A3 không bằng 1",
+        "CLO2 và CLO3 cần nâng cao động từ Bloom",
+        "CLO2 và CLO3 cần ánh xạ thêm PI-CS02.x hoặc PI-CS03.x",
+        "Tổng số tiết không được cung cấp",
+        "Trọng số A1+A2.1+A2.2+A3 không bằng 1",
+        "Cần điều chỉnh trọng số đánh giá để tổng trọng số bằng 1"
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-04-27 23:34",
+    "course_code": "CSC4007",
+    "course_name": "Xử lý ngôn ngữ tự nhiên",
+    "credits": "3",
+    "result": {
+      "user_input": "CSC4007 - Xử lý ngôn ngữ tự nhiên\nHọc phần trang bị cho người học kiến thức và kỹ năng cốt lõi về xử lý ngôn ngữ tự nhiên theo định hướng hiện đại, bao gồm: tổng quan NLP; tư duy data-centric và quản trị dữ liệu; tiền xử lý văn bản và biểu diễn đặc trưng; mô hình chuỗi cơ bản; LSTM/GRU; Transformers và cơ chế chú ý; Prompt Engineering và đánh giá LLM; xây dựng giải pháp RAG có trích dẫn nguồn (citation) và guardrails. \nThông qua các hoạt động lý thuyết, thực hành, báo cáo và demo, học phần hướng tới việc giúp người học đặc tả bài toán, chuẩn bị dữ liệu, đánh giá mô hình và phát triển prototype NLP/LLM/RAG tối thiểu cho một bài toán cụ thể.",
+      "course_code": "CSC4007",
+      "course_name": "Xử lý ngôn ngữ tự nhiên",
+      "credits": "3",
+      "summary": "Học phần trang bị cho người học kiến thức và kỹ năng cốt lõi về xử lý ngôn ngữ tự nhiên theo định hướng hiện đại, bao gồm: tổng quan NLP; tư duy data-centric và quản trị dữ liệu; tiền xử lý văn bản và biểu diễn đặc trưng; mô hình chuỗi cơ bản; LSTM/GRU; Transformers và cơ chế chú ý; Prompt Engineering và đánh giá LLM; xây dựng giải pháp RAG có trích dẫn nguồn (citation) và guardrails. \nThông qua các hoạt động lý thuyết, thực hành, báo cáo và demo, học phần hướng tới việc giúp người học đặc tả bài toán, chuẩn bị dữ liệu, đánh giá mô hình và phát triển prototype NLP/LLM/RAG tối thiểu cho một bài toán cụ thể.",
+      "program": "KHMT",
+      "outline": "Sườn nội dung / Outline chi tiết (Dự kiến):\n- Chương 1: Tổng quan xử lý ngôn ngữ tự nhiên và các ứng dụng thực tế\n- Chương 2: Tư duy data-centric trong chuẩn bị và kiểm toán dữ liệu NLP\n- Chương 3: Tiền xử lý văn bản và các phương pháp biểu diễn đặc trưng (Bag-of-Words, TF-IDF, Word Embedding)\n- Chương 4: Mô hình chuỗi cơ bản (RNN) và huấn luyện mô hình\n- Chương 5: LSTM/GRU và xử lý phụ thuộc dài hạn trong văn bản\n- Chương 6: Transformers và cơ chế chú ý (Attention)\n- Chương 7: Prompt Engineering và đánh giá mô hình ngôn ngữ lớn (LLM)\n- Chương 8: Retrieval Augmented Generation (RAG), trích dẫn nguồn và Guardrails\n- Chương 9: Tổng kết, demo prototype và đánh giá bài tập lớn",
+      "irma_matrix": null,
+      "outline_provided": true,
+      "outline_sessions": [
+        {
+          "no": 0,
+          "topic": "__RAW_TEXT__",
+          "subtopics": [
+            "Sườn nội dung / Outline chi tiết (Dự kiến):\n- Chương 1: Tổng quan xử lý ngôn ngữ tự nhiên và các ứng dụng thực tế\n- Chương 2: Tư duy data-centric trong chuẩn bị và kiểm toán dữ liệu NLP\n- Chương 3: Tiền xử lý văn bản và các phương pháp biểu diễn đặc trưng (Bag-of-Words, TF-IDF, Word Embedding)\n- Chương 4: Mô hình chuỗi cơ bản (RNN) và huấn luyện mô hình\n- Chương 5: LSTM/GRU và xử lý phụ thuộc dài hạn trong văn bản\n- Chương 6: Transformers và cơ chế chú ý (Attention)\n- Chương 7: Prompt Engineering và đánh giá mô hình ngôn ngữ lớn (LLM)\n- Chương 8: Retrieval Augmented Generation (RAG), trích dẫn nguồn và Guardrails\n- Chương 9: Tổng kết, demo prototype và đánh giá bài tập lớn"
+          ],
+          "estimated_periods": 0,
+          "session_type": "LT"
+        }
+      ],
+      "session_clo_map": {
+        "1": [
+          "CLO1"
+        ],
+        "2": [
+          "CLO2"
+        ],
+        "3": [
+          "CLO2"
+        ],
+        "4": [
+          "CLO3"
+        ],
+        "5": [
+          "CLO3"
+        ],
+        "6": [
+          "CLO3"
+        ],
+        "7": [
+          "CLO4"
+        ],
+        "8": [
+          "CLO4"
+        ],
+        "9": [
+          "CLO5"
+        ]
+      },
+      "extracted_info": {
+        "course_code": "CSC4007",
+        "course_name": "Xử lý ngôn ngữ tự nhiên",
+        "credits": "3",
+        "theory_periods": "30",
+        "lab_periods": "15",
+        "prerequisites": [],
+        "target_students": "Sinh viên ngành KHMT",
+        "course_type": "lý thuyết+thực hành",
+        "knowledge_areas": [
+          "Xử lý ngôn ngữ tự nhiên",
+          "Trí tuệ nhân tạo"
+        ],
+        "outline_parse_note": "Outline được parse từ raw text, có thể có sai sót"
+      },
+      "clo_list": [
+        {
+          "code": "CLO1",
+          "description": "Hiểu được tổng quan về xử lý ngôn ngữ tự nhiên và các ứng dụng thực tế",
+          "bloom_verb": "Hiểu",
+          "bloom_level": 2,
+          "bloom_level_name": "Hiểu",
+          "source_sessions": [
+            1
+          ],
+          "pi_codes": [
+            "PI-CS05.1",
+            "PI-CS07.1"
+          ],
+          "mapping_level": "I"
+        },
+        {
+          "code": "CLO2",
+          "description": "Áp dụng tư duy data-centric trong chuẩn bị và kiểm toán dữ liệu NLP",
+          "bloom_verb": "Áp dụng",
+          "bloom_level": 3,
+          "bloom_level_name": "Áp dụng",
+          "source_sessions": [
+            2
+          ],
+          "pi_codes": [
+            "PI-CS04.1",
+            "PI-CS05.2"
+          ],
+          "mapping_level": "R"
+        },
+        {
+          "code": "CLO3",
+          "description": "Phân tích và đánh giá mô hình ngôn ngữ tự nhiên",
+          "bloom_verb": "Phân tích",
+          "bloom_level": 4,
+          "bloom_level_name": "Phân tích",
+          "source_sessions": [
+            4,
+            5,
+            6
+          ],
+          "pi_codes": [
+            "PI-CS03.2",
+            "PI-CS05.3"
+          ],
+          "mapping_level": "M"
+        },
+        {
+          "code": "CLO4",
+          "description": "Thiết kế và triển khai mô hình ngôn ngữ tự nhiên",
+          "bloom_verb": "Thiết kế",
+          "bloom_level": 5,
+          "bloom_level_name": "Thiết kế",
+          "source_sessions": [
+            7,
+            8
+          ],
+          "pi_codes": [
+            "PI-CS06.1",
+            "PI-CS05.1"
+          ],
+          "mapping_level": "M"
+        },
+        {
+          "code": "CLO5",
+          "description": "Đánh giá và cải thiện mô hình ngôn ngữ tự nhiên",
+          "bloom_verb": "Đánh giá",
+          "bloom_level": 6,
+          "bloom_level_name": "Đánh giá",
+          "source_sessions": [
+            9
+          ],
+          "pi_codes": [
+            "PI-CS08.3",
+            "PI-CS05.3"
+          ],
+          "mapping_level": "A"
+        }
+      ],
+      "mapping_matrix": [
+        {
+          "clo_code": "CLO1",
+          "plo_code": "PLO-CS05",
+          "pi_code": "PI-CS05.1",
+          "irma_level": "I",
+          "bloom_level": 2
+        },
+        {
+          "clo_code": "CLO2",
+          "plo_code": "PLO-CS04",
+          "pi_code": "PI-CS04.1",
+          "irma_level": "R",
+          "bloom_level": 3
+        },
+        {
+          "clo_code": "CLO3",
+          "plo_code": "PLO-CS03",
+          "pi_code": "PI-CS03.2",
+          "irma_level": "M",
+          "bloom_level": 4
+        },
+        {
+          "clo_code": "CLO4",
+          "plo_code": "PLO-CS06",
+          "pi_code": "PI-CS06.1",
+          "irma_level": "M",
+          "bloom_level": 5
+        },
+        {
+          "clo_code": "CLO5",
+          "plo_code": "PLO-CS08",
+          "pi_code": "PI-CS08.3",
+          "irma_level": "A",
+          "bloom_level": 6
+        }
+      ],
+      "teaching_plan": [
+        {
+          "no": 1,
+          "week": 1,
+          "type": "LT",
+          "content": "Chương 1: Tổng quan xử lý ngôn ngữ tự nhiên và các ứng dụng thực tế",
+          "details": "Giới thiệu tổng quan về xử lý ngôn ngữ tự nhiên, các ứng dụng thực tế và tầm quan trọng của lĩnh vực này",
+          "clo_codes": [
+            "CLO1"
+          ],
+          "irma_level": "I",
+          "activities": "Lecture",
+          "assessment": "",
+          "duration_periods": 3
+        },
+        {
+          "no": 2,
+          "week": 2,
+          "type": "LT",
+          "content": "Chương 2: Tư duy data-centric trong chuẩn bị và kiểm toán dữ liệu NLP",
+          "details": "Tư duy data-centric, chuẩn bị và kiểm toán dữ liệu NLP, các bước thực hiện và công cụ hỗ trợ",
+          "clo_codes": [
+            "CLO2"
+          ],
+          "irma_level": "R",
+          "activities": "Lecture",
+          "assessment": "",
+          "duration_periods": 3
+        },
+        {
+          "no": 3,
+          "week": 3,
+          "type": "LT",
+          "content": "Chương 2: Tư duy data-centric trong chuẩn bị và kiểm toán dữ liệu NLP",
+          "details": "Tiếp tục thảo luận về tư duy data-centric, chuẩn bị và kiểm toán dữ liệu NLP, các bước thực hiện và công cụ hỗ trợ",
+          "clo_codes": [
+            "CLO2"
+          ],
+          "irma_level": "R",
+          "activities": "Discussion",
+          "assessment": "",
+          "duration_periods": 3
+        },
+        {
+          "no": 4,
+          "week": 4,
+          "type": "LT",
+          "content": "Chương 3: Tiền xử lý văn bản và các phương pháp biểu diễn đặc trưng (Bag-of-Words, TF-IDF, Word Embedding)",
+          "details": "Tiền xử lý văn bản, các phương pháp biểu diễn đặc trưng, ưu và nhược điểm của từng phương pháp",
+          "clo_codes": [
+            "CLO3"
+          ],
+          "irma_level": "M",
+          "activities": "Lecture",
+          "assessment": "",
+          "duration_periods": 3
+        },
+        {
+          "no": 5,
+          "week": 5,
+          "type": "LT",
+          "content": "Chương 4: Mô hình chuỗi cơ bản (RNN) và huấn luyện mô hình",
+          "details": "Mô hình chuỗi cơ bản, huấn luyện mô hình, các bước thực hiện và công cụ hỗ trợ",
+          "clo_codes": [
+            "CLO3"
+          ],
+          "irma_level": "M",
+          "activities": "Lecture",
+          "assessment": "",
+          "duration_periods": 3
+        },
+        {
+          "no": 6,
+          "week": 6,
+          "type": "LT",
+          "content": "Chương 5: LSTM/GRU và xử lý phụ thuộc dài hạn trong văn bản",
+          "details": "LSTM/GRU, xử lý phụ thuộc dài hạn trong văn bản, các bước thực hiện và công cụ hỗ trợ",
+          "clo_codes": [
+            "CLO3"
+          ],
+          "irma_level": "M",
+          "activities": "Lecture",
+          "assessment": "",
+          "duration_periods": 3
+        },
+        {
+          "no": 7,
+          "week": 7,
+          "type": "LT",
+          "content": "Chương 6: Transformers và cơ chế chú ý (Attention)",
+          "details": "Transformers, cơ chế chú ý, các bước thực hiện và công cụ hỗ trợ",
+          "clo_codes": [
+            "CLO4"
+          ],
+          "irma_level": "M",
+          "activities": "Lecture",
+          "assessment": "",
+          "duration_periods": 3
+        },
+        {
+          "no": 8,
+          "week": 8,
+          "type": "LT",
+          "content": "Chương 7: Prompt Engineering và đánh giá mô hình ngôn ngữ lớn (LLM)",
+          "details": "Prompt Engineering, đánh giá mô hình ngôn ngữ lớn, các bước thực hiện và công cụ hỗ trợ",
+          "clo_codes": [
+            "CLO4"
+          ],
+          "irma_level": "M",
+          "activities": "Lecture",
+          "assessment": "",
+          "duration_periods": 3
+        },
+        {
+          "no": 9,
+          "week": 9,
+          "type": "LT",
+          "content": "Chương 8: Retrieval Augmented Generation (RAG), trích dẫn nguồn và Guardrails",
+          "details": "Retrieval Augmented Generation, trích dẫn nguồn, Guardrails, các bước thực hiện và công cụ hỗ trợ",
+          "clo_codes": [
+            "CLO5"
+          ],
+          "irma_level": "A",
+          "activities": "Lecture",
+          "assessment": "A1",
+          "duration_periods": 3
+        }
+      ],
+      "assessment_plan": [
+        {
+          "code": "A1",
+          "name": "Đánh giá chuyên cần",
+          "description": "Đánh giá sự tham gia và chuẩn bị của sinh viên trong suốt học phần",
+          "weight": 0.1,
+          "format": "Theo dõi và đánh giá thường xuyên",
+          "timing": "Mỗi buổi học",
+          "frequency": "Toàn bộ học phần",
+          "criteria_summary": "Tham dự, chuẩn bị và tham gia thảo luận",
+          "clo_mapping": [],
+          "pi_codes": [],
+          "plo_codes": [],
+          "truy_vet_note": "Dùng cho điểm quá trình; không dùng đơn lẻ để kết luận CLO/PLO.",
+          "bloom_levels_assessed": [],
+          "duration_minutes": null
+        },
+        {
+          "code": "A2.1",
+          "name": "Đánh giá giữa kỳ 1",
+          "description": "Đánh giá kiến thức và hiểu biết về tổng quan xử lý ngôn ngữ tự nhiên và chuẩn bị dữ liệu",
+          "weight": 0.15,
+          "format": "Bài thực hành hoặc báo cáo ngắn",
+          "timing": "Sau chủ đề 1-3",
+          "frequency": "1 lần",
+          "criteria_summary": "Kiến thức về xử lý ngôn ngữ tự nhiên và tư duy data-centric",
+          "clo_mapping": [
+            "CLO1",
+            "CLO2"
+          ],
+          "pi_codes": [
+            "PI-CS02.1",
+            "PI-CS05.1"
+          ],
+          "plo_codes": [
+            "PLO-CS05",
+            "PLO-CS04"
+          ],
+          "truy_vet_note": "[CÓ CĂN CỨ] Theo bảng assessment–PI và bảng CLO–PI–PLO.",
+          "bloom_levels_assessed": [],
+          "duration_minutes": null
+        },
+        {
+          "code": "A2.2",
+          "name": "Đánh giá giữa kỳ 2",
+          "description": "Đánh giá khả năng phân tích và thiết kế mô hình ngôn ngữ tự nhiên",
+          "weight": 0.15,
+          "format": "Bài thực hành hoặc báo cáo ngắn",
+          "timing": "Sau chủ đề 4-7",
+          "frequency": "1 lần",
+          "criteria_summary": "Phân tích và thiết kế mô hình ngôn ngữ tự nhiên",
+          "clo_mapping": [
+            "CLO3",
+            "CLO4"
+          ],
+          "pi_codes": [
+            "PI-CS03.1",
+            "PI-CS06.1"
+          ],
+          "plo_codes": [
+            "PLO-CS03",
+            "PLO-CS06"
+          ],
+          "truy_vet_note": "[CÓ CĂN CỨ] Theo bảng assessment–PI và bảng CLO–PI–PLO.",
+          "bloom_levels_assessed": [],
+          "duration_minutes": null
+        },
+        {
+          "code": "A3",
+          "name": "Đánh giá cuối kỳ",
+          "description": "Đánh giá tổng hợp khả năng áp dụng, phân tích, thiết kế, và đánh giá mô hình ngôn ngữ tự nhiên",
+          "weight": 0.6,
+          "format": "Bài tập lớn/dự án có demo",
+          "timing": "Theo lịch nhà trường",
+          "frequency": "1 lần",
+          "criteria_summary": "Tổng hợp kiến thức và kỹ năng về xử lý ngôn ngữ tự nhiên",
+          "clo_mapping": [
+            "CLO1",
+            "CLO2",
+            "CLO3",
+            "CLO4",
+            "CLO5"
+          ],
+          "pi_codes": [
+            "PI-CS02.1",
+            "PI-CS03.1",
+            "PI-CS05.1",
+            "PI-CS06.1",
+            "PI-CS08.1"
+          ],
+          "plo_codes": [
+            "PLO-CS05",
+            "PLO-CS04",
+            "PLO-CS03",
+            "PLO-CS06",
+            "PLO-CS08"
+          ],
+          "truy_vet_note": "[CÓ CĂN CỨ] Theo bảng assessment–PI và bảng CLO–PI–PLO.",
+          "bloom_levels_assessed": [],
+          "duration_minutes": null
+        }
+      ],
+      "rubrics": {
+        "A1": {
+          "criteria": [
+            {
+              "criterion": "Tham dự lớp học",
+              "clo_measured": "Không dùng để kết luận CLO",
+              "weight_in_component": 0.3,
+              "levels": {
+                "M1": "Vắng nhiều buổi hoặc thường xuyên đi muộn",
+                "M2": "Tham dự không ổn định; còn đi muộn hoặc bỏ tiết",
+                "M3": "Tham dự đạt mức tối thiểu theo quy định",
+                "M4": "Tham dự đầy đủ, đúng giờ trong hầu hết các buổi",
+                "M5": "Tham dự đầy đủ, đúng giờ, chủ động hỗ trợ hoạt động lớp"
+              }
+            },
+            {
+              "criterion": "Chuẩn bị và tham gia thảo luận",
+              "clo_measured": "Không dùng để kết luận CLO",
+              "weight_in_component": 0.7,
+              "levels": {
+                "M1": "Không chuẩn bị hoặc không tham gia thảo luận",
+                "M2": "Chuẩn bị và tham gia thảo luận ở mức cơ bản",
+                "M3": "Chuẩn bị và tham gia thảo luận đạt mức tối thiểu",
+                "M4": "Chuẩn bị và tham gia thảo luận tốt, có đóng góp cho lớp",
+                "M5": "Chuẩn bị và tham gia thảo luận xuất sắc, lãnh đạo thảo luận"
+              }
+            }
+          ]
+        },
+        "A2.1": {
+          "criteria": [
+            {
+              "criterion": "Kiến thức về xử lý ngôn ngữ tự nhiên",
+              "clo_measured": "CLO1",
+              "weight_in_component": 0.5,
+              "levels": {
+                "M1": "Không hiểu hoặc hiểu rất ít về xử lý ngôn ngữ tự nhiên",
+                "M2": "Hiểu biết cơ bản về xử lý ngôn ngữ tự nhiên nhưng còn nhiều hạn chế",
+                "M3": "Hiểu biết tốt về xử lý ngôn ngữ tự nhiên, đạt mức tối thiểu",
+                "M4": "Hiểu biết sâu về xử lý ngôn ngữ tự nhiên, có thể áp dụng",
+                "M5": "Hiểu biết chuyên sâu về xử lý ngôn ngữ tự nhiên, có thể phân tích và đánh giá"
+              }
+            },
+            {
+              "criterion": "Tư duy data-centric",
+              "clo_measured": "CLO2",
+              "weight_in_component": 0.5,
+              "levels": {
+                "M1": "Không có tư duy data-centric hoặc tư duy rất hạn chế",
+                "M2": "Có tư duy data-centric cơ bản nhưng còn nhiều hạn chế",
+                "M3": "Có tư duy data-centric tốt, đạt mức tối thiểu",
+                "M4": "Có tư duy data-centric tốt, có thể áp dụng trong nhiều trường hợp",
+                "M5": "Có tư duy data-centric xuất sắc, có thể phân tích và đánh giá dữ liệu phức tạp"
+              }
+            }
+          ]
+        },
+        "A2.2": {
+          "criteria": [
+            {
+              "criterion": "Phân tích mô hình ngôn ngữ tự nhiên",
+              "clo_measured": "CLO3",
+              "weight_in_component": 0.5,
+              "levels": {
+                "M1": "Không thể phân tích hoặc phân tích rất hạn chế",
+                "M2": "Phân tích cơ bản nhưng còn nhiều hạn chế",
+                "M3": "Phân tích tốt, đạt mức tối thiểu",
+                "M4": "Phân tích tốt, có thể đánh giá và so sánh mô hình",
+                "M5": "Phân tích xuất sắc, có thể đánh giá và cải thiện mô hình"
+              }
+            },
+            {
+              "criterion": "Thiết kế mô hình ngôn ngữ tự nhiên",
+              "clo_measured": "CLO4",
+              "weight_in_component": 0.5,
+              "levels": {
+                "M1": "Không thể thiết kế hoặc thiết kế rất hạn chế",
+                "M2": "Thiết kế cơ bản nhưng còn nhiều hạn chế",
+                "M3": "Thiết kế tốt, đạt mức tối thiểu",
+                "M4": "Thiết kế tốt, có thể triển khai và đánh giá mô hình",
+                "M5": "Thiết kế xuất sắc, có thể triển khai, đánh giá và cải thiện mô hình"
+              }
+            }
+          ]
+        },
+        "A3": {
+          "criteria": [
+            {
+              "criterion": "Áp dụng kiến thức về xử lý ngôn ngữ tự nhiên",
+              "clo_measured": "CLO1",
+              "weight_in_component": 0.1,
+              "levels": {
+                "M1": "Không thể áp dụng hoặc áp dụng rất hạn chế",
+                "M2": "Áp dụng cơ bản nhưng còn nhiều hạn chế",
+                "M3": "Áp dụng tốt, đạt mức tối thiểu",
+                "M4": "Áp dụng tốt, có thể phân tích và đánh giá",
+                "M5": "Áp dụng xuất sắc, có thể phân tích, đánh giá và cải thiện"
+              }
+            },
+            {
+              "criterion": "Phân tích và đánh giá mô hình ngôn ngữ tự nhiên",
+              "clo_measured": "CLO3",
+              "weight_in_component": 0.2,
+              "levels": {
+                "M1": "Không thể phân tích hoặc phân tích rất hạn chế",
+                "M2": "Phân tích cơ bản nhưng còn nhiều hạn chế",
+                "M3": "Phân tích tốt, đạt mức tối thiểu",
+                "M4": "Phân tích tốt, có thể đánh giá và so sánh mô hình",
+                "M5": "Phân tích xuất sắc, có thể đánh giá và cải thiện mô hình"
+              }
+            },
+            {
+              "criterion": "Thiết kế và triển khai mô hình ngôn ngữ tự nhiên",
+              "clo_measured": "CLO4",
+              "weight_in_component": 0.3,
+              "levels": {
+                "M1": "Không thể thiết kế hoặc thiết kế rất hạn chế",
+                "M2": "Thiết kế cơ bản nhưng còn nhiều hạn chế",
+                "M3": "Thiết kế tốt, đạt mức tối thiểu",
+                "M4": "Thiết kế tốt, có thể triển khai và đánh giá mô hình",
+                "M5": "Thiết kế xuất sắc, có thể triển khai, đánh giá và cải thiện mô hình"
+              }
+            },
+            {
+              "criterion": "Đánh giá và cải thiện mô hình ngôn ngữ tự nhiên",
+              "clo_measured": "CLO5",
+              "weight_in_component": 0.4,
+              "levels": {
+                "M1": "Không thể đánh giá hoặc đánh giá rất hạn chế",
+                "M2": "Đánh giá cơ bản nhưng còn nhiều hạn chế",
+                "M3": "Đánh giá tốt, đạt mức tối thiểu",
+                "M4": "Đánh giá tốt, có thể cải thiện mô hình",
+                "M5": "Đánh giá xuất sắc, có thể cải thiện và tối ưu hóa mô hình"
+              }
+            }
+          ]
+        }
+      },
+      "messages": [],
+      "current_step": "preview_done",
+      "confidence_score": 80.0,
+      "critic_feedback": [
+        {
+          "step": "understand",
+          "passed": true,
+          "score": 90,
+          "critical_issues": [],
+          "minor_issues": [
+            "Thiếu thông tin về trọng số của từng CLO",
+            "Không có mã PI (pi_codes) cho các CLO",
+            "Outline_parse_note cho thấy có thể có sai sót trong quá trình parse outline"
+          ],
+          "suggestions": [
+            "Cần bổ sung thông tin về trọng số của từng CLO để đảm bảo tổng trọng số bằng 100%",
+            "Nên thêm mã PI (pi_codes) cho các CLO để tăng tính chính xác",
+            "Nên kiểm tra lại outline để đảm bảo tính chính xác và đầy đủ"
+          ],
+          "summary": "Kết quả bước understand nhìn chung tốt, nhưng cần bổ sung một số thông tin và kiểm tra lại outline để đảm bảo tính chính xác và đầy đủ"
+        },
+        {
+          "step": "mapping",
+          "passed": true,
+          "score": 95,
+          "critical_issues": [],
+          "minor_issues": [
+            "Một số CLO có nhiều PI trùng lặp trong hai danh sách ánh xạ",
+            "Không có thông tin về trọng số của từng CLO"
+          ],
+          "suggestions": [
+            "Kiểm tra và loại bỏ các PI trùng lặp trong ánh xạ",
+            "Cung cấp thông tin về trọng số của từng CLO để đảm bảo tổng trọng số bằng 100%",
+            "Đảm bảo rằng mỗi CLO được ánh xạ đến ít nhất một PI và một PLO"
+          ],
+          "summary": "Kết quả ánh xạ CLO → PI → PLO nhìn chung là đầy đủ và chính xác, nhưng cần kiểm tra và cải thiện một số chi tiết nhỏ để đảm bảo tính nhất quán và thực tiễn."
+        },
+        {
+          "step": "teaching_plan",
+          "passed": false,
+          "score": 0,
+          "critical_issues": [
+            "Số buổi học trong kế hoạch giảng dạy (9) không khớp với số buổi học trong outline (1)",
+            "Nội dung các buổi học trong kế hoạch giảng dạy không khớp với nội dung trong outline"
+          ],
+          "minor_issues": [],
+          "suggestions": [
+            "Cần điều chỉnh số buổi học trong kế hoạch giảng dạy để khớp với số buổi học trong outline",
+            "Cần điều chỉnh nội dung các buổi học trong kế hoạch giảng dạy để khớp với nội dung trong outline"
+          ],
+          "summary": "Kế hoạch giảng dạy không đạt yêu cầu do số buổi học và nội dung không khớp với outline"
+        },
+        {
+          "step": "teaching_plan",
+          "passed": false,
+          "score": 40,
+          "critical_issues": [
+            "[Outline Guard] Buổi 1: GV='__RAW_TEXT__' ≠ Plan='Chương 1: Tổng quan xử lý ngôn ngữ tự nhiên và các ứng dụng thực tế'",
+            "[Outline Guard] Buổi N/A: GV='Outline có 1 buổi' ≠ Plan='Teaching plan có 9 buổi'"
+          ],
+          "minor_issues": [],
+          "suggestions": [],
+          "summary": "Basic validation: FAIL"
+        },
+        {
+          "step": "teaching_plan",
+          "passed": false,
+          "score": 0,
+          "critical_issues": [
+            "Số buổi học trong kế hoạch giảng dạy (9) không khớp với số buổi học trong outline (1)",
+            "Nội dung các buổi học không tương thích với outline"
+          ],
+          "minor_issues": [
+            "Thiếu thông tin về các hoạt động và đánh giá chi tiết cho từng buổi học",
+            "Không có thông tin về trọng số của từng CLO"
+          ],
+          "suggestions": [
+            "Cần điều chỉnh số buổi học trong kế hoạch giảng dạy để khớp với outline",
+            "Cần đảm bảo nội dung các buổi học tương thích với outline",
+            "Nên cung cấp thông tin chi tiết về các hoạt động và đánh giá cho từng buổi học",
+            "Nên cung cấp thông tin về trọng số của từng CLO"
+          ],
+          "summary": "Kế hoạch giảng dạy không đạt yêu cầu do số buổi học không khớp với outline và nội dung không tương thích. Cần điều chỉnh và cung cấp thông tin chi tiết hơn."
+        },
+        {
+          "step": "assessment",
+          "passed": true,
+          "score": 90,
+          "critical_issues": [],
+          "minor_issues": [
+            "Thiếu thông tin về Bloom Levels Assessed trong từng hoạt động đánh giá",
+            "Không có thông tin về thời gian thực hiện (duration_minutes) cho từng hoạt động đánh giá"
+          ],
+          "suggestions": [
+            "Cân nhắc bổ sung thông tin về Bloom Levels Assessed để đánh giá mức độ tư duy của sinh viên",
+            "Đề xuất bổ sung thông tin về thời gian thực hiện cho từng hoạt động đánh giá để giúp sinh viên và giảng viên quản lý thời gian hiệu quả hơn"
+          ],
+          "summary": "Kế hoạch đánh giá tổng thể tốt, bao gồm các hoạt động đánh giá đa dạng và phù hợp với các CLO. Tuy nhiên, cần bổ sung một số thông tin chi tiết để hoàn thiện kế hoạch đánh giá."
+        }
+      ],
+      "retry_counts": {
+        "teaching_plan": 2
+      },
+      "preview_data": {
+        "course_summary": {
+          "code": "CSC4007",
+          "name": "Xử lý ngôn ngữ tự nhiên",
+          "credits": "3",
+          "type": "lý thuyết+thực hành"
+        },
+        "clo_preview": [
+          {
+            "code": "CLO1",
+            "description": "Hiểu được tổng quan về xử lý ngôn ngữ tự nhiên và các ứng dụng thực tế",
+            "bloom": "Hiểu",
+            "pi_codes": [
+              "PI-CS05.1",
+              "PI-CS07.1"
+            ],
+            "irma": "I"
+          },
+          {
+            "code": "CLO2",
+            "description": "Áp dụng tư duy data-centric trong chuẩn bị và kiểm toán dữ liệu NLP",
+            "bloom": "Áp dụng",
+            "pi_codes": [
+              "PI-CS04.1",
+              "PI-CS05.2"
+            ],
+            "irma": "R"
+          },
+          {
+            "code": "CLO3",
+            "description": "Phân tích và đánh giá mô hình ngôn ngữ tự nhiên",
+            "bloom": "Phân tích",
+            "pi_codes": [
+              "PI-CS03.2",
+              "PI-CS05.3"
+            ],
+            "irma": "M"
+          },
+          {
+            "code": "CLO4",
+            "description": "Thiết kế và triển khai mô hình ngôn ngữ tự nhiên",
+            "bloom": "Thiết kế",
+            "pi_codes": [
+              "PI-CS06.1",
+              "PI-CS05.1"
+            ],
+            "irma": "M"
+          },
+          {
+            "code": "CLO5",
+            "description": "Đánh giá và cải thiện mô hình ngôn ngữ tự nhiên",
+            "bloom": "Đánh giá",
+            "pi_codes": [
+              "PI-CS08.3",
+              "PI-CS05.3"
+            ],
+            "irma": "A"
+          }
+        ],
+        "teaching_plan_summary": {
+          "total_sessions": 9,
+          "theory_sessions": 9,
+          "lab_sessions": 0
+        },
+        "assessment_summary": [
+          {
+            "code": "A1",
+            "name": "Đánh giá chuyên cần",
+            "weight_percent": "10%",
+            "clo_count": 0
+          },
+          {
+            "code": "A2.1",
+            "name": "Đánh giá giữa kỳ 1",
+            "weight_percent": "15%",
+            "clo_count": 2
+          },
+          {
+            "code": "A2.2",
+            "name": "Đánh giá giữa kỳ 2",
+            "weight_percent": "15%",
+            "clo_count": 2
+          },
+          {
+            "code": "A3",
+            "name": "Đánh giá cuối kỳ",
+            "weight_percent": "60%",
+            "clo_count": 5
+          }
+        ],
+        "plo_coverage": {
+          "PLO-CS05": 1,
+          "PLO-CS04": 1,
+          "PLO-CS03": 1,
+          "PLO-CS06": 1,
+          "PLO-CS08": 1
+        },
+        "bloom_distribution": {
+          "Hiểu": 1,
+          "Áp dụng": 1,
+          "Phân tích": 1,
+          "Thiết kế": 1,
+          "Đánh giá": 1
+        },
+        "confidence_score": 0.0,
+        "total_assessment_weight": 100,
+        "issues": [
+          "[Parser] Không nhận ra định dạng outline (bảng hoặc danh sách đánh số). Outline được chuyển sang dạng raw text để LLM xử lý. Kết quả có thể kém chính xác hơn — nên dùng bảng Markdown hoặc danh sách đánh số.",
+          "Cần đánh giá lại số lượng CLO và đảm bảo mỗi CLO bắt đầu bằng động từ hành động Bloom phù hợp",
+          "Cần đảm bảo mỗi CLO được ánh xạ vào tất cả các PLO liên quan và mức IRMA tương đồng với mức Bloom",
+          "Cần đánh giá lại tổng số tiết và đảm bảo phân bổ LT/TH hợp lý"
+        ]
+      },
+      "needs_human_input": true,
+      "human_feedback": null,
+      "final_dcct_data": {
+        "course_info": {
+          "code": "CSC4007",
+          "name": "Xử lý ngôn ngữ tự nhiên",
+          "credits": "3",
+          "course_code": "CSC4007",
+          "course_name": "Xử lý ngôn ngữ tự nhiên",
+          "theory_periods": "30",
+          "lab_periods": "15",
+          "prerequisites": [],
+          "target_students": "Sinh viên ngành KHMT",
+          "course_type": "lý thuyết+thực hành",
+          "knowledge_areas": [
+            "Xử lý ngôn ngữ tự nhiên",
+            "Trí tuệ nhân tạo"
+          ],
+          "outline_parse_note": "Outline được parse từ raw text, có thể có sai sót"
+        },
+        "clo_list": [
+          {
+            "code": "CLO1",
+            "description": "Hiểu được tổng quan về xử lý ngôn ngữ tự nhiên và các ứng dụng thực tế",
+            "bloom_verb": "Hiểu",
+            "bloom_level": 2,
+            "bloom_level_name": "Hiểu",
+            "source_sessions": [
+              1
+            ],
+            "pi_codes": [
+              "PI-CS05.1",
+              "PI-CS07.1"
+            ],
+            "mapping_level": "I"
+          },
+          {
+            "code": "CLO2",
+            "description": "Áp dụng tư duy data-centric trong chuẩn bị và kiểm toán dữ liệu NLP",
+            "bloom_verb": "Áp dụng",
+            "bloom_level": 3,
+            "bloom_level_name": "Áp dụng",
+            "source_sessions": [
+              2
+            ],
+            "pi_codes": [
+              "PI-CS04.1",
+              "PI-CS05.2"
+            ],
+            "mapping_level": "R"
+          },
+          {
+            "code": "CLO3",
+            "description": "Phân tích và đánh giá mô hình ngôn ngữ tự nhiên",
+            "bloom_verb": "Phân tích",
+            "bloom_level": 4,
+            "bloom_level_name": "Phân tích",
+            "source_sessions": [
+              4,
+              5,
+              6
+            ],
+            "pi_codes": [
+              "PI-CS03.2",
+              "PI-CS05.3"
+            ],
+            "mapping_level": "M"
+          },
+          {
+            "code": "CLO4",
+            "description": "Thiết kế và triển khai mô hình ngôn ngữ tự nhiên",
+            "bloom_verb": "Thiết kế",
+            "bloom_level": 5,
+            "bloom_level_name": "Thiết kế",
+            "source_sessions": [
+              7,
+              8
+            ],
+            "pi_codes": [
+              "PI-CS06.1",
+              "PI-CS05.1"
+            ],
+            "mapping_level": "M"
+          },
+          {
+            "code": "CLO5",
+            "description": "Đánh giá và cải thiện mô hình ngôn ngữ tự nhiên",
+            "bloom_verb": "Đánh giá",
+            "bloom_level": 6,
+            "bloom_level_name": "Đánh giá",
+            "source_sessions": [
+              9
+            ],
+            "pi_codes": [
+              "PI-CS08.3",
+              "PI-CS05.3"
+            ],
+            "mapping_level": "A"
+          }
+        ],
+        "mapping_matrix": [
+          {
+            "clo_code": "CLO1",
+            "plo_code": "PLO-CS05",
+            "pi_code": "PI-CS05.1",
+            "irma_level": "I",
+            "bloom_level": 2
+          },
+          {
+            "clo_code": "CLO2",
+            "plo_code": "PLO-CS04",
+            "pi_code": "PI-CS04.1",
+            "irma_level": "R",
+            "bloom_level": 3
+          },
+          {
+            "clo_code": "CLO3",
+            "plo_code": "PLO-CS03",
+            "pi_code": "PI-CS03.2",
+            "irma_level": "M",
+            "bloom_level": 4
+          },
+          {
+            "clo_code": "CLO4",
+            "plo_code": "PLO-CS06",
+            "pi_code": "PI-CS06.1",
+            "irma_level": "M",
+            "bloom_level": 5
+          },
+          {
+            "clo_code": "CLO5",
+            "plo_code": "PLO-CS08",
+            "pi_code": "PI-CS08.3",
+            "irma_level": "A",
+            "bloom_level": 6
+          }
+        ],
+        "teaching_plan": [
+          {
+            "no": 1,
+            "week": 1,
+            "type": "LT",
+            "content": "Chương 1: Tổng quan xử lý ngôn ngữ tự nhiên và các ứng dụng thực tế",
+            "details": "Giới thiệu tổng quan về xử lý ngôn ngữ tự nhiên, các ứng dụng thực tế và tầm quan trọng của lĩnh vực này",
+            "clo_codes": [
+              "CLO1"
+            ],
+            "irma_level": "I",
+            "activities": "Lecture",
+            "assessment": "",
+            "duration_periods": 3
+          },
+          {
+            "no": 2,
+            "week": 2,
+            "type": "LT",
+            "content": "Chương 2: Tư duy data-centric trong chuẩn bị và kiểm toán dữ liệu NLP",
+            "details": "Tư duy data-centric, chuẩn bị và kiểm toán dữ liệu NLP, các bước thực hiện và công cụ hỗ trợ",
+            "clo_codes": [
+              "CLO2"
+            ],
+            "irma_level": "R",
+            "activities": "Lecture",
+            "assessment": "",
+            "duration_periods": 3
+          },
+          {
+            "no": 3,
+            "week": 3,
+            "type": "LT",
+            "content": "Chương 2: Tư duy data-centric trong chuẩn bị và kiểm toán dữ liệu NLP",
+            "details": "Tiếp tục thảo luận về tư duy data-centric, chuẩn bị và kiểm toán dữ liệu NLP, các bước thực hiện và công cụ hỗ trợ",
+            "clo_codes": [
+              "CLO2"
+            ],
+            "irma_level": "R",
+            "activities": "Discussion",
+            "assessment": "",
+            "duration_periods": 3
+          },
+          {
+            "no": 4,
+            "week": 4,
+            "type": "LT",
+            "content": "Chương 3: Tiền xử lý văn bản và các phương pháp biểu diễn đặc trưng (Bag-of-Words, TF-IDF, Word Embedding)",
+            "details": "Tiền xử lý văn bản, các phương pháp biểu diễn đặc trưng, ưu và nhược điểm của từng phương pháp",
+            "clo_codes": [
+              "CLO3"
+            ],
+            "irma_level": "M",
+            "activities": "Lecture",
+            "assessment": "",
+            "duration_periods": 3
+          },
+          {
+            "no": 5,
+            "week": 5,
+            "type": "LT",
+            "content": "Chương 4: Mô hình chuỗi cơ bản (RNN) và huấn luyện mô hình",
+            "details": "Mô hình chuỗi cơ bản, huấn luyện mô hình, các bước thực hiện và công cụ hỗ trợ",
+            "clo_codes": [
+              "CLO3"
+            ],
+            "irma_level": "M",
+            "activities": "Lecture",
+            "assessment": "",
+            "duration_periods": 3
+          },
+          {
+            "no": 6,
+            "week": 6,
+            "type": "LT",
+            "content": "Chương 5: LSTM/GRU và xử lý phụ thuộc dài hạn trong văn bản",
+            "details": "LSTM/GRU, xử lý phụ thuộc dài hạn trong văn bản, các bước thực hiện và công cụ hỗ trợ",
+            "clo_codes": [
+              "CLO3"
+            ],
+            "irma_level": "M",
+            "activities": "Lecture",
+            "assessment": "",
+            "duration_periods": 3
+          },
+          {
+            "no": 7,
+            "week": 7,
+            "type": "LT",
+            "content": "Chương 6: Transformers và cơ chế chú ý (Attention)",
+            "details": "Transformers, cơ chế chú ý, các bước thực hiện và công cụ hỗ trợ",
+            "clo_codes": [
+              "CLO4"
+            ],
+            "irma_level": "M",
+            "activities": "Lecture",
+            "assessment": "",
+            "duration_periods": 3
+          },
+          {
+            "no": 8,
+            "week": 8,
+            "type": "LT",
+            "content": "Chương 7: Prompt Engineering và đánh giá mô hình ngôn ngữ lớn (LLM)",
+            "details": "Prompt Engineering, đánh giá mô hình ngôn ngữ lớn, các bước thực hiện và công cụ hỗ trợ",
+            "clo_codes": [
+              "CLO4"
+            ],
+            "irma_level": "M",
+            "activities": "Lecture",
+            "assessment": "",
+            "duration_periods": 3
+          },
+          {
+            "no": 9,
+            "week": 9,
+            "type": "LT",
+            "content": "Chương 8: Retrieval Augmented Generation (RAG), trích dẫn nguồn và Guardrails",
+            "details": "Retrieval Augmented Generation, trích dẫn nguồn, Guardrails, các bước thực hiện và công cụ hỗ trợ",
+            "clo_codes": [
+              "CLO5"
+            ],
+            "irma_level": "A",
+            "activities": "Lecture",
+            "assessment": "A1",
+            "duration_periods": 3
+          }
+        ],
+        "assessment_plan": [
+          {
+            "code": "A1",
+            "name": "Đánh giá chuyên cần",
+            "description": "Đánh giá sự tham gia và chuẩn bị của sinh viên trong suốt học phần",
+            "weight": 0.1,
+            "format": "Theo dõi và đánh giá thường xuyên",
+            "timing": "Mỗi buổi học",
+            "frequency": "Toàn bộ học phần",
+            "criteria_summary": "Tham dự, chuẩn bị và tham gia thảo luận",
+            "clo_mapping": [],
+            "pi_codes": [],
+            "plo_codes": [],
+            "truy_vet_note": "Dùng cho điểm quá trình; không dùng đơn lẻ để kết luận CLO/PLO.",
+            "bloom_levels_assessed": [],
+            "duration_minutes": null
+          },
+          {
+            "code": "A2.1",
+            "name": "Đánh giá giữa kỳ 1",
+            "description": "Đánh giá kiến thức và hiểu biết về tổng quan xử lý ngôn ngữ tự nhiên và chuẩn bị dữ liệu",
+            "weight": 0.15,
+            "format": "Bài thực hành hoặc báo cáo ngắn",
+            "timing": "Sau chủ đề 1-3",
+            "frequency": "1 lần",
+            "criteria_summary": "Kiến thức về xử lý ngôn ngữ tự nhiên và tư duy data-centric",
+            "clo_mapping": [
+              "CLO1",
+              "CLO2"
+            ],
+            "pi_codes": [
+              "PI-CS02.1",
+              "PI-CS05.1"
+            ],
+            "plo_codes": [
+              "PLO-CS05",
+              "PLO-CS04"
+            ],
+            "truy_vet_note": "[CÓ CĂN CỨ] Theo bảng assessment–PI và bảng CLO–PI–PLO.",
+            "bloom_levels_assessed": [],
+            "duration_minutes": null
+          },
+          {
+            "code": "A2.2",
+            "name": "Đánh giá giữa kỳ 2",
+            "description": "Đánh giá khả năng phân tích và thiết kế mô hình ngôn ngữ tự nhiên",
+            "weight": 0.15,
+            "format": "Bài thực hành hoặc báo cáo ngắn",
+            "timing": "Sau chủ đề 4-7",
+            "frequency": "1 lần",
+            "criteria_summary": "Phân tích và thiết kế mô hình ngôn ngữ tự nhiên",
+            "clo_mapping": [
+              "CLO3",
+              "CLO4"
+            ],
+            "pi_codes": [
+              "PI-CS03.1",
+              "PI-CS06.1"
+            ],
+            "plo_codes": [
+              "PLO-CS03",
+              "PLO-CS06"
+            ],
+            "truy_vet_note": "[CÓ CĂN CỨ] Theo bảng assessment–PI và bảng CLO–PI–PLO.",
+            "bloom_levels_assessed": [],
+            "duration_minutes": null
+          },
+          {
+            "code": "A3",
+            "name": "Đánh giá cuối kỳ",
+            "description": "Đánh giá tổng hợp khả năng áp dụng, phân tích, thiết kế, và đánh giá mô hình ngôn ngữ tự nhiên",
+            "weight": 0.6,
+            "format": "Bài tập lớn/dự án có demo",
+            "timing": "Theo lịch nhà trường",
+            "frequency": "1 lần",
+            "criteria_summary": "Tổng hợp kiến thức và kỹ năng về xử lý ngôn ngữ tự nhiên",
+            "clo_mapping": [
+              "CLO1",
+              "CLO2",
+              "CLO3",
+              "CLO4",
+              "CLO5"
+            ],
+            "pi_codes": [
+              "PI-CS02.1",
+              "PI-CS03.1",
+              "PI-CS05.1",
+              "PI-CS06.1",
+              "PI-CS08.1"
+            ],
+            "plo_codes": [
+              "PLO-CS05",
+              "PLO-CS04",
+              "PLO-CS03",
+              "PLO-CS06",
+              "PLO-CS08"
+            ],
+            "truy_vet_note": "[CÓ CĂN CỨ] Theo bảng assessment–PI và bảng CLO–PI–PLO.",
+            "bloom_levels_assessed": [],
+            "duration_minutes": null
+          }
+        ],
+        "rubrics": {
+          "A1": {
+            "criteria": [
+              {
+                "criterion": "Tham dự lớp học",
+                "clo_measured": "Không dùng để kết luận CLO",
+                "weight_in_component": 0.3,
+                "levels": {
+                  "M1": "Vắng nhiều buổi hoặc thường xuyên đi muộn",
+                  "M2": "Tham dự không ổn định; còn đi muộn hoặc bỏ tiết",
+                  "M3": "Tham dự đạt mức tối thiểu theo quy định",
+                  "M4": "Tham dự đầy đủ, đúng giờ trong hầu hết các buổi",
+                  "M5": "Tham dự đầy đủ, đúng giờ, chủ động hỗ trợ hoạt động lớp"
+                }
+              },
+              {
+                "criterion": "Chuẩn bị và tham gia thảo luận",
+                "clo_measured": "Không dùng để kết luận CLO",
+                "weight_in_component": 0.7,
+                "levels": {
+                  "M1": "Không chuẩn bị hoặc không tham gia thảo luận",
+                  "M2": "Chuẩn bị và tham gia thảo luận ở mức cơ bản",
+                  "M3": "Chuẩn bị và tham gia thảo luận đạt mức tối thiểu",
+                  "M4": "Chuẩn bị và tham gia thảo luận tốt, có đóng góp cho lớp",
+                  "M5": "Chuẩn bị và tham gia thảo luận xuất sắc, lãnh đạo thảo luận"
+                }
+              }
+            ]
+          },
+          "A2.1": {
+            "criteria": [
+              {
+                "criterion": "Kiến thức về xử lý ngôn ngữ tự nhiên",
+                "clo_measured": "CLO1",
+                "weight_in_component": 0.5,
+                "levels": {
+                  "M1": "Không hiểu hoặc hiểu rất ít về xử lý ngôn ngữ tự nhiên",
+                  "M2": "Hiểu biết cơ bản về xử lý ngôn ngữ tự nhiên nhưng còn nhiều hạn chế",
+                  "M3": "Hiểu biết tốt về xử lý ngôn ngữ tự nhiên, đạt mức tối thiểu",
+                  "M4": "Hiểu biết sâu về xử lý ngôn ngữ tự nhiên, có thể áp dụng",
+                  "M5": "Hiểu biết chuyên sâu về xử lý ngôn ngữ tự nhiên, có thể phân tích và đánh giá"
+                }
+              },
+              {
+                "criterion": "Tư duy data-centric",
+                "clo_measured": "CLO2",
+                "weight_in_component": 0.5,
+                "levels": {
+                  "M1": "Không có tư duy data-centric hoặc tư duy rất hạn chế",
+                  "M2": "Có tư duy data-centric cơ bản nhưng còn nhiều hạn chế",
+                  "M3": "Có tư duy data-centric tốt, đạt mức tối thiểu",
+                  "M4": "Có tư duy data-centric tốt, có thể áp dụng trong nhiều trường hợp",
+                  "M5": "Có tư duy data-centric xuất sắc, có thể phân tích và đánh giá dữ liệu phức tạp"
+                }
+              }
+            ]
+          },
+          "A2.2": {
+            "criteria": [
+              {
+                "criterion": "Phân tích mô hình ngôn ngữ tự nhiên",
+                "clo_measured": "CLO3",
+                "weight_in_component": 0.5,
+                "levels": {
+                  "M1": "Không thể phân tích hoặc phân tích rất hạn chế",
+                  "M2": "Phân tích cơ bản nhưng còn nhiều hạn chế",
+                  "M3": "Phân tích tốt, đạt mức tối thiểu",
+                  "M4": "Phân tích tốt, có thể đánh giá và so sánh mô hình",
+                  "M5": "Phân tích xuất sắc, có thể đánh giá và cải thiện mô hình"
+                }
+              },
+              {
+                "criterion": "Thiết kế mô hình ngôn ngữ tự nhiên",
+                "clo_measured": "CLO4",
+                "weight_in_component": 0.5,
+                "levels": {
+                  "M1": "Không thể thiết kế hoặc thiết kế rất hạn chế",
+                  "M2": "Thiết kế cơ bản nhưng còn nhiều hạn chế",
+                  "M3": "Thiết kế tốt, đạt mức tối thiểu",
+                  "M4": "Thiết kế tốt, có thể triển khai và đánh giá mô hình",
+                  "M5": "Thiết kế xuất sắc, có thể triển khai, đánh giá và cải thiện mô hình"
+                }
+              }
+            ]
+          },
+          "A3": {
+            "criteria": [
+              {
+                "criterion": "Áp dụng kiến thức về xử lý ngôn ngữ tự nhiên",
+                "clo_measured": "CLO1",
+                "weight_in_component": 0.1,
+                "levels": {
+                  "M1": "Không thể áp dụng hoặc áp dụng rất hạn chế",
+                  "M2": "Áp dụng cơ bản nhưng còn nhiều hạn chế",
+                  "M3": "Áp dụng tốt, đạt mức tối thiểu",
+                  "M4": "Áp dụng tốt, có thể phân tích và đánh giá",
+                  "M5": "Áp dụng xuất sắc, có thể phân tích, đánh giá và cải thiện"
+                }
+              },
+              {
+                "criterion": "Phân tích và đánh giá mô hình ngôn ngữ tự nhiên",
+                "clo_measured": "CLO3",
+                "weight_in_component": 0.2,
+                "levels": {
+                  "M1": "Không thể phân tích hoặc phân tích rất hạn chế",
+                  "M2": "Phân tích cơ bản nhưng còn nhiều hạn chế",
+                  "M3": "Phân tích tốt, đạt mức tối thiểu",
+                  "M4": "Phân tích tốt, có thể đánh giá và so sánh mô hình",
+                  "M5": "Phân tích xuất sắc, có thể đánh giá và cải thiện mô hình"
+                }
+              },
+              {
+                "criterion": "Thiết kế và triển khai mô hình ngôn ngữ tự nhiên",
+                "clo_measured": "CLO4",
+                "weight_in_component": 0.3,
+                "levels": {
+                  "M1": "Không thể thiết kế hoặc thiết kế rất hạn chế",
+                  "M2": "Thiết kế cơ bản nhưng còn nhiều hạn chế",
+                  "M3": "Thiết kế tốt, đạt mức tối thiểu",
+                  "M4": "Thiết kế tốt, có thể triển khai và đánh giá mô hình",
+                  "M5": "Thiết kế xuất sắc, có thể triển khai, đánh giá và cải thiện mô hình"
+                }
+              },
+              {
+                "criterion": "Đánh giá và cải thiện mô hình ngôn ngữ tự nhiên",
+                "clo_measured": "CLO5",
+                "weight_in_component": 0.4,
+                "levels": {
+                  "M1": "Không thể đánh giá hoặc đánh giá rất hạn chế",
+                  "M2": "Đánh giá cơ bản nhưng còn nhiều hạn chế",
+                  "M3": "Đánh giá tốt, đạt mức tối thiểu",
+                  "M4": "Đánh giá tốt, có thể cải thiện mô hình",
+                  "M5": "Đánh giá xuất sắc, có thể cải thiện và tối ưu hóa mô hình"
+                }
+              }
+            ]
+          }
+        },
+        "validation": {
+          "clo_quality": {
+            "score": 20,
+            "issues": [
+              "Số lượng CLO (5) phù hợp với số tín chỉ (3), nhưng có thể xem xét giảm số lượng CLO để tập trung vào các mục tiêu quan trọng hơn",
+              "CLO không bắt đầu bằng động từ hành động Bloom rõ ràng (ví dụ: CLO1 nên bắt đầu bằng 'Hiểu được' thay vì 'Hiểu được tổng quan về...')"
+            ],
+            "suggestions": [
+              "Đánh giá lại số lượng CLO và đảm bảo mỗi CLO bắt đầu bằng động từ hành động Bloom phù hợp"
+            ]
+          },
+          "mapping_alignment": {
+            "score": 20,
+            "issues": [
+              "Không có CLO nào được ánh xạ vào tất cả các PLO liên quan (chỉ có ánh xạ vào một số PLO cụ thể)",
+              "Mức IRMA không hoàn toàn tương đồng với mức Bloom (ví dụ: CLO3 có mức Bloom 4 nhưng IRMA chỉ ở mức M)"
+            ],
+            "suggestions": [
+              "Đảm bảo mỗi CLO được ánh xạ vào tất cả các PLO liên quan và mức IRMA tương đồng với mức Bloom"
+            ]
+          },
+          "teaching_plan_coherence": {
+            "score": 20,
+            "issues": [
+              "Tổng số tiết (5) không phù hợp với số tín chỉ (3) và không có thông tin về thời gian thực hành",
+              "Không có thông tin về tiến trình từ cơ bản đến nâng cao và phân bổ LT/TH không rõ ràng"
+            ],
+            "suggestions": [
+              "Đánh giá lại tổng số tiết và đảm bảo phân bổ LT/TH hợp lý, cũng như cung cấp thông tin về tiến trình từ cơ bản đến nâng cao"
+            ]
+          },
+          "assessment_validity": {
+            "score": 20,
+            "issues": [
+              "Không có thông tin về trọng số cộng của các đánh giá (0.1 + 0.15 + 0.15 + 0.6 = 0.9, không bằng 1)",
+              "CLO mức cao (CLO4, CLO5) không có đánh giá phù hợp"
+            ],
+            "suggestions": [
+              "Đảm bảo trọng số cộng của các đánh giá bằng 1 và cung cấp đánh giá phù hợp cho CLO mức cao"
+            ]
+          }
+        },
+        "confidence_score": 0.0,
+        "errors": [],
+        "warnings": [
+          "[Parser] Không nhận ra định dạng outline (bảng hoặc danh sách đánh số). Outline được chuyển sang dạng raw text để LLM xử lý. Kết quả có thể kém chính xác hơn — nên dùng bảng Markdown hoặc danh sách đánh số."
+        ]
+      },
+      "export_ready": true,
+      "export_path": "F:\\OBE_AGent_DCCT\\AI_Agent_OBE_IN_DNU\\output\\DCCT_CSC4007_20260427_233416.docx",
+      "errors": [],
+      "warnings": [
+        "[Parser] Không nhận ra định dạng outline (bảng hoặc danh sách đánh số). Outline được chuyển sang dạng raw text để LLM xử lý. Kết quả có thể kém chính xác hơn — nên dùng bảng Markdown hoặc danh sách đánh số.",
+        "Cần đánh giá lại số lượng CLO và đảm bảo mỗi CLO bắt đầu bằng động từ hành động Bloom phù hợp",
+        "Cần đảm bảo mỗi CLO được ánh xạ vào tất cả các PLO liên quan và mức IRMA tương đồng với mức Bloom",
+        "Cần đánh giá lại tổng số tiết và đảm bảo phân bổ LT/TH hợp lý"
+      ]
+    }
+  }
+]

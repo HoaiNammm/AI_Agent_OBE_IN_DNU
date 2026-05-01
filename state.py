@@ -47,8 +47,17 @@ class DCCTState(TypedDict):
     summary: str
     program: Optional[str]           # "HTTT" | "KHMT" | "GENERIC" | None
 
+    # Cấu trúc buổi học (mặc định: 5 tiết/buổi = 3 LT + 2 TH, 1 tuần = 1 buổi)
+    periods_per_session: Optional[int]   # tổng số tiết mỗi buổi (vd 5)
+    theory_per_session: Optional[int]    # số tiết LT trong buổi (vd 3)
+
     # Outline từ GV — raw text (bắt buộc được preserve)
     outline: Optional[str]
+
+    # Ma trận IRMA do giảng viên cung cấp — ràng buộc cứng cho Mapping Agent
+    # Định dạng: {"PI1.1": "M", "PI2.1": "R", "PI3.1": "I", ...}
+    # None = để Mapping Agent tự suy đoán từ Bloom level
+    irma_matrix: Optional[Dict]
 
     # ── Trạng thái luồng outline ───────────────────────────────────────────────
     # True  = GV đã cung cấp outline → dùng Reverse-mapping flow

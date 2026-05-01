@@ -37,12 +37,36 @@ Nhiệm vụ: Đánh giá chất lượng kết quả của bước "{step_name}
 3. Tính nhất quán: Các phần có tương thích với nhau không?
 4. Tính thực tiễn: Có khả thi trong bối cảnh giảng dạy thực tế không?
 {outline_rules}
+=== KIỂM TRA ĐẶC BIỆT THEO BƯỚC ===
+
+Nếu step = "understand" → PHẢI kiểm tra CLO chất lượng:
+  ⛔ ĐỘNG TỪ CẤM (Bloom 1-2, không đo được):
+     "Hiểu được", "Biết được", "Nắm được", "Nhận dạng được", "Liệt kê được",
+     "Mô tả được", "Trình bày được", "Nêu được", "Nhớ được"
+  → Nếu > 50% CLO dùng động từ cấm: đây là LỖI NGHIÊM TRỌNG (critical)
+  → Nếu CLO không nêu đối tượng cụ thể (chỉ nói chung chung): ghi nhận là lỗi nhỏ
+  ✅ Tối thiểu 60% CLO phải Bloom ≥ 4 (Apply/Analyze/Evaluate/Create)
+  ✅ Mỗi CLO phải đo lường được bằng 1 bài kiểm tra/assignment cụ thể
+
+Nếu step = "mapping" → PHẢI kiểm tra domain PI:
+  ⛔ SAI DOMAIN (critical):
+     CLO về lập trình/xây dựng → PI-CS01.x/PI-IS01.x (lý thuyết nền tảng) = SAI
+     CLO về phân tích/thiết kế → PI-CS04.x/PI-IS04.x (lập trình) = SAI
+     CLO về prototype/ứng dụng → PI-CS01.x = SAI
+  ✅ mapping_justification phải nêu rõ domain match
+  ✅ Không được để CLO không có justification
+  → Nếu phát hiện mapping sai domain: liệt kê CLO bị sai và PI đúng nên dùng
+
+Nếu step = "teaching_plan" → kiểm tra tiến trình:
+  ✅ Bloom level tăng dần (I đầu học kỳ → A/M cuối học kỳ)
+  ✅ Không có ≥ 3 buổi liền tiếp cùng CLO mà không có thực hành
+  ✅ Buổi cuối phải có demo/tổng hợp/báo cáo
+  ⛔ Nội dung lặp lại giữa các buổi mà không có sự tiến triển = lỗi nhỏ
+
 === QUY TẮC ĐÁNH GIÁ ===
 - "passed": true nếu output đạt yêu cầu tối thiểu để tiếp tục
-- "passed": false nếu có lỗi nghiêm trọng cần sửa trước khi tiếp tục
-- Phân biệt rõ lỗi nghiêm trọng (critical) và lỗi nhỏ (minor)
-- Lỗi nhỏ: không ngăn tiếp tục, chỉ ghi nhận để cải thiện
-- Lỗi nghiêm trọng: ít hơn 3 CLO, thiếu mapping hoàn toàn, trọng số ≠ 100%, vi phạm outline preservation
+- "passed": false nếu có lỗi nghiêm trọng cần sửa
+- Lỗi nghiêm trọng: >50% CLO dùng động từ cấm, mapping sai domain, <3 CLO, thiếu mapping hoàn toàn, trọng số ≠ 100%, vi phạm outline preservation
 
 QUAN TRỌNG: Trả về ĐÚNG định dạng JSON sau:
 
@@ -50,9 +74,9 @@ QUAN TRỌNG: Trả về ĐÚNG định dạng JSON sau:
   "step": "{step_name}",
   "passed": true/false,
   "score": điểm_0_100,
-  "critical_issues": ["lỗi nghiêm trọng nếu có"],
+  "critical_issues": ["lỗi nghiêm trọng nếu có — nêu CLO/PI cụ thể bị lỗi"],
   "minor_issues": ["lỗi nhỏ nếu có"],
-  "suggestions": ["đề xuất cải thiện cụ thể"],
+  "suggestions": ["đề xuất cải thiện cụ thể — ví dụ động từ nên thay bằng gì"],
   "summary": "Nhận xét ngắn về kết quả bước này"
 }}"""
 

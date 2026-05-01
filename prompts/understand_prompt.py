@@ -41,6 +41,33 @@ QUY TRÌNH 4 BƯỚC:
   - session_clo_map: {"1": ["CLO1"], "2": ["CLO2"], ...}
   - Không được để buổi nào không có CLO
 
+=== TIÊU CHUẨN CLO CHẤT LƯỢNG CAO ===
+
+⛔ ĐỘNG TỪ CẤM (Bloom 1-2, quá yếu — TUYỆT ĐỐI KHÔNG dùng):
+  Hiểu được | Biết được | Nắm được | Nhận dạng được | Nhớ được
+  Liệt kê được | Mô tả được | Trình bày được | Nêu được
+
+✅ ĐỘNG TỪ BẮT BUỘC dùng (Bloom 3-6 — đo lường được, kiểm tra được):
+  Bloom 3 – Apply:  Triển khai, Cài đặt, Thực thi, Áp dụng, Sử dụng (kèm "để giải quyết...")
+  Bloom 4 – Analyze: Phân tích, So sánh, Đánh giá, Biện minh, Phân loại
+  Bloom 5 – Evaluate: Kiểm chứng, Phê phán, Lựa chọn và biện minh, Đánh giá định lượng
+  Bloom 6 – Create: Xây dựng, Thiết kế, Phát triển, Tích hợp, Tạo ra
+
+QUY TẮC CLO CHẤT LƯỢNG:
+1. Ít nhất 60% CLO phải ở Bloom ≥ 4 (đối với học phần chuyên ngành HK6+)
+2. CLO phải nêu RÕ: động từ + đối tượng cụ thể + ngữ cảnh/điều kiện
+   Ví dụ tốt:  "Xây dựng được pipeline tiền xử lý dữ liệu NLP gồm tokenize, chuẩn hóa và embedding"
+   Ví dụ xấu:  "Hiểu được các kỹ thuật NLP cơ bản"
+3. Mỗi CLO đo lường được bằng ít nhất 1 bài đánh giá cụ thể (Lab/Assignment/Project)
+4. Không được dùng cùng 1 động từ cho tất cả CLO
+
+VÍ DỤ CLO CHUẨN (CSC4007 - Xử lý ngôn ngữ tự nhiên):
+  CLO1: "Đặc tả được bài toán NLP/LLM-based: input, output, ràng buộc và cách đánh giá"
+  CLO2: "Chuẩn bị được dữ liệu văn bản thô thành pipeline dữ liệu tối thiểu (tokenize, embed)"
+  CLO3: "Huấn luyện và chạy thử được mô hình chuỗi/Transformer trên dataset nhỏ"
+  CLO4: "So sánh và biện minh lựa chọn giải pháp NLP phù hợp theo tiêu chí kỹ thuật"
+  CLO5: "Xây dựng và trình diễn được prototype NLP/LLM/RAG cuối kỳ"
+
 NGUYÊN TẮC BẤT BIẾN:
 - TUYỆT ĐỐI KHÔNG thêm/bớt/đổi thứ tự buổi học từ outline GV
 - TUYỆT ĐỐI KHÔNG thay đổi tên chủ đề (topic) của GV
@@ -107,6 +134,25 @@ Nguyên tắc xây dựng CLO:
 4. Số lượng CLO: 4-7 CLO với 2-3 TC, 5-9 CLO với 4+ TC
 5. Bao phủ đa dạng các mức Bloom (không chỉ mức thấp)
 6. CLO phản ánh nội dung trọng tâm và kỳ vọng nghề nghiệp
+
+=== TIÊU CHUẨN CLO CHẤT LƯỢNG CAO ===
+
+⛔ ĐỘNG TỪ CẤM — TUYỆT ĐỐI KHÔNG dùng:
+  Hiểu được | Biết được | Nắm được | Nhận dạng được | Nhớ được
+  Liệt kê được | Mô tả được | Trình bày được | Nêu được
+
+✅ ĐỘNG TỪ BẮT BUỘC dùng (đo lường được, kiểm tra được):
+  Bloom 3: Triển khai, Cài đặt, Thực thi, Áp dụng, Sử dụng (kèm ngữ cảnh cụ thể)
+  Bloom 4: Phân tích, So sánh, Đánh giá, Biện minh, Phân loại, Kiểm chứng
+  Bloom 6: Xây dựng, Thiết kế, Phát triển, Tích hợp, Tạo ra, Tổng hợp
+
+QUY TẮC BẮT BUỘC:
+1. Ít nhất 60% CLO phải ở Bloom ≥ 4
+2. Mỗi CLO = động từ + ĐỐI TƯỢNG CỤ THỂ + ngữ cảnh/điều kiện rõ ràng
+   Ví dụ tốt:  "Thiết kế được kiến trúc mạng nơ-ron CNN cho bài toán phân loại ảnh cụ thể"
+   Ví dụ xấu:  "Hiểu được mạng nơ-ron CNN"
+3. Không dùng cùng 1 động từ cho tất cả CLO
+4. Bloom level tăng dần theo tiến trình học phần (I→R→M→A)
 
 QUAN TRỌNG: Trả về ĐÚNG định dạng JSON sau, KHÔNG thêm text ngoài JSON:
 
@@ -175,6 +221,20 @@ def build_understand_user_prompt(
         f"Số tín chỉ: {credits}",
         f"Mô tả/Tóm tắt: {summary}",
     ]
+
+    # ── PINNED FACTS: không được thay đổi ──────────────────────────────────
+    pinned = []
+    if course_code:
+        pinned.append(f'  - course_code = "{course_code}"')
+    if course_name:
+        pinned.append(f'  - course_name = "{course_name}"')
+    if credits:
+        pinned.append(f'  - credits = "{credits}"')
+    if pinned:
+        parts.append(
+            "\n⚠️  PINNED FACTS — TUYỆT ĐỐI KHÔNG THAY ĐỔI các giá trị sau trong extracted_info:\n"
+            + "\n".join(pinned)
+        )
 
     if program:
         parts.append(f"Ngành đào tạo: {program}")

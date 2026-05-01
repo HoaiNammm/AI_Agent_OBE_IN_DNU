@@ -3,9 +3,10 @@ Validator Agent - Kiểm chứng tổng thể DCCT và tính confidence score
 """
 
 import json
-from typing import Dict, Any
+from typing import Dict, Any, List
 from utils.logger import get_logger
 from utils.llm_helper import call_llm_json_async, extract_json_from_response
+from utils.obe_utils import get_program_pi_data
 from prompts.validator_prompt import VALIDATOR_SYSTEM_PROMPT, build_validator_user_prompt
 
 logger = get_logger("agents.validator")
@@ -29,7 +30,7 @@ async def final_validator_node(state: Dict[str, Any]) -> Dict[str, Any]:
     logger.info("[Validator] Bắt đầu kiểm chứng tổng thể DCCT")
 
     # Kiểm tra cơ bản trước khi gọi LLM
-    basic_issues = _basic_validation(clo_list, mapping_matrix, teaching_plan, assessment_plan)
+    basic_issues = _basic_validation(clo_list, mapping_matrix, teaching_plan, assessment_plan, state)
     if basic_issues:
         logger.warning(f"[Validator] Vấn đề cơ bản: {basic_issues}")
 
@@ -120,7 +121,7 @@ async def final_validator_node(state: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def _basic_validation(
-    clo_list, mapping_matrix, teaching_plan, assessment_plan
+    clo_list, mapping_matrix, teaching_plan, assessment_plan, state: Dict = None
 ) -> list:
     """Kiểm tra các điều kiện cơ bản không cần LLM."""
     issues = []
@@ -138,6 +139,45 @@ def _basic_validation(
         total_weight = sum(float(a.get("weight", 0)) for a in assessment_plan)
         if abs(total_weight - 1.0) > 0.05:
             issues.append(f"Trọng số đánh giá không hợp lệ: {total_weight:.2f} (cần = 1.0)")
+
+    # ── Kiểm tra tính toàn vẹn dữ liệu người dùng ─────────────────────────
+    if state:
+        program = state.get("program", "GENERIC")
+        extracted_info = state.get("extracted_info", {})
+
+        # Kiểm tra credits không bị thay đổi
+        user_credits = str(state.get("credits", "")).strip()
+        info_credits = str(extracted_info.get("credits", "")).strip()
+        if user_credits and info_credits and user_credits != info_credits:
+            issues.append(
+                f"Số tín chỉ trong extracted_info ({info_credits}) khác với đầu vào ({user_credits})"
+            )
+
+        # Kiểm tra course_code không bị thay đổi
+        user_code = str(state.get("course_code", "")).strip()
+        info_code = str(extracted_info.get("course_code", "")).strip()
+        if user_code and info_code and user_code.upper() != info_code.upper():
+            issues.append(
+                f"Mã học phần trong extracted_info ({info_code}) khác với đầu vào ({user_code})"
+            )
+
+        # Kiểm tra PI codes thuộc đúng chương trình (chỉ khi không phải GENERIC)
+        if program != "GENERIC" and mapping_matrix:
+            pi_data = get_program_pi_data(program)
+            valid_pi_codes: set = set()
+            for pis in pi_data.values():
+                valid_pi_codes.update(pis.keys())
+
+            invalid_pis: List[str] = []
+            for row in mapping_matrix:
+                pi_code = row.get("pi_code", "")
+                if pi_code and pi_code not in valid_pi_codes:
+                    invalid_pis.append(pi_code)
+
+            if invalid_pis:
+                issues.append(
+                    f"PI codes không thuộc chương trình {program}: {list(set(invalid_pis))}"
+                )
 
     return issues
 

@@ -124,8 +124,13 @@ def _normalize_assessment_plan(plan: List[Dict], clo_list: List[Dict]) -> List[D
             "description": p.get("description", ""),
             "weight": float(p.get("weight", 0.1)),
             "format": p.get("format", ""),
+            "timing": p.get("timing", p.get("frequency", "")),
             "frequency": p.get("frequency", ""),
+            "criteria_summary": p.get("criteria_summary", ""),
             "clo_mapping": p.get("clo_mapping", []),
+            "pi_codes": p.get("pi_codes", []),
+            "plo_codes": p.get("plo_codes", []),
+            "truy_vet_note": p.get("truy_vet_note", ""),
             "bloom_levels_assessed": p.get("bloom_levels_assessed", []),
             "duration_minutes": p.get("duration_minutes"),
         })
@@ -134,95 +139,169 @@ def _normalize_assessment_plan(plan: List[Dict], clo_list: List[Dict]) -> List[D
 
 
 def _generate_fallback_assessment(clo_list: List[Dict]) -> Dict:
-    """Tự sinh assessment cơ bản."""
+    """
+    Fallback assessment khi LLM thất bại.
+    Sinh rubric dựa trên CLO thực tế của học phần — không hardcode criteria generic.
+    """
+    from utils.obe_utils import DEFAULT_ASSESSMENT_WEIGHTS
+
     clo_codes = [c["code"] for c in clo_list]
-    # CLO mức thấp (Bloom 1-2)
-    low_clos = [c["code"] for c in clo_list if c.get("bloom_level", 2) <= 2]
-    # CLO mức cao (Bloom 4-6)
-    high_clos = [c["code"] for c in clo_list if c.get("bloom_level", 2) >= 4]
+    mid = max(1, len(clo_codes) // 2)
+    a21_clos = clo_codes[:mid]
+    a22_clos = clo_codes[mid:]
 
     assessment_plan = [
         {
+            **DEFAULT_ASSESSMENT_WEIGHTS["A1"],
             "code": "A1",
-            "name": "Đánh giá quá trình",
-            "description": "Chuyên cần, bài tập về nhà, quiz trên lớp",
-            "weight": 0.10,
-            "format": "Quiz online/bài tập (5 lần)",
-            "frequency": "Mỗi 3 tuần 1 lần",
-            "clo_mapping": clo_codes,
-            "bloom_levels_assessed": [1, 2],
+            "timing": "Mỗi buổi học",
+            "clo_mapping": [],
+            "pi_codes": [],
+            "plo_codes": [],
+            "truy_vet_note": "Dùng cho điểm quá trình; không dùng đơn lẻ để kết luận CLO/PLO.",
+            "bloom_levels_assessed": [],
             "duration_minutes": None,
         },
         {
+            **DEFAULT_ASSESSMENT_WEIGHTS["A2.1"],
             "code": "A2.1",
-            "name": "Kiểm tra giữa kỳ",
-            "description": "Kiểm tra lý thuyết nửa đầu học kỳ",
-            "weight": 0.20,
-            "format": "Thi viết 60 phút (trắc nghiệm + tự luận)",
-            "frequency": "1 lần (tuần 8)",
-            "clo_mapping": low_clos or clo_codes[:len(clo_codes)//2 + 1],
+            "timing": "Sau chủ đề 1–3",
+            "clo_mapping": a21_clos,
+            "pi_codes": [],
+            "plo_codes": [],
+            "truy_vet_note": "[CÓ CĂN CỨ] Đo lường CLO giai đoạn đầu học phần.",
             "bloom_levels_assessed": [1, 2, 3],
-            "duration_minutes": 60,
-        },
-        {
-            "code": "A2.2",
-            "name": "Thực hành / Bài tập lớn",
-            "description": "Dự án thực hành nhóm, báo cáo kết quả",
-            "weight": 0.30,
-            "format": "Bài tập lớn nhóm (2-3 người) + báo cáo",
-            "frequency": "1 lần (tuần 12-13)",
-            "clo_mapping": high_clos or clo_codes[len(clo_codes)//2:],
-            "bloom_levels_assessed": [3, 4, 5, 6],
             "duration_minutes": None,
         },
         {
+            **DEFAULT_ASSESSMENT_WEIGHTS["A2.2"],
+            "code": "A2.2",
+            "timing": "Sau chủ đề 4–7",
+            "clo_mapping": a22_clos,
+            "pi_codes": [],
+            "plo_codes": [],
+            "truy_vet_note": "[CÓ CĂN CỨ] Đo lường CLO giai đoạn giữa-cuối học phần.",
+            "bloom_levels_assessed": [3, 4, 5],
+            "duration_minutes": None,
+        },
+        {
+            **DEFAULT_ASSESSMENT_WEIGHTS["A3"],
             "code": "A3",
-            "name": "Thi cuối kỳ",
-            "description": "Thi tổng hợp cuối học kỳ",
-            "weight": 0.40,
-            "format": "Thi viết 90 phút (trắc nghiệm + tự luận/thực hành)",
-            "frequency": "1 lần (tuần 15)",
+            "timing": "Theo lịch nhà trường",
             "clo_mapping": clo_codes,
-            "bloom_levels_assessed": [1, 2, 3, 4],
-            "duration_minutes": 90,
+            "pi_codes": [],
+            "plo_codes": [],
+            "truy_vet_note": "[CÓ CĂN CỨ] Bằng chứng tổng hợp, đo lường toàn bộ CLO.",
+            "bloom_levels_assessed": [1, 2, 3, 4, 5, 6],
+            "duration_minutes": None,
         },
     ]
 
-    rubrics = {
-        "A2.2": {
-            "criteria": [
-                {
-                    "criterion": "Chất lượng giải pháp kỹ thuật",
-                    "weight_in_component": 0.4,
-                    "levels": {
-                        "excellent": {"score_range": "90-100", "description": "Giải pháp sáng tạo, tối ưu, đáp ứng đầy đủ yêu cầu"},
-                        "good": {"score_range": "70-89", "description": "Giải pháp đúng, hoạt động tốt, có một số điểm cần cải thiện nhỏ"},
-                        "pass": {"score_range": "50-69", "description": "Giải pháp cơ bản đúng, còn một số lỗi nhỏ"},
-                        "fail": {"score_range": "0-49", "description": "Giải pháp sai hoặc không hoàn chỉnh"},
-                    },
-                },
-                {
-                    "criterion": "Báo cáo và trình bày",
-                    "weight_in_component": 0.3,
-                    "levels": {
-                        "excellent": {"score_range": "90-100", "description": "Báo cáo rõ ràng, đầy đủ, trình bày chuyên nghiệp"},
-                        "good": {"score_range": "70-89", "description": "Báo cáo khá đầy đủ, trình bày tốt"},
-                        "pass": {"score_range": "50-69", "description": "Báo cáo đủ nội dung cơ bản"},
-                        "fail": {"score_range": "0-49", "description": "Báo cáo thiếu nhiều nội dung quan trọng"},
-                    },
-                },
-                {
-                    "criterion": "Làm việc nhóm và tiến độ",
-                    "weight_in_component": 0.3,
-                    "levels": {
-                        "excellent": {"score_range": "90-100", "description": "Phân công rõ ràng, tiến độ đúng hạn, cộng tác tốt"},
-                        "good": {"score_range": "70-89", "description": "Tiến độ tốt, có sự phân công hợp lý"},
-                        "pass": {"score_range": "50-69", "description": "Hoàn thành đúng hạn với hỗ trợ từ giảng viên"},
-                        "fail": {"score_range": "0-49", "description": "Không hoàn thành đúng hạn hoặc thiếu sự cộng tác"},
-                    },
-                },
-            ]
-        }
+    rubrics = _build_clo_based_rubric(clo_list, a21_clos, a22_clos)
+    return {"assessment_plan": assessment_plan, "rubrics": rubrics}
+
+
+def _build_clo_based_rubric(
+    clo_list: List[Dict],
+    a21_clos: List[str],
+    a22_clos: List[str],
+) -> Dict:
+    """
+    Xây dựng rubric fallback trực tiếp từ mô tả CLO của học phần.
+    Mỗi CLO → 1 criterion gắn đúng với cấu phần đánh giá nó.
+    """
+    a1_criteria = [
+        {
+            "criterion": "Tham dự và tham gia lớp học",
+            "clo_measured": "Không dùng để kết luận CLO",
+            "weight_in_component": 0.30,
+            "levels": {
+                "M1": "Vắng nhiều buổi hoặc thường xuyên đi muộn",
+                "M2": "Tham dự không ổn định; còn đi muộn hoặc bỏ tiết",
+                "M3": "Tham dự đạt mức tối thiểu theo quy định",
+                "M4": "Tham dự đầy đủ, đúng giờ trong hầu hết các buổi",
+                "M5": "Tham dự đầy đủ, đúng giờ, chủ động hỗ trợ hoạt động lớp",
+            },
+        },
+        {
+            "criterion": "Chuẩn bị trước giờ học",
+            "clo_measured": "Không dùng để kết luận CLO",
+            "weight_in_component": 0.20,
+            "levels": {
+                "M1": "Không chuẩn bị học liệu hoặc yêu cầu trước giờ học",
+                "M2": "Có chuẩn bị nhưng rời rạc, chưa đáp ứng yêu cầu chính",
+                "M3": "Chuẩn bị được học liệu và yêu cầu tối thiểu",
+                "M4": "Chuẩn bị tương đối đầy đủ, bám yêu cầu buổi học",
+                "M5": "Chuẩn bị đầy đủ, có ghi chú hoặc câu hỏi kỹ thuật phù hợp",
+            },
+        },
+        {
+            "criterion": "Tham gia thảo luận và thực hành",
+            "clo_measured": "Không dùng để kết luận CLO",
+            "weight_in_component": 0.30,
+            "levels": {
+                "M1": "Không tham gia hoặc từ chối thực hành/thảo luận",
+                "M2": "Tham gia hạn chế, chủ yếu làm theo mà không có đóng góp",
+                "M3": "Tham gia ở mức tối thiểu, hoàn thành yêu cầu cơ bản",
+                "M4": "Tham gia chủ động, thực hiện tốt hoạt động thảo luận/thực hành",
+                "M5": "Tham gia tích cực, có trao đổi học thuật hoặc hỗ trợ nhóm/lớp hiệu quả",
+            },
+        },
+        {
+            "criterion": "Tuân thủ quy định và thái độ học tập",
+            "clo_measured": "Không dùng để kết luận CLO",
+            "weight_in_component": 0.20,
+            "levels": {
+                "M1": "Vi phạm quy định lớp học hoặc thể hiện thái độ thiếu hợp tác",
+                "M2": "Còn nhắc nhở về tác phong hoặc nộp/báo cáo nhiệm vụ chậm",
+                "M3": "Tuân thủ quy định cơ bản, thái độ học tập phù hợp",
+                "M4": "Tuân thủ tốt, hợp tác tốt với giảng viên và bạn học",
+                "M5": "Tác phong chuyên nghiệp, hợp tác tốt, góp phần duy trì môi trường học tập tích cực",
+            },
+        },
+    ]
+
+    evidence_criterion = {
+        "criterion": "Báo cáo và bộ minh chứng",
+        "clo_measured": "Hỗ trợ evidence",
+        "weight_in_component": 0.20,
+        "levels": {
+            "M1": "Thiếu phần lớn minh chứng; báo cáo không đủ để đối chiếu kết quả",
+            "M2": "Có minh chứng tối thiểu nhưng rời rạc, khó tái kiểm tra",
+            "M3": "Có báo cáo và code/log cơ bản; đối chiếu được các bước chính",
+            "M4": "Báo cáo rõ, minh chứng tương đối đủ, trả lời được phản biện cơ bản",
+            "M5": "Bộ minh chứng đầy đủ, nhất quán, tái kiểm tra được; báo cáo thuyết phục",
+        },
     }
 
-    return {"assessment_plan": assessment_plan, "rubrics": rubrics}
+    def _make_clo_criteria(selected_clo_codes: List[str]) -> List[Dict]:
+        selected = [c for c in clo_list if c.get("code", "") in selected_clo_codes]
+        if not selected:
+            selected = clo_list
+        n = len(selected)
+        clo_weight = round((1.0 - 0.20) / n, 2)  # 20% dành cho evidence
+        criteria = []
+        for clo in selected:
+            desc = clo.get("description", "")
+            code = clo.get("code", "CLO")
+            short = desc.split(",")[0].split(";")[0].strip()[:80]
+            criteria.append({
+                "criterion": short,
+                "clo_measured": code,
+                "weight_in_component": clo_weight,
+                "levels": {
+                    "M1": f"Không thực hiện được: {short[:50]}",
+                    "M2": f"Thực hiện được một phần yêu cầu {code}, còn nhiều hạn chế",
+                    "M3": f"Đáp ứng yêu cầu tối thiểu của {code}",
+                    "M4": f"Đáp ứng tốt yêu cầu {code}, có căn cứ rõ ràng",
+                    "M5": f"Vượt yêu cầu {code}, thể hiện năng lực vững chắc và độc lập",
+                },
+            })
+        return criteria
+
+    return {
+        "A1":  {"criteria": a1_criteria},
+        "A2.1": {"criteria": _make_clo_criteria(a21_clos) + [evidence_criterion]},
+        "A2.2": {"criteria": _make_clo_criteria(a22_clos) + [evidence_criterion]},
+        "A3":  {"criteria": _make_clo_criteria([c["code"] for c in clo_list]) + [evidence_criterion]},
+    }

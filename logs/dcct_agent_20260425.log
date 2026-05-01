@@ -1,0 +1,236 @@
+{"asctime": "2026-04-25 12:26:36,264", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=understand, retries={}, outline_provided=False, sessions=0"}
+{"asctime": "2026-04-25 12:26:36,264", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=understand, retries={}, outline_provided=False, sessions=0"}
+{"asctime": "2026-04-25 12:26:36,266", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor \u2192 understand "}
+{"asctime": "2026-04-25 12:26:36,266", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor \u2192 understand "}
+{"asctime": "2026-04-25 12:26:36,272", "name": "utils.outline_parser", "levelname": "WARNING", "message": "[OutlineParser] Kh\u00f4ng th\u1ec3 parse c\u1ea5u tr\u00fac r\u00f5 r\u00e0ng \u2014 d\u00f9ng raw_text fallback. LLM s\u1ebd x\u1eed l\u00fd tr\u1ef1c ti\u1ebfp. N\u00ean cung c\u1ea5p outline d\u1ea1ng b\u1ea3ng ho\u1eb7c danh s\u00e1ch \u0111\u00e1nh s\u1ed1."}
+{"asctime": "2026-04-25 12:26:36,273", "name": "agents.understand", "levelname": "INFO", "message": "[Understand] Ch\u1ebf \u0111\u1ed9 REVERSE-MAPPING | parse_mode=raw_text | 1 bu\u1ed5i | c\u1ea3nh b\u00e1o=1"}
+{"asctime": "2026-04-25 12:26:36,273", "name": "agents.understand", "levelname": "INFO", "message": "[Understand] Ch\u1ebf \u0111\u1ed9 REVERSE-MAPPING | parse_mode=raw_text | 1 bu\u1ed5i | c\u1ea3nh b\u00e1o=1"}
+{"asctime": "2026-04-25 12:26:36,274", "name": "agents.understand", "levelname": "WARNING", "message": "[Understand/Parser] Kh\u00f4ng nh\u1eadn ra \u0111\u1ecbnh d\u1ea1ng outline (b\u1ea3ng ho\u1eb7c danh s\u00e1ch \u0111\u00e1nh s\u1ed1). Outline \u0111\u01b0\u1ee3c chuy\u1ec3n sang d\u1ea1ng raw text \u0111\u1ec3 LLM x\u1eed l\u00fd. K\u1ebft qu\u1ea3 c\u00f3 th\u1ec3 k\u00e9m ch\u00ednh x\u00e1c h\u01a1n \u2014 n\u00ean d\u00f9ng b\u1ea3ng Markdown ho\u1eb7c danh s\u00e1ch \u0111\u00e1nh s\u1ed1."}
+{"asctime": "2026-04-25 12:26:36,274", "name": "agents.understand", "levelname": "WARNING", "message": "[Understand/Parser] Kh\u00f4ng nh\u1eadn ra \u0111\u1ecbnh d\u1ea1ng outline (b\u1ea3ng ho\u1eb7c danh s\u00e1ch \u0111\u00e1nh s\u1ed1). Outline \u0111\u01b0\u1ee3c chuy\u1ec3n sang d\u1ea1ng raw text \u0111\u1ec3 LLM x\u1eed l\u00fd. K\u1ebft qu\u1ea3 c\u00f3 th\u1ec3 k\u00e9m ch\u00ednh x\u00e1c h\u01a1n \u2014 n\u00ean d\u00f9ng b\u1ea3ng Markdown ho\u1eb7c danh s\u00e1ch \u0111\u00e1nh s\u1ed1."}
+{"asctime": "2026-04-25 12:26:36,439", "name": "utils.llm_helper", "levelname": "INFO", "message": "[understand] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:26:41,336", "name": "agents.understand", "levelname": "INFO", "message": "[Understand] Ho\u00e0n th\u00e0nh: 4 CLO, outline_provided=True, sessions=1, session_clo_map=12 entries"}
+{"asctime": "2026-04-25 12:26:41,336", "name": "agents.understand", "levelname": "INFO", "message": "[Understand] Ho\u00e0n th\u00e0nh: 4 CLO, outline_provided=True, sessions=1, session_clo_map=12 entries"}
+{"asctime": "2026-04-25 12:26:41,338", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: understand"}
+{"asctime": "2026-04-25 12:26:41,338", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: understand"}
+{"asctime": "2026-04-25 12:26:41,339", "name": "utils.llm_helper", "levelname": "INFO", "message": "[critic] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:26:42,723", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] understand: \u2713 PASS (score=90)"}
+{"asctime": "2026-04-25 12:26:42,723", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] understand: \u2713 PASS (score=90)"}
+{"asctime": "2026-04-25 12:26:42,727", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=understand_done, retries={}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:26:42,727", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=understand_done, retries={}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:26:42,728", "name": "agents.supervisor", "levelname": "INFO", "message": "[Supervisor] Lu\u1ed3ng x\u00e1c \u0111\u1ecbnh: REVERSE-MAPPING"}
+{"asctime": "2026-04-25 12:26:42,728", "name": "agents.supervisor", "levelname": "INFO", "message": "[Supervisor] Lu\u1ed3ng x\u00e1c \u0111\u1ecbnh: REVERSE-MAPPING"}
+{"asctime": "2026-04-25 12:26:42,728", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: understand \u2713 \u2192 mapping"}
+{"asctime": "2026-04-25 12:26:42,728", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: understand \u2713 \u2192 mapping"}
+{"asctime": "2026-04-25 12:26:42,733", "name": "agents.mapping", "levelname": "INFO", "message": "[Mapping] B\u1eaft \u0111\u1ea7u \u00e1nh x\u1ea1 4 CLO"}
+{"asctime": "2026-04-25 12:26:42,733", "name": "agents.mapping", "levelname": "INFO", "message": "[Mapping] B\u1eaft \u0111\u1ea7u \u00e1nh x\u1ea1 4 CLO"}
+{"asctime": "2026-04-25 12:26:42,738", "name": "utils.llm_helper", "levelname": "INFO", "message": "[mapping] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:26:45,055", "name": "agents.mapping", "levelname": "INFO", "message": "[Mapping] Ho\u00e0n th\u00e0nh: 4 \u00e1nh x\u1ea1 CLO-PI-PLO"}
+{"asctime": "2026-04-25 12:26:45,055", "name": "agents.mapping", "levelname": "INFO", "message": "[Mapping] Ho\u00e0n th\u00e0nh: 4 \u00e1nh x\u1ea1 CLO-PI-PLO"}
+{"asctime": "2026-04-25 12:26:45,058", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: mapping"}
+{"asctime": "2026-04-25 12:26:45,058", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: mapping"}
+{"asctime": "2026-04-25 12:26:45,059", "name": "utils.llm_helper", "levelname": "INFO", "message": "[critic] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:26:46,390", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] mapping: \u2713 PASS (score=90)"}
+{"asctime": "2026-04-25 12:26:46,390", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] mapping: \u2713 PASS (score=90)"}
+{"asctime": "2026-04-25 12:26:46,393", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=mapping_done, retries={}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:26:46,393", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=mapping_done, retries={}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:26:46,394", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: mapping \u2713 \u2192 teaching_plan"}
+{"asctime": "2026-04-25 12:26:46,394", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: mapping \u2713 \u2192 teaching_plan"}
+{"asctime": "2026-04-25 12:26:46,400", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ch\u1ebf \u0111\u1ed9=PRESERVE | outline_sessions=1 | credits=3"}
+{"asctime": "2026-04-25 12:26:46,400", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ch\u1ebf \u0111\u1ed9=PRESERVE | outline_sessions=1 | credits=3"}
+{"asctime": "2026-04-25 12:26:46,401", "name": "utils.llm_helper", "levelname": "INFO", "message": "[teaching_plan] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:26:50,082", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ho\u00e0n th\u00e0nh: 15 bu\u1ed5i | outline_preserved=True"}
+{"asctime": "2026-04-25 12:26:50,082", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ho\u00e0n th\u00e0nh: 15 bu\u1ed5i | outline_preserved=True"}
+{"asctime": "2026-04-25 12:26:50,084", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: teaching_plan"}
+{"asctime": "2026-04-25 12:26:50,084", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: teaching_plan"}
+{"asctime": "2026-04-25 12:26:50,087", "name": "utils.llm_helper", "levelname": "INFO", "message": "[critic] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:26:51,905", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] teaching_plan: \u2717 FAIL (score=0)"}
+{"asctime": "2026-04-25 12:26:51,905", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] teaching_plan: \u2717 FAIL (score=0)"}
+{"asctime": "2026-04-25 12:26:51,906", "name": "tools.critic", "levelname": "WARNING", "message": "[Critic] Critical issues: ['S\u1ed1 bu\u1ed5i h\u1ecdc trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y (15) kh\u00f4ng kh\u1edbp v\u1edbi s\u1ed1 bu\u1ed5i h\u1ecdc trong outline (1)', 'N\u1ed9i dung v\u00e0 th\u1ee9 t\u1ef1 c\u00e1c bu\u1ed5i h\u1ecdc trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y kh\u00f4ng t\u01b0\u01a1ng th\u00edch v\u1edbi outline']"}
+{"asctime": "2026-04-25 12:26:51,906", "name": "tools.critic", "levelname": "WARNING", "message": "[Critic] Critical issues: ['S\u1ed1 bu\u1ed5i h\u1ecdc trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y (15) kh\u00f4ng kh\u1edbp v\u1edbi s\u1ed1 bu\u1ed5i h\u1ecdc trong outline (1)', 'N\u1ed9i dung v\u00e0 th\u1ee9 t\u1ef1 c\u00e1c bu\u1ed5i h\u1ecdc trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y kh\u00f4ng t\u01b0\u01a1ng th\u00edch v\u1edbi outline']"}
+{"asctime": "2026-04-25 12:26:51,908", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=teaching_plan_done, retries={}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:26:51,908", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=teaching_plan_done, retries={}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:26:51,908", "name": "agents.supervisor", "levelname": "WARNING", "message": "Supervisor: Critic FAIL cho 'teaching_plan', retry l\u1ea7n 1/2"}
+{"asctime": "2026-04-25 12:26:51,908", "name": "agents.supervisor", "levelname": "WARNING", "message": "Supervisor: Critic FAIL cho 'teaching_plan', retry l\u1ea7n 1/2"}
+{"asctime": "2026-04-25 12:26:51,911", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ch\u1ebf \u0111\u1ed9=PRESERVE | outline_sessions=1 | credits=3"}
+{"asctime": "2026-04-25 12:26:51,911", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ch\u1ebf \u0111\u1ed9=PRESERVE | outline_sessions=1 | credits=3"}
+{"asctime": "2026-04-25 12:26:51,912", "name": "utils.llm_helper", "levelname": "INFO", "message": "[teaching_plan] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:26:58,249", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ho\u00e0n th\u00e0nh: 15 bu\u1ed5i | outline_preserved=True"}
+{"asctime": "2026-04-25 12:26:58,249", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ho\u00e0n th\u00e0nh: 15 bu\u1ed5i | outline_preserved=True"}
+{"asctime": "2026-04-25 12:26:58,252", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: teaching_plan"}
+{"asctime": "2026-04-25 12:26:58,252", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: teaching_plan"}
+{"asctime": "2026-04-25 12:26:58,254", "name": "utils.llm_helper", "levelname": "INFO", "message": "[critic] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:27:14,822", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] teaching_plan: \u2717 FAIL (score=20)"}
+{"asctime": "2026-04-25 12:27:14,822", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] teaching_plan: \u2717 FAIL (score=20)"}
+{"asctime": "2026-04-25 12:27:14,823", "name": "tools.critic", "levelname": "WARNING", "message": "[Critic] Critical issues: ['S\u1ed1 bu\u1ed5i h\u1ecdc kh\u00f4ng kh\u1edbp v\u1edbi outline cung c\u1ea5p (1 bu\u1ed5i trong outline nh\u01b0ng c\u00f3 15 bu\u1ed5i trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y)', 'Topic kh\u00f4ng kh\u1edbp v\u1edbi outline cung c\u1ea5p']"}
+{"asctime": "2026-04-25 12:27:14,823", "name": "tools.critic", "levelname": "WARNING", "message": "[Critic] Critical issues: ['S\u1ed1 bu\u1ed5i h\u1ecdc kh\u00f4ng kh\u1edbp v\u1edbi outline cung c\u1ea5p (1 bu\u1ed5i trong outline nh\u01b0ng c\u00f3 15 bu\u1ed5i trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y)', 'Topic kh\u00f4ng kh\u1edbp v\u1edbi outline cung c\u1ea5p']"}
+{"asctime": "2026-04-25 12:27:14,828", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=teaching_plan_done, retries={'teaching_plan': 1}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:27:14,828", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=teaching_plan_done, retries={'teaching_plan': 1}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:27:14,829", "name": "agents.supervisor", "levelname": "WARNING", "message": "Supervisor: Critic FAIL cho 'teaching_plan', retry l\u1ea7n 2/2"}
+{"asctime": "2026-04-25 12:27:14,829", "name": "agents.supervisor", "levelname": "WARNING", "message": "Supervisor: Critic FAIL cho 'teaching_plan', retry l\u1ea7n 2/2"}
+{"asctime": "2026-04-25 12:27:14,833", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ch\u1ebf \u0111\u1ed9=PRESERVE | outline_sessions=1 | credits=3"}
+{"asctime": "2026-04-25 12:27:14,833", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ch\u1ebf \u0111\u1ed9=PRESERVE | outline_sessions=1 | credits=3"}
+{"asctime": "2026-04-25 12:27:14,834", "name": "utils.llm_helper", "levelname": "INFO", "message": "[teaching_plan] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:27:18,398", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ho\u00e0n th\u00e0nh: 15 bu\u1ed5i | outline_preserved=True"}
+{"asctime": "2026-04-25 12:27:18,398", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ho\u00e0n th\u00e0nh: 15 bu\u1ed5i | outline_preserved=True"}
+{"asctime": "2026-04-25 12:27:18,401", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: teaching_plan"}
+{"asctime": "2026-04-25 12:27:18,401", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: teaching_plan"}
+{"asctime": "2026-04-25 12:27:18,402", "name": "utils.llm_helper", "levelname": "INFO", "message": "[critic] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:27:36,403", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] teaching_plan: \u2717 FAIL (score=20)"}
+{"asctime": "2026-04-25 12:27:36,403", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] teaching_plan: \u2717 FAIL (score=20)"}
+{"asctime": "2026-04-25 12:27:36,405", "name": "tools.critic", "levelname": "WARNING", "message": "[Critic] Critical issues: ['S\u1ed1 bu\u1ed5i h\u1ecdc kh\u00f4ng kh\u1edbp v\u1edbi outline cung c\u1ea5p (1 bu\u1ed5i trong outline nh\u01b0ng k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y c\u00f3 15 bu\u1ed5i)', 'Topic kh\u00f4ng kh\u1edbp v\u1edbi outline cung c\u1ea5p']"}
+{"asctime": "2026-04-25 12:27:36,405", "name": "tools.critic", "levelname": "WARNING", "message": "[Critic] Critical issues: ['S\u1ed1 bu\u1ed5i h\u1ecdc kh\u00f4ng kh\u1edbp v\u1edbi outline cung c\u1ea5p (1 bu\u1ed5i trong outline nh\u01b0ng k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y c\u00f3 15 bu\u1ed5i)', 'Topic kh\u00f4ng kh\u1edbp v\u1edbi outline cung c\u1ea5p']"}
+{"asctime": "2026-04-25 12:27:36,410", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=teaching_plan_done, retries={'teaching_plan': 2}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:27:36,410", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=teaching_plan_done, retries={'teaching_plan': 2}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:27:36,411", "name": "agents.supervisor", "levelname": "WARNING", "message": "Supervisor: \u0110\u00e3 retry 'teaching_plan' 2 l\u1ea7n, ti\u1ebfn t\u1edbi b\u01b0\u1edbc ti\u1ebfp theo d\u00f9 ch\u01b0a \u0111\u1ea1t"}
+{"asctime": "2026-04-25 12:27:36,411", "name": "agents.supervisor", "levelname": "WARNING", "message": "Supervisor: \u0110\u00e3 retry 'teaching_plan' 2 l\u1ea7n, ti\u1ebfn t\u1edbi b\u01b0\u1edbc ti\u1ebfp theo d\u00f9 ch\u01b0a \u0111\u1ea1t"}
+{"asctime": "2026-04-25 12:27:36,413", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: teaching_plan \u2713 \u2192 assessment"}
+{"asctime": "2026-04-25 12:27:36,413", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: teaching_plan \u2713 \u2192 assessment"}
+{"asctime": "2026-04-25 12:27:36,421", "name": "agents.assessment", "levelname": "INFO", "message": "[Assessment] Thi\u1ebft k\u1ebf \u0111\u00e1nh gi\u00e1 cho 4 CLO"}
+{"asctime": "2026-04-25 12:27:36,421", "name": "agents.assessment", "levelname": "INFO", "message": "[Assessment] Thi\u1ebft k\u1ebf \u0111\u00e1nh gi\u00e1 cho 4 CLO"}
+{"asctime": "2026-04-25 12:27:36,423", "name": "utils.llm_helper", "levelname": "INFO", "message": "[assessment] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:27:41,957", "name": "agents.assessment", "levelname": "INFO", "message": "[Assessment] Ho\u00e0n th\u00e0nh: 4 c\u1ea5u ph\u1ea7n \u0111\u00e1nh gi\u00e1"}
+{"asctime": "2026-04-25 12:27:41,957", "name": "agents.assessment", "levelname": "INFO", "message": "[Assessment] Ho\u00e0n th\u00e0nh: 4 c\u1ea5u ph\u1ea7n \u0111\u00e1nh gi\u00e1"}
+{"asctime": "2026-04-25 12:27:41,960", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: assessment"}
+{"asctime": "2026-04-25 12:27:41,960", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: assessment"}
+{"asctime": "2026-04-25 12:27:41,962", "name": "utils.llm_helper", "levelname": "INFO", "message": "[critic] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:27:58,523", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] assessment: \u2713 PASS (score=90)"}
+{"asctime": "2026-04-25 12:27:58,523", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] assessment: \u2713 PASS (score=90)"}
+{"asctime": "2026-04-25 12:27:58,527", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=assessment_done, retries={'teaching_plan': 2}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:27:58,527", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=assessment_done, retries={'teaching_plan': 2}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:27:58,529", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: assessment \u2713 \u2192 final_validator"}
+{"asctime": "2026-04-25 12:27:58,529", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: assessment \u2713 \u2192 final_validator"}
+{"asctime": "2026-04-25 12:27:58,540", "name": "agents.validator", "levelname": "INFO", "message": "[Validator] B\u1eaft \u0111\u1ea7u ki\u1ec3m ch\u1ee9ng t\u1ed5ng th\u1ec3 DCCT"}
+{"asctime": "2026-04-25 12:27:58,540", "name": "agents.validator", "levelname": "INFO", "message": "[Validator] B\u1eaft \u0111\u1ea7u ki\u1ec3m ch\u1ee9ng t\u1ed5ng th\u1ec3 DCCT"}
+{"asctime": "2026-04-25 12:27:58,544", "name": "utils.llm_helper", "levelname": "INFO", "message": "[validator] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:28:05,837", "name": "agents.validator", "levelname": "INFO", "message": "[Validator] Ho\u00e0n th\u00e0nh: confidence=75.0%, status=needs_revision"}
+{"asctime": "2026-04-25 12:28:05,837", "name": "agents.validator", "levelname": "INFO", "message": "[Validator] Ho\u00e0n th\u00e0nh: confidence=75.0%, status=needs_revision"}
+{"asctime": "2026-04-25 12:28:05,845", "name": "tools.preview", "levelname": "INFO", "message": "[Preview] T\u1ea1o preview DCCT"}
+{"asctime": "2026-04-25 12:28:05,845", "name": "tools.preview", "levelname": "INFO", "message": "[Preview] T\u1ea1o preview DCCT"}
+{"asctime": "2026-04-25 12:28:05,872", "name": "export.word_generator", "levelname": "INFO", "message": "[Export] B\u1eaft \u0111\u1ea7u xu\u1ea5t file Word DCCT"}
+{"asctime": "2026-04-25 12:28:05,872", "name": "export.word_generator", "levelname": "INFO", "message": "[Export] B\u1eaft \u0111\u1ea7u xu\u1ea5t file Word DCCT"}
+{"asctime": "2026-04-25 12:28:08,827", "name": "export.word_generator", "levelname": "INFO", "message": "[Export] File xu\u1ea5t th\u00e0nh c\u00f4ng: F:\\OBE_AGent_DCCT\\AI_Agent_OBE_IN_DNU\\output\\DCCT_FIT4005_20260425_122808.docx"}
+{"asctime": "2026-04-25 12:28:08,827", "name": "export.word_generator", "levelname": "INFO", "message": "[Export] File xu\u1ea5t th\u00e0nh c\u00f4ng: F:\\OBE_AGent_DCCT\\AI_Agent_OBE_IN_DNU\\output\\DCCT_FIT4005_20260425_122808.docx"}
+{"asctime": "2026-04-25 12:28:08,834", "name": "rag.dcct_store", "levelname": "INFO", "message": "[DCCTStore] Indexed 30 chunks cho FIT4005"}
+{"asctime": "2026-04-25 12:28:08,834", "name": "rag.dcct_store", "levelname": "INFO", "message": "[DCCTStore] Indexed 30 chunks cho FIT4005"}
+{"asctime": "2026-04-25 12:28:08,835", "name": "export.word_generator", "levelname": "INFO", "message": "[Export] \u0110CCT indexed v\u00e0o Q&A store: 30 chunks cho FIT4005"}
+{"asctime": "2026-04-25 12:28:08,835", "name": "export.word_generator", "levelname": "INFO", "message": "[Export] \u0110CCT indexed v\u00e0o Q&A store: 30 chunks cho FIT4005"}
+{"asctime": "2026-04-25 12:53:08,245", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=understand, retries={}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:53:08,245", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=understand, retries={}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:53:08,256", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor \u2192 understand "}
+{"asctime": "2026-04-25 12:53:08,256", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor \u2192 understand "}
+{"asctime": "2026-04-25 12:53:08,305", "name": "utils.outline_parser", "levelname": "WARNING", "message": "[OutlineParser] Kh\u00f4ng th\u1ec3 parse c\u1ea5u tr\u00fac r\u00f5 r\u00e0ng \u2014 d\u00f9ng raw_text fallback. LLM s\u1ebd x\u1eed l\u00fd tr\u1ef1c ti\u1ebfp. N\u00ean cung c\u1ea5p outline d\u1ea1ng b\u1ea3ng ho\u1eb7c danh s\u00e1ch \u0111\u00e1nh s\u1ed1."}
+{"asctime": "2026-04-25 12:53:08,308", "name": "agents.understand", "levelname": "INFO", "message": "[Understand] Ch\u1ebf \u0111\u1ed9 REVERSE-MAPPING | parse_mode=raw_text | 1 bu\u1ed5i | c\u1ea3nh b\u00e1o=1"}
+{"asctime": "2026-04-25 12:53:08,308", "name": "agents.understand", "levelname": "INFO", "message": "[Understand] Ch\u1ebf \u0111\u1ed9 REVERSE-MAPPING | parse_mode=raw_text | 1 bu\u1ed5i | c\u1ea3nh b\u00e1o=1"}
+{"asctime": "2026-04-25 12:53:08,310", "name": "agents.understand", "levelname": "WARNING", "message": "[Understand/Parser] Kh\u00f4ng nh\u1eadn ra \u0111\u1ecbnh d\u1ea1ng outline (b\u1ea3ng ho\u1eb7c danh s\u00e1ch \u0111\u00e1nh s\u1ed1). Outline \u0111\u01b0\u1ee3c chuy\u1ec3n sang d\u1ea1ng raw text \u0111\u1ec3 LLM x\u1eed l\u00fd. K\u1ebft qu\u1ea3 c\u00f3 th\u1ec3 k\u00e9m ch\u00ednh x\u00e1c h\u01a1n \u2014 n\u00ean d\u00f9ng b\u1ea3ng Markdown ho\u1eb7c danh s\u00e1ch \u0111\u00e1nh s\u1ed1."}
+{"asctime": "2026-04-25 12:53:08,310", "name": "agents.understand", "levelname": "WARNING", "message": "[Understand/Parser] Kh\u00f4ng nh\u1eadn ra \u0111\u1ecbnh d\u1ea1ng outline (b\u1ea3ng ho\u1eb7c danh s\u00e1ch \u0111\u00e1nh s\u1ed1). Outline \u0111\u01b0\u1ee3c chuy\u1ec3n sang d\u1ea1ng raw text \u0111\u1ec3 LLM x\u1eed l\u00fd. K\u1ebft qu\u1ea3 c\u00f3 th\u1ec3 k\u00e9m ch\u00ednh x\u00e1c h\u01a1n \u2014 n\u00ean d\u00f9ng b\u1ea3ng Markdown ho\u1eb7c danh s\u00e1ch \u0111\u00e1nh s\u1ed1."}
+{"asctime": "2026-04-25 12:53:08,315", "name": "utils.llm_helper", "levelname": "INFO", "message": "[understand] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:53:12,545", "name": "agents.understand", "levelname": "INFO", "message": "[Understand] Ho\u00e0n th\u00e0nh: 5 CLO, outline_provided=True, sessions=1, session_clo_map=9 entries"}
+{"asctime": "2026-04-25 12:53:12,545", "name": "agents.understand", "levelname": "INFO", "message": "[Understand] Ho\u00e0n th\u00e0nh: 5 CLO, outline_provided=True, sessions=1, session_clo_map=9 entries"}
+{"asctime": "2026-04-25 12:53:12,555", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: understand"}
+{"asctime": "2026-04-25 12:53:12,555", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: understand"}
+{"asctime": "2026-04-25 12:53:12,565", "name": "utils.llm_helper", "levelname": "INFO", "message": "[critic] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:53:14,530", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] understand: \u2713 PASS (score=90)"}
+{"asctime": "2026-04-25 12:53:14,530", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] understand: \u2713 PASS (score=90)"}
+{"asctime": "2026-04-25 12:53:14,532", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=understand_done, retries={}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:53:14,532", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=understand_done, retries={}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:53:14,532", "name": "agents.supervisor", "levelname": "INFO", "message": "[Supervisor] Lu\u1ed3ng x\u00e1c \u0111\u1ecbnh: REVERSE-MAPPING"}
+{"asctime": "2026-04-25 12:53:14,532", "name": "agents.supervisor", "levelname": "INFO", "message": "[Supervisor] Lu\u1ed3ng x\u00e1c \u0111\u1ecbnh: REVERSE-MAPPING"}
+{"asctime": "2026-04-25 12:53:14,533", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: understand \u2713 \u2192 mapping"}
+{"asctime": "2026-04-25 12:53:14,533", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: understand \u2713 \u2192 mapping"}
+{"asctime": "2026-04-25 12:53:14,538", "name": "agents.mapping", "levelname": "INFO", "message": "[Mapping] B\u1eaft \u0111\u1ea7u \u00e1nh x\u1ea1 5 CLO"}
+{"asctime": "2026-04-25 12:53:14,538", "name": "agents.mapping", "levelname": "INFO", "message": "[Mapping] B\u1eaft \u0111\u1ea7u \u00e1nh x\u1ea1 5 CLO"}
+{"asctime": "2026-04-25 12:53:14,539", "name": "utils.llm_helper", "levelname": "INFO", "message": "[mapping] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:53:18,466", "name": "agents.mapping", "levelname": "INFO", "message": "[Mapping] Ho\u00e0n th\u00e0nh: 10 \u00e1nh x\u1ea1 CLO-PI-PLO"}
+{"asctime": "2026-04-25 12:53:18,466", "name": "agents.mapping", "levelname": "INFO", "message": "[Mapping] Ho\u00e0n th\u00e0nh: 10 \u00e1nh x\u1ea1 CLO-PI-PLO"}
+{"asctime": "2026-04-25 12:53:18,470", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: mapping"}
+{"asctime": "2026-04-25 12:53:18,470", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: mapping"}
+{"asctime": "2026-04-25 12:53:18,473", "name": "utils.llm_helper", "levelname": "INFO", "message": "[critic] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:53:20,436", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] mapping: \u2713 PASS (score=95)"}
+{"asctime": "2026-04-25 12:53:20,436", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] mapping: \u2713 PASS (score=95)"}
+{"asctime": "2026-04-25 12:53:20,438", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=mapping_done, retries={}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:53:20,438", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=mapping_done, retries={}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:53:20,438", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: mapping \u2713 \u2192 teaching_plan"}
+{"asctime": "2026-04-25 12:53:20,438", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: mapping \u2713 \u2192 teaching_plan"}
+{"asctime": "2026-04-25 12:53:20,441", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ch\u1ebf \u0111\u1ed9=PRESERVE | outline_sessions=1 | credits=3"}
+{"asctime": "2026-04-25 12:53:20,441", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ch\u1ebf \u0111\u1ed9=PRESERVE | outline_sessions=1 | credits=3"}
+{"asctime": "2026-04-25 12:53:20,443", "name": "utils.llm_helper", "levelname": "INFO", "message": "[teaching_plan] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:53:24,208", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ho\u00e0n th\u00e0nh: 9 bu\u1ed5i | outline_preserved=True"}
+{"asctime": "2026-04-25 12:53:24,208", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ho\u00e0n th\u00e0nh: 9 bu\u1ed5i | outline_preserved=True"}
+{"asctime": "2026-04-25 12:53:24,213", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: teaching_plan"}
+{"asctime": "2026-04-25 12:53:24,213", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: teaching_plan"}
+{"asctime": "2026-04-25 12:53:24,216", "name": "utils.llm_helper", "levelname": "INFO", "message": "[critic] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:53:25,951", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] teaching_plan: \u2717 FAIL (score=0)"}
+{"asctime": "2026-04-25 12:53:25,951", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] teaching_plan: \u2717 FAIL (score=0)"}
+{"asctime": "2026-04-25 12:53:25,953", "name": "tools.critic", "levelname": "WARNING", "message": "[Critic] Critical issues: ['S\u1ed1 bu\u1ed5i h\u1ecdc trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y (9) kh\u00f4ng kh\u1edbp v\u1edbi s\u1ed1 bu\u1ed5i h\u1ecdc trong outline (1)', 'N\u1ed9i dung c\u00e1c bu\u1ed5i h\u1ecdc trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y kh\u00f4ng kh\u1edbp v\u1edbi n\u1ed9i dung trong outline']"}
+{"asctime": "2026-04-25 12:53:25,953", "name": "tools.critic", "levelname": "WARNING", "message": "[Critic] Critical issues: ['S\u1ed1 bu\u1ed5i h\u1ecdc trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y (9) kh\u00f4ng kh\u1edbp v\u1edbi s\u1ed1 bu\u1ed5i h\u1ecdc trong outline (1)', 'N\u1ed9i dung c\u00e1c bu\u1ed5i h\u1ecdc trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y kh\u00f4ng kh\u1edbp v\u1edbi n\u1ed9i dung trong outline']"}
+{"asctime": "2026-04-25 12:53:25,956", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=teaching_plan_done, retries={}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:53:25,956", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=teaching_plan_done, retries={}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:53:25,958", "name": "agents.supervisor", "levelname": "WARNING", "message": "Supervisor: Critic FAIL cho 'teaching_plan', retry l\u1ea7n 1/2"}
+{"asctime": "2026-04-25 12:53:25,958", "name": "agents.supervisor", "levelname": "WARNING", "message": "Supervisor: Critic FAIL cho 'teaching_plan', retry l\u1ea7n 1/2"}
+{"asctime": "2026-04-25 12:53:25,963", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ch\u1ebf \u0111\u1ed9=PRESERVE | outline_sessions=1 | credits=3"}
+{"asctime": "2026-04-25 12:53:25,963", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ch\u1ebf \u0111\u1ed9=PRESERVE | outline_sessions=1 | credits=3"}
+{"asctime": "2026-04-25 12:53:25,964", "name": "utils.llm_helper", "levelname": "INFO", "message": "[teaching_plan] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:53:29,604", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ho\u00e0n th\u00e0nh: 9 bu\u1ed5i | outline_preserved=True"}
+{"asctime": "2026-04-25 12:53:29,604", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ho\u00e0n th\u00e0nh: 9 bu\u1ed5i | outline_preserved=True"}
+{"asctime": "2026-04-25 12:53:29,608", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: teaching_plan"}
+{"asctime": "2026-04-25 12:53:29,608", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: teaching_plan"}
+{"asctime": "2026-04-25 12:53:29,610", "name": "utils.llm_helper", "levelname": "INFO", "message": "[critic] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:53:45,975", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] teaching_plan: \u2717 FAIL (score=0)"}
+{"asctime": "2026-04-25 12:53:45,975", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] teaching_plan: \u2717 FAIL (score=0)"}
+{"asctime": "2026-04-25 12:53:45,977", "name": "tools.critic", "levelname": "WARNING", "message": "[Critic] Critical issues: ['S\u1ed1 bu\u1ed5i h\u1ecdc kh\u00f4ng kh\u1edbp v\u1edbi outline cung c\u1ea5p (1 bu\u1ed5i trong outline nh\u01b0ng c\u00f3 9 bu\u1ed5i trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y)', 'Topic kh\u00f4ng kh\u1edbp v\u1edbi outline cung c\u1ea5p']"}
+{"asctime": "2026-04-25 12:53:45,977", "name": "tools.critic", "levelname": "WARNING", "message": "[Critic] Critical issues: ['S\u1ed1 bu\u1ed5i h\u1ecdc kh\u00f4ng kh\u1edbp v\u1edbi outline cung c\u1ea5p (1 bu\u1ed5i trong outline nh\u01b0ng c\u00f3 9 bu\u1ed5i trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y)', 'Topic kh\u00f4ng kh\u1edbp v\u1edbi outline cung c\u1ea5p']"}
+{"asctime": "2026-04-25 12:53:45,985", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=teaching_plan_done, retries={'teaching_plan': 1}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:53:45,985", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=teaching_plan_done, retries={'teaching_plan': 1}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:53:45,985", "name": "agents.supervisor", "levelname": "WARNING", "message": "Supervisor: Critic FAIL cho 'teaching_plan', retry l\u1ea7n 2/2"}
+{"asctime": "2026-04-25 12:53:45,985", "name": "agents.supervisor", "levelname": "WARNING", "message": "Supervisor: Critic FAIL cho 'teaching_plan', retry l\u1ea7n 2/2"}
+{"asctime": "2026-04-25 12:53:45,992", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ch\u1ebf \u0111\u1ed9=PRESERVE | outline_sessions=1 | credits=3"}
+{"asctime": "2026-04-25 12:53:45,992", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ch\u1ebf \u0111\u1ed9=PRESERVE | outline_sessions=1 | credits=3"}
+{"asctime": "2026-04-25 12:53:45,993", "name": "utils.llm_helper", "levelname": "INFO", "message": "[teaching_plan] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:53:56,484", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ho\u00e0n th\u00e0nh: 9 bu\u1ed5i | outline_preserved=True"}
+{"asctime": "2026-04-25 12:53:56,484", "name": "agents.teaching_plan", "levelname": "INFO", "message": "[TeachingPlan] Ho\u00e0n th\u00e0nh: 9 bu\u1ed5i | outline_preserved=True"}
+{"asctime": "2026-04-25 12:53:56,487", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: teaching_plan"}
+{"asctime": "2026-04-25 12:53:56,487", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: teaching_plan"}
+{"asctime": "2026-04-25 12:53:56,490", "name": "utils.llm_helper", "levelname": "INFO", "message": "[critic] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:54:08,690", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] teaching_plan: \u2717 FAIL (score=0)"}
+{"asctime": "2026-04-25 12:54:08,690", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] teaching_plan: \u2717 FAIL (score=0)"}
+{"asctime": "2026-04-25 12:54:08,691", "name": "tools.critic", "levelname": "WARNING", "message": "[Critic] Critical issues: ['S\u1ed1 bu\u1ed5i h\u1ecdc trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y (9) kh\u00f4ng kh\u1edbp v\u1edbi s\u1ed1 bu\u1ed5i h\u1ecdc trong outline (1)', 'N\u1ed9i dung c\u00e1c bu\u1ed5i h\u1ecdc trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y kh\u00f4ng kh\u1edbp v\u1edbi n\u1ed9i dung trong outline']"}
+{"asctime": "2026-04-25 12:54:08,691", "name": "tools.critic", "levelname": "WARNING", "message": "[Critic] Critical issues: ['S\u1ed1 bu\u1ed5i h\u1ecdc trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y (9) kh\u00f4ng kh\u1edbp v\u1edbi s\u1ed1 bu\u1ed5i h\u1ecdc trong outline (1)', 'N\u1ed9i dung c\u00e1c bu\u1ed5i h\u1ecdc trong k\u1ebf ho\u1ea1ch gi\u1ea3ng d\u1ea1y kh\u00f4ng kh\u1edbp v\u1edbi n\u1ed9i dung trong outline']"}
+{"asctime": "2026-04-25 12:54:08,693", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=teaching_plan_done, retries={'teaching_plan': 2}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:54:08,693", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=teaching_plan_done, retries={'teaching_plan': 2}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:54:08,694", "name": "agents.supervisor", "levelname": "WARNING", "message": "Supervisor: \u0110\u00e3 retry 'teaching_plan' 2 l\u1ea7n, ti\u1ebfn t\u1edbi b\u01b0\u1edbc ti\u1ebfp theo d\u00f9 ch\u01b0a \u0111\u1ea1t"}
+{"asctime": "2026-04-25 12:54:08,694", "name": "agents.supervisor", "levelname": "WARNING", "message": "Supervisor: \u0110\u00e3 retry 'teaching_plan' 2 l\u1ea7n, ti\u1ebfn t\u1edbi b\u01b0\u1edbc ti\u1ebfp theo d\u00f9 ch\u01b0a \u0111\u1ea1t"}
+{"asctime": "2026-04-25 12:54:08,695", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: teaching_plan \u2713 \u2192 assessment"}
+{"asctime": "2026-04-25 12:54:08,695", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: teaching_plan \u2713 \u2192 assessment"}
+{"asctime": "2026-04-25 12:54:08,698", "name": "agents.assessment", "levelname": "INFO", "message": "[Assessment] Thi\u1ebft k\u1ebf \u0111\u00e1nh gi\u00e1 cho 5 CLO"}
+{"asctime": "2026-04-25 12:54:08,698", "name": "agents.assessment", "levelname": "INFO", "message": "[Assessment] Thi\u1ebft k\u1ebf \u0111\u00e1nh gi\u00e1 cho 5 CLO"}
+{"asctime": "2026-04-25 12:54:08,699", "name": "utils.llm_helper", "levelname": "INFO", "message": "[assessment] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:54:13,794", "name": "agents.assessment", "levelname": "INFO", "message": "[Assessment] Ho\u00e0n th\u00e0nh: 4 c\u1ea5u ph\u1ea7n \u0111\u00e1nh gi\u00e1"}
+{"asctime": "2026-04-25 12:54:13,794", "name": "agents.assessment", "levelname": "INFO", "message": "[Assessment] Ho\u00e0n th\u00e0nh: 4 c\u1ea5u ph\u1ea7n \u0111\u00e1nh gi\u00e1"}
+{"asctime": "2026-04-25 12:54:13,796", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: assessment"}
+{"asctime": "2026-04-25 12:54:13,796", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] \u0110ang review b\u01b0\u1edbc: assessment"}
+{"asctime": "2026-04-25 12:54:13,799", "name": "utils.llm_helper", "levelname": "INFO", "message": "[critic] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:54:27,032", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] assessment: \u2713 PASS (score=90)"}
+{"asctime": "2026-04-25 12:54:27,032", "name": "tools.critic", "levelname": "INFO", "message": "[Critic] assessment: \u2713 PASS (score=90)"}
+{"asctime": "2026-04-25 12:54:27,036", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=assessment_done, retries={'teaching_plan': 2}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:54:27,036", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: current_step=assessment_done, retries={'teaching_plan': 2}, outline_provided=True, sessions=1"}
+{"asctime": "2026-04-25 12:54:27,038", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: assessment \u2713 \u2192 final_validator"}
+{"asctime": "2026-04-25 12:54:27,038", "name": "agents.supervisor", "levelname": "INFO", "message": "Supervisor: assessment \u2713 \u2192 final_validator"}
+{"asctime": "2026-04-25 12:54:27,043", "name": "agents.validator", "levelname": "INFO", "message": "[Validator] B\u1eaft \u0111\u1ea7u ki\u1ec3m ch\u1ee9ng t\u1ed5ng th\u1ec3 DCCT"}
+{"asctime": "2026-04-25 12:54:27,043", "name": "agents.validator", "levelname": "INFO", "message": "[Validator] B\u1eaft \u0111\u1ea7u ki\u1ec3m ch\u1ee9ng t\u1ed5ng th\u1ec3 DCCT"}
+{"asctime": "2026-04-25 12:54:27,045", "name": "utils.llm_helper", "levelname": "INFO", "message": "[validator] S\u1eed d\u1ee5ng Groq: llama-3.3-70b-versatile"}
+{"asctime": "2026-04-25 12:54:43,788", "name": "agents.validator", "levelname": "INFO", "message": "[Validator] Ho\u00e0n th\u00e0nh: confidence=85.0%, status=good"}
+{"asctime": "2026-04-25 12:54:43,788", "name": "agents.validator", "levelname": "INFO", "message": "[Validator] Ho\u00e0n th\u00e0nh: confidence=85.0%, status=good"}
+{"asctime": "2026-04-25 12:54:43,791", "name": "tools.preview", "levelname": "INFO", "message": "[Preview] T\u1ea1o preview DCCT"}
+{"asctime": "2026-04-25 12:54:43,791", "name": "tools.preview", "levelname": "INFO", "message": "[Preview] T\u1ea1o preview DCCT"}
+{"asctime": "2026-04-25 12:54:43,800", "name": "export.word_generator", "levelname": "INFO", "message": "[Export] B\u1eaft \u0111\u1ea7u xu\u1ea5t file Word DCCT"}
+{"asctime": "2026-04-25 12:54:43,800", "name": "export.word_generator", "levelname": "INFO", "message": "[Export] B\u1eaft \u0111\u1ea7u xu\u1ea5t file Word DCCT"}
+{"asctime": "2026-04-25 12:54:44,509", "name": "export.word_generator", "levelname": "INFO", "message": "[Export] File xu\u1ea5t th\u00e0nh c\u00f4ng: F:\\OBE_AGent_DCCT\\AI_Agent_OBE_IN_DNU\\output\\DCCT_CSC4007_20260425_125444.docx"}
+{"asctime": "2026-04-25 12:54:44,509", "name": "export.word_generator", "levelname": "INFO", "message": "[Export] File xu\u1ea5t th\u00e0nh c\u00f4ng: F:\\OBE_AGent_DCCT\\AI_Agent_OBE_IN_DNU\\output\\DCCT_CSC4007_20260425_125444.docx"}
+{"asctime": "2026-04-25 12:54:44,513", "name": "rag.dcct_store", "levelname": "INFO", "message": "[DCCTStore] Indexed 25 chunks cho CSC4007"}
+{"asctime": "2026-04-25 12:54:44,513", "name": "rag.dcct_store", "levelname": "INFO", "message": "[DCCTStore] Indexed 25 chunks cho CSC4007"}
+{"asctime": "2026-04-25 12:54:44,514", "name": "export.word_generator", "levelname": "INFO", "message": "[Export] \u0110CCT indexed v\u00e0o Q&A store: 25 chunks cho CSC4007"}
+{"asctime": "2026-04-25 12:54:44,514", "name": "export.word_generator", "levelname": "INFO", "message": "[Export] \u0110CCT indexed v\u00e0o Q&A store: 25 chunks cho CSC4007"}
+{"asctime": "2026-04-25 12:54:45,090", "name": "rag.dcct_store", "levelname": "INFO", "message": "[DCCTStore] Indexed 25 chunks cho CSC4007"}
+{"asctime": "2026-04-25 12:54:45,090", "name": "rag.dcct_store", "levelname": "INFO", "message": "[DCCTStore] Indexed 25 chunks cho CSC4007"}
+{"asctime": "2026-04-25 22:15:39,284", "name": "rag.dcct_store", "levelname": "INFO", "message": "[DCCTStore] Indexed 25 chunks cho CSC4007"}
+{"asctime": "2026-04-25 22:15:39,284", "name": "rag.dcct_store", "levelname": "INFO", "message": "[DCCTStore] Indexed 25 chunks cho CSC4007"}

@@ -3,14 +3,57 @@ Streamlit Frontend - Giao diện người dùng cho OBE DCCT Agent
 """
 
 import asyncio
+import json
 import os
 import sys
+from datetime import datetime
 from pathlib import Path
 
 # Đảm bảo có thể import từ project root
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import streamlit as st
+
+# ============================================================
+# HISTORY HELPERS (lưu/đọc lịch sử DCCT vào disk)
+# ============================================================
+
+_HISTORY_FILE = Path(__file__).parent.parent / "output" / "dcct_history.json"
+
+
+def _load_history() -> list:
+    """Đọc danh sách DCCT đã tạo từ file JSON."""
+    if _HISTORY_FILE.exists():
+        try:
+            return json.loads(_HISTORY_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            return []
+    return []
+
+
+def _save_to_history(result: dict) -> None:
+    """Thêm/cập nhật một DCCT vào file JSON lịch sử."""
+    try:
+        history = _load_history()
+        course_code = result.get("course_code", "UNKNOWN")
+        entry = {
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "course_code": course_code,
+            "course_name": result.get("course_name", ""),
+            "credits": result.get("credits", ""),
+            "result": result,
+        }
+        # Thay thế entry cũ nếu cùng mã học phần
+        history = [h for h in history if h.get("course_code") != course_code]
+        history.insert(0, entry)   # mới nhất lên đầu
+        history = history[:30]     # giữ tối đa 30 bản
+        _HISTORY_FILE.parent.mkdir(parents=True, exist_ok=True)
+        _HISTORY_FILE.write_text(
+            json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+    except Exception:
+        pass  # history là tính năng phụ, không để crash app
+
 
 # ============================================================
 # PAGE CONFIG
@@ -89,6 +132,28 @@ with st.sidebar:
     st.caption("📚 OBE / AUN-QA Standard")
     st.caption("🏫 Khoa CNTT - ĐH Đại Nam")
 
+    # ── Lịch sử DCCT ─────────────────────────────────────────
+    st.divider()
+    st.markdown("**📋 Lịch sử DCCT đã tạo:**")
+    _history = _load_history()
+    if _history:
+        for _idx, _h in enumerate(_history):
+            _label = (
+                f"[{_h['timestamp']}]\n"
+                f"{_h['course_code']} – {_h.get('course_name', '')[:22]}"
+            )
+            if st.button(_label, key=f"hist_{_idx}", use_container_width=True):
+                st.session_state["result"] = _h["result"]
+                st.session_state["course_code"] = _h["course_code"]
+                st.session_state["course_name"] = _h.get("course_name", "")
+                st.rerun()
+        if st.button("🗑️ Xóa toàn bộ lịch sử", use_container_width=True, key="clear_hist"):
+            if _HISTORY_FILE.exists():
+                _HISTORY_FILE.unlink()
+            st.rerun()
+    else:
+        st.caption("Chưa có DCCT nào được lưu.")
+
 # ============================================================
 # MAIN HEADER
 # ============================================================
@@ -134,6 +199,56 @@ with st.form("course_input_form", clear_on_submit=False):
             index=0,
         )
 
+    program_col1, program_col2 = st.columns([1, 3])
+    with program_col1:
+        program = st.selectbox(
+            "Ngành / Chương trình đào tạo *",
+            options=["KHMT", "HTTT", "GENERIC"],
+            index=0,
+            format_func=lambda x: {
+                "KHMT": "💻 Khoa học Máy tính (KHMT)",
+                "HTTT": "📊 Hệ thống Thông tin (HTTT)",
+                "GENERIC": "⚙️ Chung (Khoa CNTT)",
+            }[x],
+            help="Chọn ngành để dùng đúng bộ PLO-PI của ngành đó khi ánh xạ CLO",
+        )
+    with program_col2:
+        _plo_hints = {
+            "KHMT": "PLO-CS01 – CS08 | PI định hướng: Đạo đức AI, Lập luận, Thuật toán, Thực nghiệm, Học máy, Kiến trúc, Giao tiếp, Tự học",
+            "HTTT": "PLO-IS01 – IS08 | PI định hướng: Tuân thủ, Kỹ thuật, Yêu cầu, Quy trình, Dữ liệu, BI/KPI, Tích hợp, Dự án",
+            "GENERIC": "PLO1 – PLO10 | Bộ chuẩn chung cho toàn Khoa CNTT",
+        }
+        st.info(_plo_hints.get(program, ""), icon="🎯")
+
+    _sc1, _sc2 = st.columns([2, 2])
+    with _sc1:
+        session_structure = st.selectbox(
+            "Cấu trúc mỗi buổi học",
+            options=[
+                "5 tiết (3 LT + 2 TH)",
+                "4 tiết (3 LT + 1 TH)",
+                "4 tiết (2 LT + 2 TH)",
+                "3 tiết (2 LT + 1 TH)",
+                "2 tiết (2 LT)",
+            ],
+            index=0,
+            help="Số tiết mỗi buổi — 1 tuần = 1 buổi cho học phần này",
+        )
+    _split_map = {
+        "5 tiết (3 LT + 2 TH)": (5, 3),
+        "4 tiết (3 LT + 1 TH)": (4, 3),
+        "4 tiết (2 LT + 2 TH)": (4, 2),
+        "3 tiết (2 LT + 1 TH)": (3, 2),
+        "2 tiết (2 LT)": (2, 2),
+    }
+    _pps, _tps = _split_map.get(session_structure, (5, 3))
+    with _sc2:
+        st.info(
+            f"📊 {credits} TC × 15 tiết = {int(credits)*15} tiết "
+            f"÷ {_pps} tiết/buổi = **{int(credits)*15//_pps} buổi** ({int(credits)*15//_pps} tuần)",
+            icon="📅",
+        )
+
     summary = st.text_area(
         "Mô tả / Tóm tắt học phần *",
         placeholder="Nhập mô tả ngắn về nội dung, mục tiêu học phần...",
@@ -163,7 +278,8 @@ with st.form("course_input_form", clear_on_submit=False):
 # RUN AGENT
 # ============================================================
 
-def run_agent_sync(course_code, course_name, credits, summary, outline=None):
+def run_agent_sync(course_code, course_name, credits, summary, outline=None, program=None,
+                   periods_per_session=5, theory_per_session=3):
     """Wrapper đồng bộ để chạy async agent trong Streamlit."""
     from config import validate_config
 
@@ -179,6 +295,10 @@ def run_agent_sync(course_code, course_name, credits, summary, outline=None):
         "credits": credits,
         "summary": summary,
         "outline": outline,
+        "program": program,          # HTTT | KHMT | GENERIC
+        "periods_per_session": periods_per_session,
+        "theory_per_session":  theory_per_session,
+        "irma_matrix": None,         # giảng viên chưa nhập IRMA tại bước này
         "extracted_info": {},
         "clo_list": [],
         "mapping_matrix": [],
@@ -254,7 +374,10 @@ if submitted or demo_btn:
 
             result, error = run_agent_sync(
                 course_code, course_name, credits, summary,
-                outline if outline else None
+                outline if outline else None,
+                program=program,
+                periods_per_session=_pps,
+                theory_per_session=_tps,
             )
 
         progress_container.empty()
@@ -266,206 +389,212 @@ if submitted or demo_btn:
             st.session_state["result"] = result
             st.session_state["course_code"] = course_code
             st.session_state["course_name"] = course_name
+            _save_to_history(result)
 
 
 # ============================================================
-# DISPLAY RESULTS
+# UPLOAD DCCT CŨ — Tái chuẩn hóa theo OBE
 # ============================================================
 
-if "result" in st.session_state:
-    result = st.session_state["result"]
-    clo_list = result.get("clo_list", [])
-    mapping_matrix = result.get("mapping_matrix", [])
-    teaching_plan = result.get("teaching_plan", [])
-    assessment_plan = result.get("assessment_plan", [])
-    confidence = result.get("confidence_score", 0)
-    errors = result.get("errors", [])
+st.divider()
+st.markdown("### 📂 Hoặc: Tải lên DCCT cũ để tái chuẩn hóa theo chuẩn OBE")
 
-    st.divider()
-    st.markdown("## 📊 Kết quả DCCT")
+with st.expander(
+    "📤 Mở rộng để tải lên file đề cương cũ (.docx / .pdf / .txt / .md)",
+    expanded=st.session_state.get("_upload_expander_open", False),
+):
+    st.caption(
+        "Tải lên đề cương chi tiết học phần hiện có. "
+        "Hệ thống sẽ trích xuất thông tin, sau đó bạn chỉnh sửa và nhấn "
+        "**Tái tạo DCCT** để xây dựng lại theo chuẩn OBE/AUN-QA."
+    )
 
-    # Metrics overview
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.metric("🎯 Confidence Score", f"{confidence:.1f}%",
-                  delta="Tốt" if confidence >= 70 else "Cần cải thiện")
-    with col2:
-        st.metric("📚 Số CLO", len(clo_list))
-    with col3:
-        st.metric("📅 Số buổi học", len(teaching_plan))
-    with col4:
-        st.metric("📊 Cấu phần đánh giá", len(assessment_plan))
+    uploaded_file = st.file_uploader(
+        "Chọn file đề cương",
+        type=["docx", "pdf", "txt", "md"],
+        label_visibility="collapsed",
+        key="dcct_upload_widget",
+    )
 
-    # Errors/warnings
-    if errors:
-        with st.expander(f"⚠️ Cảnh báo ({len(errors)})", expanded=False):
-            for e in errors:
-                st.warning(e)
+    if uploaded_file:
+        parse_col, _ = st.columns([1, 3])
+        with parse_col:
+            parse_clicked = st.button(
+                "🔍 Trích xuất thông tin từ file",
+                use_container_width=True,
+                key="btn_parse_upload",
+            )
 
-    # Tabs for different sections
-    tabs = st.tabs(["🎯 CLO", "🗺️ Mapping", "📅 Kế hoạch giảng dạy", "📊 Đánh giá", "📄 Export", "💬 Hỏi đáp ĐCCT"])
+        if parse_clicked:
+            with st.spinner("Đang phân tích file..."):
+                try:
+                    from utils.dcct_parser import extract_text_from_bytes, parse_dcct_info
 
-    # ---- Tab 1: CLO ----
-    with tabs[0]:
-        st.markdown("### Chuẩn đầu ra học phần (CLO)")
-        if clo_list:
-            for clo in clo_list:
-                with st.expander(f"**{clo['code']}** - {clo['description'][:60]}..."):
-                    col_a, col_b = st.columns(2)
-                    with col_a:
-                        st.markdown(f"**Mô tả đầy đủ:** {clo['description']}")
-                        st.markdown(f"**Động từ Bloom:** `{clo.get('bloom_verb', 'N/A')}`")
-                        st.markdown(f"**Mức Bloom:** {clo.get('bloom_level_name', 'N/A')}")
-                    with col_b:
-                        st.markdown(f"**PI liên quan:** {', '.join(clo.get('pi_codes', [])) or 'N/A'}")
-                        st.markdown(f"**Mức IRMA:** `{clo.get('mapping_level', 'N/A')}`")
-        else:
-            st.info("Chưa có CLO")
+                    raw_text = extract_text_from_bytes(
+                        uploaded_file.getvalue(), uploaded_file.name
+                    )
+                    if raw_text.strip():
+                        extracted = parse_dcct_info(raw_text)
+                        st.session_state["_upload_extracted"] = extracted
+                        st.session_state["_upload_filename"] = uploaded_file.name
+                        st.session_state["_upload_expander_open"] = True
+                        st.rerun()
+                    else:
+                        st.error(
+                            "❌ Không đọc được nội dung file. "
+                            "Hãy thử định dạng khác hoặc copy-paste nội dung vào form bên trên."
+                        )
+                except Exception as _e:
+                    st.error(f"❌ Lỗi khi xử lý file: {_e}")
 
-    # ---- Tab 2: Mapping ----
-    with tabs[1]:
-        st.markdown("### Ma trận ánh xạ CLO - PI - PLO")
-        if mapping_matrix:
-            import pandas as pd
-            df_data = []
-            for m in mapping_matrix:
-                df_data.append({
-                    "CLO": m.get("clo_code", ""),
-                    "PI": m.get("pi_code", ""),
-                    "PLO": m.get("plo_code", ""),
-                    "IRMA": m.get("irma_level", ""),
-                    "Bloom Level": m.get("bloom_level", ""),
-                })
-            df = pd.DataFrame(df_data)
-            st.dataframe(df, use_container_width=True)
-        else:
-            st.info("Chưa có mapping")
+    # ── Hiển thị và chỉnh sửa thông tin đã trích xuất ────────────────────────
+    if "_upload_extracted" in st.session_state:
+        _ext = st.session_state["_upload_extracted"]
+        _fname = st.session_state.get("_upload_filename", "")
 
-    # ---- Tab 3: Teaching Plan ----
-    with tabs[2]:
-        st.markdown("### Kế hoạch giảng dạy")
-        if teaching_plan:
-            import pandas as pd
-            plan_data = []
-            for s in teaching_plan:
-                plan_data.append({
-                    "Buổi": s.get("no", ""),
-                    "Tuần": s.get("week", ""),
-                    "Loại": s.get("type", ""),
-                    "Nội dung": s.get("content", ""),
-                    "CLO": ", ".join(s.get("clo_codes", [])),
-                    "IRMA": s.get("irma_level", ""),
-                    "Hoạt động": s.get("activities", ""),
-                })
-            df = pd.DataFrame(plan_data)
-            st.dataframe(df, use_container_width=True, height=400)
-        else:
-            st.info("Chưa có kế hoạch giảng dạy")
+        st.success(f"✅ Đã trích xuất từ: **{_fname}**. Kiểm tra và chỉnh sửa trước khi tái tạo.")
+        st.markdown("---")
 
-    # ---- Tab 4: Assessment ----
-    with tabs[3]:
-        st.markdown("### Hệ thống đánh giá")
-        if assessment_plan:
-            for a in assessment_plan:
-                with st.expander(
-                    f"**{a.get('code', '')}** - {a.get('name', '')} "
-                    f"({a.get('weight', 0) * 100:.0f}%)"
-                ):
-                    st.markdown(f"**Mô tả:** {a.get('description', '')}")
-                    st.markdown(f"**Hình thức:** {a.get('format', '')}")
-                    st.markdown(f"**Tần suất:** {a.get('frequency', '')}")
-                    st.markdown(f"**CLO đánh giá:** {', '.join(a.get('clo_mapping', []))}")
+        _u_col1, _u_col2, _u_col3 = st.columns([1.2, 3, 0.8])
+        with _u_col1:
+            _u_code = st.text_input(
+                "Mã học phần",
+                value=_ext.get("course_code", ""),
+                key="up_code",
+                placeholder="VD: CSC4007",
+            )
+        with _u_col2:
+            _u_name = st.text_input(
+                "Tên học phần",
+                value=_ext.get("course_name", ""),
+                key="up_name",
+                placeholder="VD: Học sâu và Thị giác Máy tính",
+            )
+        with _u_col3:
+            _cred_opts = ["2", "3", "4", "5"]
+            _cred_default = _ext.get("credits", "3")
+            _cred_idx = _cred_opts.index(_cred_default) if _cred_default in _cred_opts else 1
+            _u_credits = st.selectbox("Tín chỉ", options=_cred_opts, index=_cred_idx, key="up_credits")
 
-            # Pie chart trọng số
-            import pandas as pd
+        _up_prog_col, _up_type_col, _up_split_col = st.columns(3)
+        with _up_prog_col:
+            _u_program = st.selectbox(
+                "Ngành / Chương trình đào tạo",
+                options=["KHMT", "HTTT", "GENERIC"],
+                index=0,
+                format_func=lambda x: {
+                    "KHMT": "💻 Khoa học Máy tính (KHMT)",
+                    "HTTT": "📈 Hệ thống Thông tin (HTTT)",
+                    "GENERIC": "⚙️ Chung (Khoa CNTT)",
+                }[x],
+                key="up_program",
+            )
+        with _up_type_col:
+            _u_course_type = st.selectbox(
+                "Loại học phần",
+                options=["Lý thuyết + Thực hành", "Lý thuyết", "Thực hành"],
+                index=0,
+                key="up_course_type",
+            )
+        with _up_split_col:
+            _u_session_structure = st.selectbox(
+                "Cấu trúc mỗi buổi học",
+                options=[
+                    "5 tiết (3 LT + 2 TH)",
+                    "4 tiết (3 LT + 1 TH)",
+                    "4 tiết (2 LT + 2 TH)",
+                    "3 tiết (2 LT + 1 TH)",
+                    "2 tiết (2 LT)",
+                ],
+                index=0,
+                key="up_session_structure",
+            )
+        _split_map_up = {
+            "5 tiết (3 LT + 2 TH)": (5, 3),
+            "4 tiết (3 LT + 1 TH)": (4, 3),
+            "4 tiết (2 LT + 2 TH)": (4, 2),
+            "3 tiết (2 LT + 1 TH)": (3, 2),
+            "2 tiết (2 LT)": (2, 2),
+        }
+        _up_pps, _up_tps = _split_map_up.get(_u_session_structure, (5, 3))
 
-            weight_data = {
-                "Cấu phần": [a.get("code", "") for a in assessment_plan],
-                "Trọng số": [a.get("weight", 0) * 100 for a in assessment_plan],
-            }
-            df_weight = pd.DataFrame(weight_data)
-            st.bar_chart(df_weight.set_index("Cấu phần"))
-
-        else:
-            st.info("Chưa có hệ thống đánh giá")
-
-    # ---- Tab 5: Export ----
-    with tabs[4]:
-        st.markdown("### Xuất file DCCT")
-
-        col_export1, col_export2 = st.columns(2)
-
-        with col_export1:
-            if st.button("📄 Xuất file Word (.docx)", type="primary", use_container_width=True):
-                with st.spinner("Đang tạo file Word..."):
-                    loop = asyncio.new_event_loop()
-                    asyncio.set_event_loop(loop)
-                    try:
-                        from export.word_generator import export_node
-                        export_result = loop.run_until_complete(export_node(result))
-                        if export_result.get("export_ready"):
-                            filepath = export_result.get("export_path", "")
-                            st.success(f"✅ Đã xuất: {Path(filepath).name}")
-                            # Auto-index khi xuất thành công (nếu chưa index)
-                            _auto_index_dcct(result)
-                            with open(filepath, "rb") as f:
-                                st.download_button(
-                                    "⬇️ Tải xuống DCCT.docx",
-                                    f.read(),
-                                    file_name=Path(filepath).name,
-                                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                                )
-                        else:
-                            st.error("Lỗi xuất file. Xem logs để biết thêm chi tiết.")
-                    except Exception as e:
-                        st.error(f"Lỗi: {e}")
-                    finally:
-                        loop.close()
-
-        with col_export2:
-            if st.button("📋 Xuất JSON", use_container_width=True):
-                import json
-                final_data = result.get("final_dcct_data") or result
-                json_str = json.dumps(final_data, ensure_ascii=False, indent=2)
-                st.download_button(
-                    "⬇️ Tải xuống DCCT.json",
-                    json_str.encode("utf-8"),
-                    file_name=f"DCCT_{st.session_state.get('course_code', 'export')}.json",
-                    mime="application/json",
-                )
-
-        # Nút index thủ công
-        st.divider()
-        qa_col1, qa_col2 = st.columns([2, 1])
-        with qa_col1:
-            indexed = st.session_state.get("qa_indexed", False)
-            status_icon = "✅" if indexed else "⭕"
-            st.markdown(f"**Trạng thái Q&A Knowledge Base:** {status_icon} "
-                        f"{'Đã sẵn sàng' if indexed else 'Chưa index'}")
-        with qa_col2:
-            if st.button("🔍 Index vào Q&A KB", use_container_width=True):
-                info = _auto_index_dcct(result)
-                if info:
-                    st.success(f"Đã index {info['chunks_indexed']} chunks!")
-
-        # Feedback section
-        st.divider()
-        st.markdown("### 💬 Phản hồi / Yêu cầu chỉnh sửa")
-        feedback = st.text_area(
-            "Nhập phản hồi để cải thiện DCCT:",
-            placeholder="VD: CLO3 chưa đủ mức độ thực hành, cần thêm bài TH...",
-            height=100,
+        _u_summary = st.text_area(
+            "Mô tả / Mục tiêu học phần",
+            value=_ext.get("summary", ""),
+            height=120,
+            key="up_summary",
+            help="Chỉnh sửa nếu cần — mô tả này sẽ hướng dẫn AI sinh CLO",
         )
-        if st.button("🔄 Cập nhật DCCT với phản hồi", use_container_width=True):
-            if feedback:
-                st.info("💡 Tính năng revision đang trong quá trình phát triển. "
-                        "Hiện tại, vui lòng chỉnh sửa thông tin đầu vào và chạy lại.")
-            else:
-                st.warning("Vui lòng nhập phản hồi trước khi cập nhật.")
+        _u_outline = st.text_area(
+            "Sườn nội dung buổi học (từ đề cương cũ)",
+            value=_ext.get("outline", ""),
+            height=180,
+            key="up_outline",
+            help="Agent sẽ GIỮ NGUYÊN sườn này và bổ sung CLO/IRMA theo OBE",
+        )
 
-    # ---- Tab 6: Q&A ĐCCT ----
-    with tabs[5]:
-        _render_qa_tab(result)
+        st.markdown("---")
+        _regen_col1, _regen_col2 = st.columns([3, 1])
+        with _regen_col1:
+            _regen_btn = st.button(
+                "🚀 Tái tạo DCCT theo chuẩn OBE",
+                type="primary",
+                use_container_width=True,
+                key="btn_regenerate_upload",
+            )
+        with _regen_col2:
+            if st.button("🗑️ Xóa dữ liệu upload", use_container_width=True, key="btn_clear_upload"):
+                for _k in ["_upload_extracted", "_upload_filename", "_upload_expander_open"]:
+                    st.session_state.pop(_k, None)
+                st.rerun()
+
+        if _regen_btn:
+            if not _u_code or not _u_name or not _u_summary:
+                st.error("⚠️ Cần điền đầy đủ: Mã học phần, Tên học phần và Mô tả!")
+            else:
+                _up_progress = st.empty()
+                with st.spinner("🤖 AI Agent đang tái chuẩn hóa DCCT theo OBE..."):
+                    import time
+
+                    _up_steps = [
+                        "Khởi tạo RAG system...",
+                        "Phân tích đề cương cũ và sinh CLO OBE...",
+                        "Ánh xạ CLO → PI → PLO...",
+                        "Xây dựng kế hoạch giảng dạy...",
+                        "Thiết kế hệ thống đánh giá...",
+                        "Kiểm chứng và hoàn thiện...",
+                    ]
+                    _up_pb = _up_progress.progress(0, _up_steps[0])
+                    for _i, _s in enumerate(_up_steps):
+                        _up_pb.progress((_i + 1) / len(_up_steps), _s)
+                        time.sleep(0.15)
+
+                    _up_result, _up_error = run_agent_sync(
+                        _u_code,
+                        _u_name,
+                        _u_credits,
+                        _u_summary,
+                        outline=_u_outline if _u_outline.strip() else None,
+                        program=_u_program,
+                        periods_per_session=_up_pps,
+                        theory_per_session=_up_tps,
+                    )
+
+                _up_progress.empty()
+
+                if _up_error:
+                    st.error(f"❌ Lỗi: {_up_error}")
+                elif _up_result:
+                    st.success("✅ Đã tái tạo DCCT theo chuẩn OBE thành công!")
+                    st.session_state["result"] = _up_result
+                    st.session_state["course_code"] = _u_code
+                    st.session_state["course_name"] = _u_name
+                    # Xóa trạng thái upload sau khi xong
+                    for _k in ["_upload_extracted", "_upload_filename", "_upload_expander_open"]:
+                        st.session_state.pop(_k, None)
+                    _save_to_history(_up_result)
+                    st.rerun()
+
 
 # ============================================================
 # Q&A HELPER FUNCTIONS
@@ -678,13 +807,212 @@ def _display_qa_answer(question: str, entry: dict, mode: str):
 
 
 # ============================================================
+# DISPLAY RESULTS
+# ============================================================
+
+if "result" in st.session_state:
+    result = st.session_state["result"]
+    clo_list = result.get("clo_list", [])
+    mapping_matrix = result.get("mapping_matrix", [])
+    teaching_plan = result.get("teaching_plan", [])
+    assessment_plan = result.get("assessment_plan", [])
+    confidence = result.get("confidence_score", 0)
+    errors = result.get("errors", [])
+
+    st.divider()
+    st.markdown("## 📊 Kết quả DCCT")
+
+    # Metrics overview
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.metric("🎯 Confidence Score", f"{confidence:.1f}%",
+                  delta="Tốt" if confidence >= 70 else "Cần cải thiện")
+    with col2:
+        st.metric("📚 Số CLO", len(clo_list))
+    with col3:
+        st.metric("📅 Số buổi học", len(teaching_plan))
+    with col4:
+        st.metric("📊 Cấu phần đánh giá", len(assessment_plan))
+
+    # Errors/warnings
+    if errors:
+        with st.expander(f"⚠️ Cảnh báo ({len(errors)})", expanded=False):
+            for e in errors:
+                st.warning(e)
+
+    # Tabs for different sections
+    tabs = st.tabs(["🎯 CLO", "🗺️ Mapping", "📅 Kế hoạch giảng dạy", "📊 Đánh giá", "📄 Export", "💬 Hỏi đáp ĐCCT"])
+
+    # ---- Tab 1: CLO ----
+    with tabs[0]:
+        st.markdown("### Chuẩn đầu ra học phần (CLO)")
+        if clo_list:
+            for clo in clo_list:
+                with st.expander(f"**{clo['code']}** - {clo['description'][:60]}..."):
+                    col_a, col_b = st.columns(2)
+                    with col_a:
+                        st.markdown(f"**Mô tả đầy đủ:** {clo['description']}")
+                        st.markdown(f"**Động từ Bloom:** `{clo.get('bloom_verb', 'N/A')}`")
+                        st.markdown(f"**Mức Bloom:** {clo.get('bloom_level_name', 'N/A')}")
+                    with col_b:
+                        st.markdown(f"**PI liên quan:** {', '.join(clo.get('pi_codes', [])) or 'N/A'}")
+                        st.markdown(f"**Mức IRMA:** `{clo.get('mapping_level', 'N/A')}`")
+        else:
+            st.info("Chưa có CLO")
+
+    # ---- Tab 2: Mapping ----
+    with tabs[1]:
+        st.markdown("### Ma trận ánh xạ CLO - PI - PLO")
+        if mapping_matrix:
+            import pandas as pd
+            df_data = []
+            for m in mapping_matrix:
+                df_data.append({
+                    "CLO": m.get("clo_code", ""),
+                    "PI": m.get("pi_code", ""),
+                    "PLO": m.get("plo_code", ""),
+                    "IRMA": m.get("irma_level", ""),
+                    "Bloom Level": m.get("bloom_level", ""),
+                })
+            df = pd.DataFrame(df_data)
+            st.dataframe(df, use_container_width=True)
+        else:
+            st.info("Chưa có mapping")
+
+    # ---- Tab 3: Teaching Plan ----
+    with tabs[2]:
+        st.markdown("### Kế hoạch giảng dạy")
+        if teaching_plan:
+            import pandas as pd
+            plan_data = []
+            for s in teaching_plan:
+                plan_data.append({
+                    "Buổi": s.get("no", ""),
+                    "Tuần": s.get("week", ""),
+                    "Loại": s.get("type", ""),
+                    "Nội dung": s.get("content", ""),
+                    "CLO": ", ".join(s.get("clo_codes", [])),
+                    "IRMA": s.get("irma_level", ""),
+                    "Hoạt động": s.get("activities", ""),
+                })
+            df = pd.DataFrame(plan_data)
+            st.dataframe(df, use_container_width=True, height=400)
+        else:
+            st.info("Chưa có kế hoạch giảng dạy")
+
+    # ---- Tab 4: Assessment ----
+    with tabs[3]:
+        st.markdown("### Hệ thống đánh giá")
+        if assessment_plan:
+            for a in assessment_plan:
+                with st.expander(
+                    f"**{a.get('code', '')}** - {a.get('name', '')} "
+                    f"({a.get('weight', 0) * 100:.0f}%)"
+                ):
+                    st.markdown(f"**Mô tả:** {a.get('description', '')}")
+                    st.markdown(f"**Hình thức:** {a.get('format', '')}")
+                    st.markdown(f"**Tần suất:** {a.get('frequency', '')}")
+                    st.markdown(f"**CLO đánh giá:** {', '.join(a.get('clo_mapping', []))}")
+
+            # Pie chart trọng số
+            import pandas as pd
+
+            weight_data = {
+                "Cấu phần": [a.get("code", "") for a in assessment_plan],
+                "Trọng số": [a.get("weight", 0) * 100 for a in assessment_plan],
+            }
+            df_weight = pd.DataFrame(weight_data)
+            st.bar_chart(df_weight.set_index("Cấu phần"))
+
+        else:
+            st.info("Chưa có hệ thống đánh giá")
+
+    # ---- Tab 5: Export ----
+    with tabs[4]:
+        st.markdown("### Xuất file DCCT")
+
+        col_export1, col_export2 = st.columns(2)
+
+        with col_export1:
+            if st.button("📄 Xuất file Word (.docx)", type="primary", use_container_width=True):
+                with st.spinner("Đang tạo file Word..."):
+                    loop = asyncio.new_event_loop()
+                    asyncio.set_event_loop(loop)
+                    try:
+                        from export.word_generator import export_node
+                        export_result = loop.run_until_complete(export_node(result))
+                        if export_result.get("export_ready"):
+                            filepath = export_result.get("export_path", "")
+                            st.success(f"✅ Đã xuất: {Path(filepath).name}")
+                            # Auto-index khi xuất thành công (nếu chưa index)
+                            _auto_index_dcct(result)
+                            with open(filepath, "rb") as f:
+                                st.download_button(
+                                    "⬇️ Tải xuống DCCT.docx",
+                                    f.read(),
+                                    file_name=Path(filepath).name,
+                                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                )
+                        else:
+                            st.error("Lỗi xuất file. Xem logs để biết thêm chi tiết.")
+                    except Exception as e:
+                        st.error(f"Lỗi: {e}")
+                    finally:
+                        loop.close()
+
+        with col_export2:
+            if st.button("📋 Xuất JSON", use_container_width=True):
+                import json
+                final_data = result.get("final_dcct_data") or result
+                json_str = json.dumps(final_data, ensure_ascii=False, indent=2)
+                st.download_button(
+                    "⬇️ Tải xuống DCCT.json",
+                    json_str.encode("utf-8"),
+                    file_name=f"DCCT_{st.session_state.get('course_code', 'export')}.json",
+                    mime="application/json",
+                )
+
+        # Nút index thủ công
+        st.divider()
+        qa_col1, qa_col2 = st.columns([2, 1])
+        with qa_col1:
+            indexed = st.session_state.get("qa_indexed", False)
+            status_icon = "✅" if indexed else "⭕"
+            st.markdown(f"**Trạng thái Q&A Knowledge Base:** {status_icon} "
+                        f"{'Đã sẵn sàng' if indexed else 'Chưa index'}")
+        with qa_col2:
+            if st.button("🔍 Index vào Q&A KB", use_container_width=True):
+                info = _auto_index_dcct(result)
+                if info:
+                    st.success(f"Đã index {info['chunks_indexed']} chunks!")
+
+        # Feedback section
+        st.divider()
+        st.markdown("### 💬 Phản hồi / Yêu cầu chỉnh sửa")
+        feedback = st.text_area(
+            "Nhập phản hồi để cải thiện DCCT:",
+            placeholder="VD: CLO3 chưa đủ mức độ thực hành, cần thêm bài TH...",
+            height=100,
+        )
+        if st.button("🔄 Cập nhật DCCT với phản hồi", use_container_width=True):
+            if feedback:
+                st.info("💡 Tính năng revision đang trong quá trình phát triển. "
+                        "Hiện tại, vui lòng chỉnh sửa thông tin đầu vào và chạy lại.")
+            else:
+                st.warning("Vui lòng nhập phản hồi trước khi cập nhật.")
+
+    # ---- Tab 6: Q&A ĐCCT ----
+    with tabs[5]:
+        _render_qa_tab(result)
+
+# ============================================================
 # FOOTER
 # ============================================================
 
 st.divider()
 st.markdown("""
 <div style="text-align: center; color: #888; font-size: 0.85em;">
-    🎓 OBE DCCT Agent v1.0 | Khoa CNTT - ĐH Đà Nẵng | 
+    🎓 OBE DCCT Agent v1.0 | Khoa CNTT - ĐH Đại Nam | 
     Powered by LangGraph + Gemini/Claude
 </div>
 """, unsafe_allow_html=True)

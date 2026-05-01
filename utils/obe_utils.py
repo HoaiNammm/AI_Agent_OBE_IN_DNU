@@ -3,7 +3,7 @@ OBE Utilities - Dữ liệu chuẩn OBE/AUN-QA cho Khoa CNTT - ĐH Đà Nẵng
 Bao gồm: Bloom Taxonomy, PLO, PI, IRMA levels và các helper functions
 """
 
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 # ============================================================
 # BLOOM'S TAXONOMY
@@ -179,35 +179,50 @@ def suggest_irma_for_bloom(bloom_level: int) -> str:
 # 1 tín chỉ thực hành = 30 tiết học (15 buổi × 2 tiết)
 # ============================================================
 
-def calculate_sessions(credits: str, theory_ratio: float = 0.7) -> Dict:
+def calculate_sessions(
+    credits: str,
+    theory_ratio: float = 0.7,
+    periods_per_session: int = 5,
+    theory_per_session: int = 3,
+) -> Dict:
     """
     Tính số buổi học dựa theo số tín chỉ.
-    
+
+    Mô hình lịch học:
+        - 1 tuần = 1 buổi cho học phần này.
+        - Mỗi buổi = `periods_per_session` tiết (mặc định 5 tiết).
+        - Chia trong buổi: `theory_per_session` tiết LT + còn lại TH.
+
     Args:
-        credits: Số tín chỉ (str, vd "3")
-        theory_ratio: Tỷ lệ lý thuyết (0.7 = 70% LT, 30% TH)
-    
-    Returns:
-        Dict với total_sessions, theory_sessions, lab_sessions, weeks
+        credits             : Số tín chỉ (str, vd "3")
+        theory_ratio        : Không dùng để tách LT/TH nữa; giữ lại cho khả năng tương thích.
+        periods_per_session : Tổng số tiết mỗi buổi (mặc định 5).
+        theory_per_session  : Số tiết LT trong mỗi buổi (mặc định 3).
     """
     try:
         c = int(credits)
     except (ValueError, TypeError):
         c = 3
 
-    # 1 tín chỉ = 15 tiết → 1 buổi = 1 tiết (hoặc 2 tiết tùy trường)
-    # Tại ĐH Đà Nẵng: 1 tín chỉ ≈ 15 tiết = 15 buổi 50 phút
-    total_periods = c * 15
-    theory_periods = round(total_periods * theory_ratio)
-    lab_periods = total_periods - theory_periods
+    periods_per_session = max(2, int(periods_per_session))
+    theory_per_session  = max(1, min(theory_per_session, periods_per_session - 1))
+    lab_per_session     = periods_per_session - theory_per_session
+
+    # Tổng tiết theo tín chỉ (1 TC = 15 tiết chuẩn)
+    total_periods_raw = c * 15
+    # Số buổi = tổng tiết ÷ số tiết/buổi
+    total_sessions = max(1, total_periods_raw // periods_per_session)
 
     return {
-        "credits": c,
-        "total_periods": total_periods,
-        "theory_periods": theory_periods,
-        "lab_periods": lab_periods,
-        "total_sessions": total_periods,  # 1 buổi = 1 tiết
-        "weeks": c * 5,  # ~5 tuần / tín chỉ
+        "credits":              c,
+        "total_periods":        total_sessions * periods_per_session,
+        "theory_periods":       theory_per_session * total_sessions,
+        "lab_periods":          lab_per_session    * total_sessions,
+        "total_sessions":       total_sessions,
+        "weeks":                total_sessions,      # 1 buổi/tuần
+        "periods_per_session":  periods_per_session,
+        "theory_per_session":   theory_per_session,
+        "lab_per_session":      lab_per_session,
     }
 
 
@@ -217,24 +232,32 @@ def calculate_sessions(credits: str, theory_ratio: float = 0.7) -> Dict:
 
 DEFAULT_ASSESSMENT_WEIGHTS = {
     "A1": {
-        "name": "Đánh giá quá trình",
-        "description": "Chuyên cần, bài tập, quiz, thảo luận",
+        "name": "Đánh giá chuyên cần",
+        "description": "Điểm danh, theo dõi tham gia và chuẩn bị bài",
+        "format": "Điểm danh, theo dõi tham gia và chuẩn bị bài",
+        "criteria_summary": "Mức độ tham dự, chuẩn bị, tham gia và tuân thủ quy định lớp học",
         "weight": 0.10,
     },
     "A2.1": {
-        "name": "Kiểm tra giữa kỳ",
-        "description": "Kiểm tra lý thuyết giữa học kỳ (trắc nghiệm/tự luận)",
-        "weight": 0.20,
+        "name": "Đánh giá giữa kỳ 1",
+        "description": "Bài thực hành hoặc báo cáo ngắn",
+        "format": "Bài thực hành hoặc báo cáo ngắn",
+        "criteria_summary": "Đánh giá CLO giai đoạn đầu học phần theo nội dung và metric phù hợp",
+        "weight": 0.15,
     },
     "A2.2": {
-        "name": "Thực hành / Bài tập lớn",
-        "description": "Bài thực hành, dự án nhóm, báo cáo",
-        "weight": 0.30,
+        "name": "Đánh giá giữa kỳ 2",
+        "description": "Bài thực hành hoặc báo cáo ngắn",
+        "format": "Bài thực hành hoặc báo cáo ngắn",
+        "criteria_summary": "Đánh giá CLO giai đoạn giữa-cuối học phần; so sánh và biện minh lựa chọn",
+        "weight": 0.15,
     },
     "A3": {
-        "name": "Thi cuối kỳ",
-        "description": "Thi cuối học kỳ (lý thuyết + thực hành)",
-        "weight": 0.40,
+        "name": "Đánh giá cuối kỳ",
+        "description": "Bài tập lớn/dự án có demo",
+        "format": "Bài tập lớn/dự án có demo",
+        "criteria_summary": "Giải pháp hoạt động; chất lượng đầu ra; diễn giải kết quả; bộ minh chứng đầy đủ",
+        "weight": 0.60,
     },
 }
 
@@ -280,7 +303,7 @@ def get_pi_list_text() -> str:
 
 def get_plo_list_text(program: str = "GENERIC") -> str:
     """Trả về danh sách PLO dạng text để đưa vào prompt LLM."""
-    data = PROGRAM_DATA.get(program, PROGRAM_DATA["GENERIC"])["plo"] if "PROGRAM_DATA" in dir() else PLO_DATA
+    data = PROGRAM_DATA.get(program, PROGRAM_DATA["GENERIC"])["plo"] if "PROGRAM_DATA" in globals() else PLO_DATA
     lines = []
     for plo_code, desc in data.items():
         lines.append(f"{plo_code}: {desc}")
@@ -498,6 +521,126 @@ KHMT_PI_DATA: Dict[str, Dict[str, str]] = {
         "PI-CS08.3": "Đề xuất được hướng nghề, hướng ứng dụng hoặc ý tưởng cải tiến và đánh giá sơ bộ tính khả thi.",
     },
 }
+
+# ============================================================
+# KHMT COURSE-PI MATRIX
+# Ma trận đóng góp học phần → PI với mức IRMA ngành KHMT
+# Trích từ: TailieuMD/KHMT/Ma trận đóng góp của học phần vào chuẩn đầu ra CTĐT.md
+# I=Introduce, R=Reinforce, M=Master, A=Apply (assessed)
+# ============================================================
+
+KHMT_COURSE_PI_MAP: Dict[str, Dict[str, str]] = {
+    # ─── Khối nền tảng chung HK1–HK6 ───────────────────────────────────────
+    "CSC0001": {"PI-CS08.1": "I", "PI-CS01.3": "I"},
+    "FIT4013": {"PI-CS06.1": "I", "PI-CS06.3": "I"},
+    "DNU1006": {"PI-CS07.1": "I", "PI-CS08.1": "I"},
+    "FIT4003": {"PI-CS03.1": "I"},
+    "FIT4002": {"PI-CS06.1": "R"},
+    "FIT3001": {"PI-CS02.1": "I"},
+    "ENG2001": {"PI-CS07.1": "I"},
+    "FIT3002": {"PI-CS02.1": "I"},
+    "FIT4004": {"PI-CS03.1": "R", "PI-CS03.2": "R", "PI-CS03.3": "R"},
+    "CSC0002": {"PI-CS03.1": "R"},
+    "ENG2002": {"PI-CS07.1": "R", "PI-CS07.3": "R"},
+    "DNU1007": {"PI-CS07.1": "R", "PI-CS08.1": "R"},
+    "FIT4006": {"PI-CS06.2": "R", "PI-CS06.3": "R"},
+    "CSC0006": {"PI-CS03.1": "R", "PI-CS05.1": "I"},
+    "FIT4005": {"PI-CS05.1": "I", "PI-CS06.1": "R"},
+    "FIT3004": {"PI-CS02.1": "R", "PI-CS02.2": "R", "PI-CS04.1": "I"},
+    "ENG2003": {"PI-CS07.1": "R", "PI-CS07.3": "R"},
+    "CSC0004": {"PI-CS05.1": "I", "PI-CS06.1": "R"},
+    "FIT3003": {"PI-CS02.1": "R", "PI-CS03.1": "R"},
+    "FIT4011": {"PI-CS02.3": "R", "PI-CS05.2": "R"},
+    "FIT4009": {"PI-CS03.1": "R", "PI-CS07.2": "I"},
+    "ENG2004": {"PI-CS07.1": "M", "PI-CS07.3": "M"},
+    "CSC0003": {"PI-CS03.1": "R", "PI-CS06.3": "R"},
+    "FIT4012": {"PI-CS01.1": "I", "PI-CS01.2": "I", "PI-CS06.2": "R"},
+    "CSC4004": {"PI-CS02.1": "R", "PI-CS02.2": "R", "PI-CS02.3": "R",
+                "PI-CS03.2": "R", "PI-CS04.1": "R", "PI-CS04.2": "R",
+                "PI-CS04.3": "R", "PI-CS05.1": "A", "PI-CS05.2": "A"},
+    # ─── Chuyên ngành Khoa học Dữ liệu (DS) ────────────────────────────────
+    "CSC0010": {"PI-CS05.1": "R", "PI-CS06.1": "A"},
+    "CSC0007": {"PI-CS06.3": "M", "PI-CS08.1": "R"},
+    "CSC0008": {"PI-CS01.1": "A", "PI-CS01.2": "A", "PI-CS01.3": "A"},
+    "CSC4006": {"PI-CS02.1": "R", "PI-CS05.1": "R", "PI-CS07.1": "R"},
+    "CSC0009": {"PI-CS07.1": "A", "PI-CS07.3": "A"},
+    "CSC4003": {"PI-CS02.2": "R", "PI-CS04.3": "R", "PI-CS05.2": "M"},
+    "CSC4001": {"PI-CS05.1": "R", "PI-CS06.1": "M"},
+    "CSC0011": {"PI-CS03.1": "A", "PI-CS07.1": "A", "PI-CS08.1": "R", "PI-CS08.2": "R"},
+    "CSC0005": {"PI-CS03.1": "M", "PI-CS06.1": "R", "PI-CS07.2": "R"},
+    "FIT4017": {"PI-CS06.2": "R", "PI-CS07.1": "R"},
+    "BBA3004": {"PI-CS07.3": "R", "PI-CS08.3": "A"},
+    "CSC4002": {"PI-CS05.1": "R", "PI-CS06.1": "M"},
+    "CSC0012": {"PI-CS03.2": "M", "PI-CS04.1": "A", "PI-CS04.2": "A",
+                "PI-CS05.1": "M", "PI-CS06.1": "M", "PI-CS07.2": "R",
+                "PI-CS08.1": "R", "PI-CS08.2": "R"},
+    # ─── Chuyên ngành Trí tuệ Nhân tạo (AI) ────────────────────────────────
+    "CSC4005": {"PI-CS02.1": "R", "PI-CS04.1": "R", "PI-CS05.2": "A"},
+    "CSC4007": {"PI-CS02.1": "R", "PI-CS02.3": "R", "PI-CS05.1": "M"},
+    "CSC0019": {"PI-CS02.1": "R", "PI-CS05.1": "M"},
+    "CSC0018": {"PI-CS01.1": "R", "PI-CS04.1": "M"},
+    "CSC0021": {"PI-CS01.1": "R", "PI-CS04.1": "R", "PI-CS05.1": "M"},
+    "CSC0020": {"PI-CS04.3": "R", "PI-CS05.1": "M"},
+    # ─── Thực tập & Tốt nghiệp ──────────────────────────────────────────────
+    "FIT5001": {"PI-CS01.3": "R", "PI-CS06.2": "R", "PI-CS07.1": "A",
+                "PI-CS08.1": "M", "PI-CS08.3": "M"},
+    "FIT5010": {"PI-CS01.1": "R", "PI-CS01.2": "R", "PI-CS01.3": "R",
+                "PI-CS02.3": "M", "PI-CS03.1": "A", "PI-CS03.3": "A",
+                "PI-CS04.3": "A", "PI-CS05.2": "A", "PI-CS05.3": "A",
+                "PI-CS06.3": "A", "PI-CS07.1": "A", "PI-CS07.2": "A",
+                "PI-CS07.3": "A", "PI-CS08.3": "A"},
+    # ─── Khối đào tạo theo kế hoạch nhà trường ──────────────────────────────
+    "LAW2001": {"PI-CS01.1": "I"},
+}
+
+
+def get_irma_for_course_pi(course_code: str, pi_code: str) -> Optional[str]:
+    """
+    Tra cứu mức IRMA chính xác của một PI trong một học phần cụ thể
+    từ ma trận đóng góp ngành KHMT.
+
+    Returns:
+        Mức IRMA ("I"/"R"/"M"/"A") hoặc None nếu không có trong ma trận.
+    """
+    return KHMT_COURSE_PI_MAP.get(course_code, {}).get(pi_code)
+
+
+def get_pi_context_for_course(course_code: str, program: str = "KHMT") -> str:
+    """
+    Trả về context PI/IRMA cho một học phần cụ thể để đưa vào mapping prompt.
+    Nếu học phần có trong ma trận ngành, trả về các PI đã biết với IRMA.
+    Dùng bởi mapping_node để cung cấp few-shot context cho LLM.
+
+    Returns:
+        Chuỗi text mô tả PI/IRMA của học phần, hoặc rỗng nếu không có.
+    """
+    if program != "KHMT":
+        return ""
+    course_map = KHMT_COURSE_PI_MAP.get(course_code, {})
+    if not course_map:
+        return ""
+    pi_data = KHMT_PI_DATA
+    lines = [f"=== IRMA CỦA HỌC PHẦN {course_code} THEO MA TRẬN NGÀNH KHMT ==="]
+    for pi_code, irma in course_map.items():
+        # Tìm mô tả PI
+        pi_desc = ""
+        for pis in pi_data.values():
+            if pi_code in pis:
+                pi_desc = pis[pi_code]
+                break
+        # Tìm PLO cha
+        plo = ""
+        for plo_code, pis in pi_data.items():
+            if pi_code in pis:
+                plo = plo_code
+                break
+        lines.append(f"  {pi_code} (thuộc {plo}) [{irma}]: {pi_desc}")
+    lines.append(
+        "QUAN TRỌNG: Các PI và mức IRMA trên là căn cứ chính thức từ ma trận ngành. "
+        "Ưu tiên ánh xạ CLO vào các PI này với mức IRMA tương ứng."
+    )
+    return "\n".join(lines)
+
 
 # NL3 mapping cho KHMT
 KHMT_NL3_PLO_MAP: Dict[str, str] = {
