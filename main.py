@@ -41,7 +41,10 @@ async def run_agent(course_code: str, course_name: str, summary: str):
     graph = get_graph()
 
     try:
-        result = await graph.ainvoke(initial_state)
+        result = await graph.ainvoke(
+            initial_state,
+            config={"configurable": {"thread_id": f"cli-{course_code.lower()}"}},
+        )
         print(f"✅ Hoàn thành. Confidence: {result.get('confidence_score', 0):.1f}%")
         return result
     except Exception as e:

@@ -18,8 +18,11 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 
 # Models
-GEMINI_MODEL = "gemini-1.5-pro"
-CLAUDE_MODEL = "claude-3-5-sonnet-20241022"
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+GEMINI_EMBEDDING_MODEL = os.getenv(
+    "GEMINI_EMBEDDING_MODEL", "models/gemini-embedding-001"
+)
+CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-3-5-sonnet-20241022")
 
 AGENT_MODELS = {
     "supervisor": CLAUDE_MODEL if ANTHROPIC_API_KEY else GEMINI_MODEL,

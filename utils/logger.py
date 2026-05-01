@@ -35,6 +35,7 @@ def get_logger(name: str) -> logging.Logger:
         return logger
 
     logger.setLevel(logging.DEBUG)
+    logger.propagate = False
 
     # Console handler - INFO level
     console_handler = logging.StreamHandler(sys.stdout)
