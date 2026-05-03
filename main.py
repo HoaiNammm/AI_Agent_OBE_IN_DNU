@@ -5,7 +5,17 @@ from state import DCCTState
 from graph import get_graph
 from rag.index_builder import initialize_rag
 
-async def run_agent(course_code: str, course_name: str, summary: str):
+async def run_agent(
+    course_code: str,
+    course_name: str,
+    summary: str,
+    credits: str = "3",
+    program: str = None,
+    outline: str = None,
+    irma_matrix: dict = None,
+    periods_per_session: int = 5,
+    theory_per_session: int = 3,
+):
     if not validate_config():
         return None
 
@@ -15,9 +25,16 @@ async def run_agent(course_code: str, course_name: str, summary: str):
         "user_input": f"{course_code} - {course_name}\n{summary}",
         "course_code": course_code,
         "course_name": course_name,
-        "credits": "3",
+        "credits": credits,
         "summary": summary,
-        "outline": None,
+        "program": program,
+        "outline": outline,
+        "outline_provided": bool(outline and outline.strip()),
+        "outline_sessions": [],
+        "session_clo_map": {},
+        "irma_matrix": irma_matrix,
+        "periods_per_session": periods_per_session,
+        "theory_per_session": theory_per_session,
         "extracted_info": {},
         "clo_list": [],
         "mapping_matrix": [],
@@ -34,6 +51,9 @@ async def run_agent(course_code: str, course_name: str, summary: str):
         "human_feedback": None,
         "final_dcct_data": None,
         "export_ready": False,
+        "export_path": None,
+        "qa_indexed": False,
+        "qa_chunks_count": 0,
         "errors": [],
         "warnings": [],
     }
@@ -49,4 +69,11 @@ async def run_agent(course_code: str, course_name: str, summary: str):
         return None
 
 if __name__ == "__main__":
-    asyncio.run(run_agent("CSC4012", "Trí tuệ nhân tạo ứng dụng", "Học phần giới thiệu ứng dụng AI thực tế."))
+    asyncio.run(run_agent(
+        course_code="CSC4007",
+        course_name="Xử lý ngôn ngữ tự nhiên",
+        summary="Học phần về NLP và LLM, bao gồm prompt engineering, fine-tuning, RAG",
+        credits="3",
+        program="KHMT",
+        outline=None,
+    ))

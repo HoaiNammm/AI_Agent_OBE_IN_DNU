@@ -100,10 +100,16 @@ def call_llm_json(agent_name: str, system_prompt: str, user_prompt: str) -> str:
     return response.content
 
 
-async def call_llm_json_async(agent_name: str, system_prompt: str, user_prompt: str) -> str:
+async def call_llm_json_async(agent_name: str, system_prompt: str, user_prompt: str,
+                              timeout: int = 120) -> str:
     """
-    Async version của call_llm_json.
+    Async version của call_llm_json với timeout và friendly error mapping.
+
+    Raises:
+        TimeoutError: nếu LLM không trả lời trong `timeout` giây.
+        RuntimeError: bọc các lỗi API (rate-limit, network, ...) thành thông báo thân thiện.
     """
+    import asyncio
     from langchain_core.messages import HumanMessage, SystemMessage
 
     llm = get_llm(agent_name)
@@ -112,8 +118,37 @@ async def call_llm_json_async(agent_name: str, system_prompt: str, user_prompt: 
         HumanMessage(content=user_prompt),
     ]
 
-    response = await llm.ainvoke(messages)
-    return response.content
+    try:
+        response = await asyncio.wait_for(llm.ainvoke(messages), timeout=timeout)
+        return response.content
+    except asyncio.TimeoutError:
+        logger.error(f"[{agent_name}] LLM timeout sau {timeout}s")
+        raise TimeoutError(
+            f"AI không phản hồi sau {timeout} giây. "
+            "Vui lòng thử lại sau hoặc kiểm tra kết nối mạng."
+        )
+    except Exception as e:
+        err_str = str(e).lower()
+        if "429" in str(e) or "rate limit" in err_str or "rate_limit" in err_str:
+            logger.warning(f"[{agent_name}] Rate limit: {e}")
+            raise RuntimeError(
+                "API đã đạt giới hạn yêu cầu (rate limit). "
+                "Vui lòng đợi vài giây rồi thử lại."
+            )
+        if "401" in str(e) or "unauthorized" in err_str or "api key" in err_str:
+            logger.error(f"[{agent_name}] Auth error: {e}")
+            raise RuntimeError(
+                "API Key không hợp lệ hoặc đã hết hạn. "
+                "Vui lòng kiểm tra lại cấu hình GROQ_API_KEY / GOOGLE_API_KEY."
+            )
+        if "503" in str(e) or "service unavailable" in err_str or "overloaded" in err_str:
+            logger.warning(f"[{agent_name}] Service unavailable: {e}")
+            raise RuntimeError(
+                "Dịch vụ AI tạm thời không khả dụng (503). "
+                "Vui lòng thử lại sau ít phút."
+            )
+        logger.error(f"[{agent_name}] LLM error: {e}")
+        raise
 
 
 def extract_json_from_response(text: str) -> str:

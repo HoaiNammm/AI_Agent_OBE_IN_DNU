@@ -346,9 +346,17 @@ if submitted or demo_btn:
             "computer vision, với các bài thực hành sử dụng Python và các thư viện AI phổ biến."
         )
 
-    # Validate input
-    if not course_code or not course_name or not summary:
-        st.error("⚠️ Vui lòng nhập đầy đủ: Mã học phần, Tên học phần và Mô tả!")
+    # Validate input — CASE 5: highlight specific missing fields
+    _missing = []
+    if not course_code or not course_code.strip():
+        _missing.append("**Mã học phần**")
+    if not course_name or not course_name.strip():
+        _missing.append("**Tên học phần**")
+    if not summary or not summary.strip():
+        _missing.append("**Mô tả / Tóm tắt học phần**")
+
+    if _missing:
+        st.error("⚠️ Vui lòng nhập đầy đủ các trường bắt buộc: " + ", ".join(_missing))
     else:
         # Progress tracking
         progress_container = st.empty()
@@ -400,52 +408,81 @@ st.divider()
 st.markdown("### 📂 Hoặc: Tải lên DCCT cũ để tái chuẩn hóa theo chuẩn OBE")
 
 with st.expander(
-    "📤 Mở rộng để tải lên file đề cương cũ (.docx / .pdf / .txt / .md)",
+    "📤 Mở rộng để tải lên file đề cương cũ (.docx)",
     expanded=st.session_state.get("_upload_expander_open", False),
 ):
     st.caption(
-        "Tải lên đề cương chi tiết học phần hiện có. "
+        "Tải lên đề cương chi tiết học phần hiện có (chỉ hỗ trợ **.docx**, tối đa 10 MB). "
         "Hệ thống sẽ trích xuất thông tin, sau đó bạn chỉnh sửa và nhấn "
         "**Tái tạo DCCT** để xây dựng lại theo chuẩn OBE/AUN-QA."
     )
 
+    # CASE 1: chỉ chấp nhận .docx
     uploaded_file = st.file_uploader(
-        "Chọn file đề cương",
-        type=["docx", "pdf", "txt", "md"],
+        "Chọn file đề cương (.docx)",
+        type=["docx"],
         label_visibility="collapsed",
         key="dcct_upload_widget",
     )
 
     if uploaded_file:
-        parse_col, _ = st.columns([1, 3])
-        with parse_col:
-            parse_clicked = st.button(
-                "🔍 Trích xuất thông tin từ file",
-                use_container_width=True,
-                key="btn_parse_upload",
+        # CASE 3: kiểm tra kích thước file > 10 MB
+        _MAX_MB = 10
+        if uploaded_file.size > _MAX_MB * 1024 * 1024:
+            st.error(
+                f"⚠️ File quá lớn ({uploaded_file.size / 1024 / 1024:.1f} MB). "
+                f"Giới hạn tối đa là {_MAX_MB} MB. Vui lòng nén hoặc cắt bớt nội dung."
             )
+        else:
+            parse_col, _ = st.columns([1, 3])
+            with parse_col:
+                parse_clicked = st.button(
+                    "🔍 Trích xuất thông tin từ file",
+                    use_container_width=True,
+                    key="btn_parse_upload",
+                )
 
-        if parse_clicked:
-            with st.spinner("Đang phân tích file..."):
-                try:
-                    from utils.dcct_parser import extract_text_from_bytes, parse_dcct_info
+            if parse_clicked:
+                with st.spinner("Đang phân tích file..."):
+                    try:
+                        from utils.dcct_parser import extract_text_from_bytes, parse_dcct_info
 
-                    raw_text = extract_text_from_bytes(
-                        uploaded_file.getvalue(), uploaded_file.name
-                    )
-                    if raw_text.strip():
-                        extracted = parse_dcct_info(raw_text)
-                        st.session_state["_upload_extracted"] = extracted
-                        st.session_state["_upload_filename"] = uploaded_file.name
-                        st.session_state["_upload_expander_open"] = True
-                        st.rerun()
-                    else:
-                        st.error(
-                            "❌ Không đọc được nội dung file. "
-                            "Hãy thử định dạng khác hoặc copy-paste nội dung vào form bên trên."
+                        # CASE 2: ValueError được raise cho file corrupt
+                        raw_text = extract_text_from_bytes(
+                            uploaded_file.getvalue(), uploaded_file.name
                         )
-                except Exception as _e:
-                    st.error(f"❌ Lỗi khi xử lý file: {_e}")
+                        if raw_text.strip():
+                            extracted = parse_dcct_info(raw_text)
+
+                            # CASE 4: cảnh báo nội dung nghèo
+                            if not extracted.get("summary") or len(extracted.get("summary", "")) < 50:
+                                st.warning(
+                                    "⚠️ Không trích xuất được mô tả học phần. "
+                                    "Vui lòng nhập thủ công vào ô **Mô tả / Mục tiêu** bên dưới."
+                                )
+                            if not extracted.get("outline"):
+                                st.info(
+                                    "ℹ️ Không tìm thấy sườn buổi học trong file. "
+                                    "AI sẽ tự sinh lịch giảng dạy từ mô tả."
+                                )
+
+                            st.session_state["_upload_extracted"] = extracted
+                            st.session_state["_upload_filename"] = uploaded_file.name
+                            st.session_state["_upload_expander_open"] = True
+                            st.rerun()
+                        else:
+                            st.error(
+                                "❌ File .docx không có nội dung văn bản. "
+                                "Vui lòng kiểm tra lại hoặc copy-paste nội dung vào form bên trên."
+                            )
+                    except ValueError as _ve:
+                        # CASE 2: file bị hỏng/corrupt
+                        st.error(
+                            "❌ File không đọc được, vui lòng kiểm tra lại. "
+                            f"Chi tiết: {_ve}"
+                        )
+                    except Exception as _e:
+                        st.error(f"❌ Lỗi khi xử lý file: {_e}")
 
     # ── Hiển thị và chỉnh sửa thông tin đã trích xuất ────────────────────────
     if "_upload_extracted" in st.session_state:
@@ -549,8 +586,16 @@ with st.expander(
                 st.rerun()
 
         if _regen_btn:
-            if not _u_code or not _u_name or not _u_summary:
-                st.error("⚠️ Cần điền đầy đủ: Mã học phần, Tên học phần và Mô tả!")
+            # CASE 5: highlight specific missing fields for re-generate flow
+            _up_missing = []
+            if not _u_code or not _u_code.strip():
+                _up_missing.append("**Mã học phần**")
+            if not _u_name or not _u_name.strip():
+                _up_missing.append("**Tên học phần**")
+            if not _u_summary or not _u_summary.strip():
+                _up_missing.append("**Mô tả / Mục tiêu học phần**")
+            if _up_missing:
+                st.error("⚠️ Vui lòng nhập đầy đủ: " + ", ".join(_up_missing))
             else:
                 _up_progress = st.empty()
                 with st.spinner("🤖 AI Agent đang tái chuẩn hóa DCCT theo OBE..."):
@@ -817,7 +862,8 @@ if "result" in st.session_state:
     teaching_plan = result.get("teaching_plan", [])
     assessment_plan = result.get("assessment_plan", [])
     confidence = result.get("confidence_score", 0)
-    errors = result.get("errors", [])
+    errors   = result.get("errors", [])
+    warnings = result.get("warnings", [])
 
     st.divider()
     st.markdown("## 📊 Kết quả DCCT")
@@ -834,11 +880,17 @@ if "result" in st.session_state:
     with col4:
         st.metric("📊 Cấu phần đánh giá", len(assessment_plan))
 
-    # Errors/warnings
+    # Errors (hard failures) — shown as error boxes
     if errors:
-        with st.expander(f"⚠️ Cảnh báo ({len(errors)})", expanded=False):
+        with st.expander(f"❌ Lỗi ({len(errors)})", expanded=True):
             for e in errors:
-                st.warning(e)
+                st.error(e)
+
+    # Warnings (soft notices) — shown as warning boxes
+    if warnings:
+        with st.expander(f"⚠️ Lưu ý ({len(warnings)})", expanded=False):
+            for w in warnings:
+                st.warning(w)
 
     # Tabs for different sections
     tabs = st.tabs(["🎯 CLO", "🗺️ Mapping", "📅 Kế hoạch giảng dạy", "📊 Đánh giá", "📄 Export", "💬 Hỏi đáp ĐCCT"])

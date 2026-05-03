@@ -45,6 +45,16 @@ async def teaching_plan_node(state: Dict[str, Any]) -> Dict[str, Any]:
         f"outline_sessions={len(outline_sessions)} | credits={credits}"
     )
 
+    if not clo_list:
+        logger.warning("[TeachingPlan] Không có CLO — bỏ qua sinh kế hoạch giảng dạy")
+        return {
+            "teaching_plan": [],
+            "current_step": "teaching_plan_done",
+            "warnings": state.get("warnings", []) + [
+                "Kế hoạch giảng dạy trống vì không có CLO. Vui lòng kiểm tra lại đề cương đầu vào."
+            ],
+        }
+
     # Cấu trúc buổi học từ state (mặc định 5 tiết/buổi, 3 LT + 2 TH)
     periods_per_session = int(state.get("periods_per_session") or 5)
     theory_per_session  = int(state.get("theory_per_session")  or 3)
@@ -185,16 +195,18 @@ def _enforce_outline_skeleton(
             clos = [clo_list[no % len(clo_list)]["code"]]
 
         corrected.append({
-            "no":               no,
-            "week":             llm_s.get("week", week),
-            "type":             stype,
-            "content":          topic,                          # NGUYÊN VĂN GV
-            "details":          llm_s.get("details") or ("; ".join(subs) if subs else ""),
-            "clo_codes":        clos,
-            "irma_level":       llm_s.get("irma_level", "R"),
-            "activities":       llm_s.get("activities", "Lecture" if stype == "LT" else "Lab"),
-            "assessment":       llm_s.get("assessment", ""),
-            "duration_periods": periods,
+            "no":                  no,
+            "week":                llm_s.get("week", week),
+            "type":                stype,
+            "content":             topic,                          # NGUYÊN VĂN GV
+            "details":             llm_s.get("details") or ("; ".join(subs) if subs else ""),
+            "clo_codes":           clos,
+            "irma_level":          llm_s.get("irma_level", "R"),
+            "activities":          llm_s.get("activities", "Giảng giải có cấu trúc" if stype == "LT" else "Thực hành có hướng dẫn"),
+            "teaching_activities": llm_s.get("teaching_activities", ""),
+            "assessment":          llm_s.get("assessment", ""),
+            "preparation":         llm_s.get("preparation", ""),
+            "duration_periods":    periods,
         })
 
     return corrected
@@ -282,16 +294,18 @@ def _normalize_plan(plan: List[Dict]) -> List[Dict]:
         stype = session.get("type", "LT")
         default_dur = lt_dur_seen if stype == "LT" else th_dur_seen
         normalized.append({
-            "no":               session.get("no", i + 1),
-            "week":             session.get("week", i + 1),
-            "type":             stype,
-            "content":          session.get("content", f"Buổi {i + 1}"),
-            "details":          session.get("details", ""),
-            "clo_codes":        session.get("clo_codes", []),
-            "irma_level":       session.get("irma_level", "R"),
-            "activities":       session.get("activities", "Giảng giải có cấu trúc" if stype == "LT" else "Thực hành có hướng dẫn"),
-            "assessment":       session.get("assessment", ""),
-            "duration_periods": session.get("duration_periods") or default_dur,
+            "no":                  session.get("no", i + 1),
+            "week":                session.get("week", i + 1),
+            "type":                stype,
+            "content":             session.get("content", f"Buổi {i + 1}"),
+            "details":             session.get("details", ""),
+            "clo_codes":           session.get("clo_codes", []),
+            "irma_level":          session.get("irma_level", "R"),
+            "activities":          session.get("activities", "Giảng giải có cấu trúc" if stype == "LT" else "Thực hành có hướng dẫn"),
+            "teaching_activities": session.get("teaching_activities", ""),
+            "assessment":          session.get("assessment", ""),
+            "preparation":         session.get("preparation", ""),
+            "duration_periods":    session.get("duration_periods") or default_dur,
         })
     return normalized
 

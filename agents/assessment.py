@@ -28,6 +28,17 @@ async def assessment_node(state: Dict[str, Any]) -> Dict[str, Any]:
 
     logger.info(f"[Assessment] Thiết kế đánh giá cho {len(clo_list)} CLO")
 
+    if not clo_list:
+        logger.warning("[Assessment] Không có CLO — bỏ qua sinh đánh giá")
+        return {
+            "assessment_plan": [],
+            "rubrics": {},
+            "current_step": "assessment_done",
+            "warnings": state.get("warnings", []) + [
+                "Hệ thống đánh giá trống vì không có CLO. Vui lòng kiểm tra lại đề cương đầu vào."
+            ],
+        }
+
     has_lab = int(extracted_info.get("lab_periods", 0) or 0) > 0
     clo_list_text = _format_clo_list(clo_list)
     mapping_summary = _format_mapping_summary(mapping_matrix, clo_list)
@@ -53,6 +64,10 @@ async def assessment_node(state: Dict[str, Any]) -> Dict[str, Any]:
         grading_policy = result.get("grading_policy", {})
 
         assessment_plan = _normalize_assessment_plan(assessment_plan, clo_list)
+
+        # Gắn truy_vet (Assessment-CLO-PI-PLO) vào rubrics để export
+        if grading_policy:
+            rubrics["traceability"] = grading_policy
 
         logger.info(
             f"[Assessment] Hoàn thành: {len(assessment_plan)} cấu phần đánh giá"
@@ -143,8 +158,6 @@ def _generate_fallback_assessment(clo_list: List[Dict]) -> Dict:
     Fallback assessment khi LLM thất bại.
     Sinh rubric dựa trên CLO thực tế của học phần — không hardcode criteria generic.
     """
-    from utils.obe_utils import DEFAULT_ASSESSMENT_WEIGHTS
-
     clo_codes = [c["code"] for c in clo_list]
     mid = max(1, len(clo_codes) // 2)
     a21_clos = clo_codes[:mid]

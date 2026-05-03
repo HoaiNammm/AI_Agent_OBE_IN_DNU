@@ -41,8 +41,8 @@ def extract_text_from_bytes(file_bytes: bytes, filename: str) -> str:
                     if row_cells:
                         lines.append(" | ".join(row_cells))
             return "\n".join(lines)
-        except Exception:
-            return ""
+        except Exception as e:
+            raise ValueError(f"File .docx không đọc được (có thể bị hỏng hoặc mã hóa): {e}") from e
 
     if ext == "pdf":
         try:

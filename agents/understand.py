@@ -10,7 +10,7 @@ import json
 from typing import Dict, Any, List
 from utils.logger import get_logger
 from utils.llm_helper import call_llm_json_async, extract_json_from_response
-from utils.obe_utils import get_bloom_level
+from utils.obe_utils import get_bloom_level, BLOOM_LEVEL_VI
 from utils.outline_parser import parse_outline, is_raw_text_fallback
 from prompts.understand_prompt import (
     get_understand_system_prompt,
@@ -211,15 +211,19 @@ def _normalize_clo_list(clo_raw_list: List[Dict]) -> List[Dict]:
 
         bloom_level      = clo.get("bloom_level")
         bloom_level_name = clo.get("bloom_level_name", "")
-        if not bloom_level and bloom_verb:
-            bloom_level, bloom_level_name = get_bloom_level(bloom_verb)
+        # Chuẩn hoá: LLM đôi khi trả 0 hoặc None — thử detect từ verb trước khi default
+        if not bloom_level or not (1 <= int(bloom_level) <= 6):
+            if bloom_verb:
+                bloom_level, bloom_level_name = get_bloom_level(bloom_verb)
+            else:
+                bloom_level, bloom_level_name = 3, "Áp dụng (Apply)"  # safe default cho CLO kỹ thuật
 
         normalized.append({
             "code":             code,
             "description":      description,
             "bloom_verb":       bloom_verb,
-            "bloom_level":      bloom_level or 2,
-            "bloom_level_name": bloom_level_name or "Hiểu (Understand)",
+            "bloom_level":      int(bloom_level),
+            "bloom_level_name": bloom_level_name or BLOOM_LEVEL_VI.get(int(bloom_level), "Áp dụng (Apply)"),
             "source_sessions":  clo.get("source_sessions", []),   # buổi nguồn (REVERSE)
             "pi_codes":         clo.get("pi_codes", []),
             "mapping_level":    clo.get("mapping_level", ""),
@@ -232,13 +236,38 @@ def _detect_program(course_code: str, existing_program: str = None) -> str:
     """
     Xác định chương trình đào tạo từ mã học phần.
     Ưu tiên giá trị đã có nếu không phải GENERIC.
+
+    Rules:
+      CSCxxxx             → KHMT
+      IS0xxx / ISxxxx     → HTTT
+      FIT43xx (4300-4399) → HTTT  (học phần chuyên ngành HTTT)
+      FIT4xxx (others)    → CNTT
+      FIT5xxx             → giữ existing_program hoặc GENERIC (HP chung)
+      còn lại             → GENERIC
     """
+    import re
     if existing_program and existing_program not in ("GENERIC", "", None):
         return existing_program
     code_upper = (course_code or "").upper()
-    if code_upper.startswith("CSC") or code_upper.startswith("CS"):
+    # CSCxxxx → KHMT
+    if code_upper.startswith("CSC"):
         return "KHMT"
-    if code_upper.startswith("ISE") or code_upper.startswith("IS"):
+    # IS0xxx hoặc ISxxxx → HTTT
+    if code_upper.startswith("IS"):
         return "HTTT"
+    # FIT43xx → HTTT (học phần chuyên ngành HTTT: FIT4301-FIT4399)
+    if re.match(r"FIT43\d{2}", code_upper):
+        return "HTTT"
+    # FIT4xxx (không phải FIT43xx) → CNTT
+    if re.match(r"FIT4\d{3}", code_upper):
+        return "CNTT"
+    # FIT5xxx → HP chung, không thể xác định từ mã HP đơn thuần
+    if code_upper.startswith("FIT5"):
+        import warnings
+        warnings.warn(
+            f"HP {code_upper} là học phần chung (FIT5xxx). "
+            "Cần xác nhận ngành từ GV hoặc ngữ cảnh."
+        )
+        return existing_program or "GENERIC"
     return "GENERIC"
 

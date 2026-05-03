@@ -22,6 +22,7 @@ STEP_DONE_MAP = {
     "mapping_done": "mapping",
     "teaching_plan_done": "teaching_plan",
     "assessment_done": "assessment",
+    "final_validator_done": "final_validator",
 }
 
 MAX_RETRIES = 2

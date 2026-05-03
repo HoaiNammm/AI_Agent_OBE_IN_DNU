@@ -587,21 +587,25 @@ def _add_section_viii_assessment(
     _add_truy_vet_table(doc, assessment_plan, clo_list)
     doc.add_paragraph()
 
-    # 8.2.2 Bảng ma trận CLO × PLO
-    _add_sub2_heading(doc, "8.2.2. Bảng ma trận CLO × PLO")
-    _add_clo_plo_matrix_table(doc, clo_list)
-    doc.add_paragraph()
-
-    # 8.2.3+ Rubric từng cấu phần
+    # 8.2.2+ Rubric từng cấu phần (theo mẫu CSC4007: A1=8.2.2, A2.1=8.2.3, ...)
     rubric_order = ["A1", "A2.1", "A2.2", "A3"]
     existing_codes = list(rubrics.keys())
-    # Sắp theo thứ tự chuẩn, còn lại append sau
+    # Sắp theo thứ tự chuẩn; bỏ key meta "traceability"
     ordered = [c for c in rubric_order if c in rubrics] + \
-              [c for c in existing_codes if c not in rubric_order]
+              [c for c in existing_codes if c not in rubric_order
+               and c != "traceability"]
+
+    # Build name lookup từ assessment_plan để hiển thị "Rubric A1 – Đánh giá chuyên cần"
+    assessment_name_map = {a.get("code", ""): a.get("name", "") for a in assessment_plan}
 
     for idx, component_code in enumerate(ordered):
-        sub_idx = idx + 3  # 8.2.3, 8.2.4, ... (vì 8.2.2 là CLO×PLO matrix)
-        sub_title = f"8.2.{sub_idx}. Rubric {component_code}"
+        sub_idx = idx + 2  # 8.2.2, 8.2.3, 8.2.4, 8.2.5
+        component_name = assessment_name_map.get(component_code, "")
+        sub_title = (
+            f"8.2.{sub_idx}. Rubric {component_code} – {component_name}"
+            if component_name
+            else f"8.2.{sub_idx}. Rubric {component_code}"
+        )
         _add_sub2_heading(doc, sub_title)
 
         rubric = rubrics.get(component_code, {})

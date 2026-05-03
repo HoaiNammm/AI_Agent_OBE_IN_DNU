@@ -95,7 +95,7 @@ async def final_validator_node(state: Dict[str, Any]) -> Dict[str, Any]:
             "confidence_score": confidence_score,
             "final_dcct_data": final_dcct_data,
             "warnings": state.get("warnings", []) + critical_issues,
-            "current_step": "final_validator",  # Giữ để graph routing hoạt động
+            "current_step": "final_validator_done",  # Dùng "_done" để supervisor không loop lại
         }
 
     except json.JSONDecodeError as e:
@@ -105,7 +105,7 @@ async def final_validator_node(state: Dict[str, Any]) -> Dict[str, Any]:
         return {
             "confidence_score": confidence_score,
             "final_dcct_data": final_dcct_data,
-            "current_step": "final_validator",
+            "current_step": "final_validator_done",
             "errors": state.get("errors", []) + [f"Validator: Lỗi parse JSON - {e}"],
         }
     except Exception as e:
@@ -115,7 +115,7 @@ async def final_validator_node(state: Dict[str, Any]) -> Dict[str, Any]:
         return {
             "confidence_score": confidence_score,
             "final_dcct_data": final_dcct_data,
-            "current_step": "final_validator",
+            "current_step": "final_validator_done",
             "errors": state.get("errors", []) + [f"Validator: {e}"],
         }
 

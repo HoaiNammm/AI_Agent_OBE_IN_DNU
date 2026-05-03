@@ -41,26 +41,49 @@ from utils.obe_utils import (
 # Mỗi PLO group được gán một domain label ngắn.
 # Agent mapping dùng để quyết định CLO nào nên map vào PI nào.
 
-_PI_DOMAIN_KHMT: Dict[str, str] = {
-    "PLO-CS01": "professional",   # ethics / compliance / citations
-    "PLO-CS02": "theory",         # math / stats / model selection
-    "PLO-CS03": "algorithms",     # algo design / complexity / testing
-    "PLO-CS04": "experiment",     # experimental design / reproducibility
-    "PLO-CS05": "ml_ai",          # ML/DL model building & evaluation
-    "PLO-CS06": "systems",        # networks / OS / DB / security
-    "PLO-CS07": "communication",  # writing / presentation / teamwork
-    "PLO-CS08": "lifelong",       # self-learning / continuous improvement
+_PI_DOMAIN_CNTT: Dict[str, str] = {
+    "PLO1":  "professional",   # ly luan Mac-Lenin / chu truong Dang
+    "PLO2":  "theory",         # khoa hoc co so / ngoai ngu
+    "PLO3":  "professional",   # quoc phong / the chat
+    "PLO4":  "analysis",       # phan tich & phat trien PM
+    "PLO5":  "design",         # thiet ke kien truc & tich hop he thong
+    "PLO6":  "ml_ai",          # du lieu & AI ung dung
+    "PLO7":  "communication",  # giao tiep & thuyet trinh
+    "PLO8":  "systems",        # lam viec nhom & tu duy he thong
+    "PLO9":  "theory",         # tieng Anh & tin hoc van phong
+    "PLO10": "systems",        # phat trien tren nen tang chuyen biet
+    "PLO11": "devops",         # van hanh & DevOps
+    "PLO12": "lifelong",       # dao duc nghe nghiep & tu hoc
 }
 
 _PI_DOMAIN_HTTT: Dict[str, str] = {
-    "PLO-IS01": "professional",   # ethics / compliance / risk
-    "PLO-IS02": "theory",         # foundational tech / tool usage
-    "PLO-IS03": "analysis",       # requirements gathering / BRD/SRS
-    "PLO-IS04": "design",         # process modelling / solution blueprint
-    "PLO-IS05": "data",           # data modelling / governance
-    "PLO-IS06": "application",    # BI / KPI / dashboards
-    "PLO-IS07": "integration",    # system integration / architecture
-    "PLO-IS08": "management",     # project planning / change management
+    "PLO1":  "professional",   # ly luan Mac-Lenin
+    "PLO2":  "theory",         # khoa hoc co so
+    "PLO3":  "professional",   # quoc phong
+    "PLO4":  "analysis",       # thu thap & dac ta yeu cau nghiep vu
+    "PLO5":  "design",         # mo hinh hoa & thiet ke giai phap HTTT
+    "PLO6":  "data",           # quan tri du lieu & BI
+    "PLO7":  "communication",  # giao tiep & thuyet trinh
+    "PLO8":  "systems",        # lam viec nhom & tu duy he thong
+    "PLO9":  "theory",         # tieng Anh & tin hoc
+    "PLO10": "application",    # KPI & Dashboard BI
+    "PLO11": "integration",    # trien khai & tich hop HTTT
+    "PLO12": "lifelong",       # dao duc & tu hoc
+}
+
+_PI_DOMAIN_KHMT: Dict[str, str] = {
+    "PLO1":  "professional",   # ly luan Mac-Lenin
+    "PLO2":  "theory",         # khoa hoc co so
+    "PLO3":  "professional",   # quoc phong
+    "PLO4":  "algorithms",     # mo hinh hoa bai toan & phan tich thuat toan
+    "PLO5":  "ml_ai",          # pipeline du lieu & mo hinh AI/ML
+    "PLO6":  "experiment",     # thiet ke & thi nghiem AI
+    "PLO7":  "communication",  # giao tiep & thuyet trinh
+    "PLO8":  "systems",        # lam viec nhom & tu duy he thong
+    "PLO9":  "theory",         # tieng Anh & tin hoc
+    "PLO10": "systems",        # kien truc & he thong AI
+    "PLO11": "professional",   # dao duc AI & nghien cuu hoc thuat
+    "PLO12": "lifelong",       # tu hoc & cai tien lien tuc
 }
 
 # Bloom level ranges appropriate for each domain (inclusive)
@@ -141,11 +164,12 @@ def get_pi_domain(plo_code: str, program: str) -> Optional[str]:
     Dùng để agent mapping biết loại CLO nào nên map vào đây.
     """
     _p = (program or "GENERIC").upper()
-    if _p == "KHMT":
-        return _PI_DOMAIN_KHMT.get(plo_code)
-    if _p == "HTTT":
-        return _PI_DOMAIN_HTTT.get(plo_code)
-    return None
+    domain_maps = {
+        "CNTT": _PI_DOMAIN_CNTT,
+        "HTTT": _PI_DOMAIN_HTTT,
+        "KHMT": _PI_DOMAIN_KHMT,
+    }
+    return domain_maps.get(_p, {}).get(plo_code)
 
 
 def get_bloom_range_for_domain(domain: str) -> Tuple[int, int]:
@@ -166,7 +190,8 @@ def get_pi_list_for_prompt(program: str) -> str:
         PI-CS05.1 (PLO-CS05, domain=ml_ai, Bloom 3-6): <mô tả>
     """
     _p = (program or "GENERIC").upper()
-    domain_map = _PI_DOMAIN_KHMT if _p == "KHMT" else (_PI_DOMAIN_HTTT if _p == "HTTT" else {})
+    domain_maps = {"CNTT": _PI_DOMAIN_CNTT, "HTTT": _PI_DOMAIN_HTTT, "KHMT": _PI_DOMAIN_KHMT}
+    domain_map = domain_maps.get(_p, {})
     lines: List[str] = []
 
     for plo_code, pis in get_pi_data(program).items():
@@ -192,7 +217,8 @@ def get_pi_validation_summary(program: str) -> str:
     Giải thích: CLO nào nên map vào PI nào dựa trên domain + Bloom.
     """
     _p = (program or "GENERIC").upper()
-    domain_map = _PI_DOMAIN_KHMT if _p == "KHMT" else (_PI_DOMAIN_HTTT if _p == "HTTT" else {})
+    domain_maps = {"CNTT": _PI_DOMAIN_CNTT, "HTTT": _PI_DOMAIN_HTTT, "KHMT": _PI_DOMAIN_KHMT}
+    domain_map = domain_maps.get(_p, {})
 
     lines = ["=== PI DOMAIN RULES (CỨNG — KHÔNG ĐƯỢC BỎ QUA) ==="]
     for plo_code, domain in domain_map.items():
